@@ -1,4 +1,5 @@
 import React from 'react';
+import Menu from './menu';
 
 const Header = () => {
   return (
@@ -15,7 +16,7 @@ const Header = () => {
           display: `flex`,
         }}
       >
-        <div>header</div>
+        <Menu />
       </div>
     </header>
   );
