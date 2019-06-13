@@ -10,7 +10,7 @@ interface OwnState {
     }
   ];
 }
-class App extends Component<OwnProps, OwnState> {
+class Movie extends Component<OwnProps, OwnState> {
   constructor(ownProps: any, ownState: any) {
     super(ownProps, ownState);
     this.state = {
@@ -68,4 +68,4 @@ class App extends Component<OwnProps, OwnState> {
     );
   }
 }
-export default App;
+export default Movie;
