@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
-class App extends Component {
-  constructor() {
-    super();
+
+interface OwnProps {}
+interface OwnState {
+  movies: [
+    {
+      _embedded: {};
+      title: { rendered: string };
+      acf: { release_year: string; rating: string; description: string };
+    }
+  ];
+}
+class App extends Component<OwnProps, OwnState> {
+  constructor(ownProps: any, ownState: any) {
+    super(ownProps, ownState);
     this.state = {
-      movies: [],
+      movies: [
+        {
+          _embedded: {},
+          title: { rendered: '' },
+          acf: { release_year: '', rating: '', description: '' },
+        },
+      ],
     };
   }
   componentDidMount() {
@@ -17,15 +34,17 @@ class App extends Component {
       });
   }
   render() {
+    const movies2 = this.state.movies;
+    console.log(movies2[0].title);
     let movies = this.state.movies.map((movie, index) => {
       return (
         <div key={index}>
-          <img
+          {/* <img
             src={
               movie._embedded['wp:featuredmedia'][0].media_details.sizes.large
                 .source_url
             }
-          />
+          /> */}
           <p>
             <strong>Title:</strong> {movie.title.rendered}
           </p>
