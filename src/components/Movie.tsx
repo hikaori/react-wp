@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BasicLayout } from './';
 
 interface OwnProps {}
 interface OwnState {
@@ -62,9 +63,11 @@ class Movie extends Component<OwnProps, OwnState> {
       );
     });
     return (
-      <div>
-        <h2>{movies}</h2>
-      </div>
+      <BasicLayout>
+        <div>
+          <h2>{movies}</h2>
+        </div>
+      </BasicLayout>
     );
   }
 }
