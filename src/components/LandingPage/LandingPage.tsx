@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BasicLayout } from '../';
 
 class LandingPage extends Component {

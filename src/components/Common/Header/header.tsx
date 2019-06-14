@@ -1,7 +1,12 @@
 import React from 'react';
 import Menu from './menu';
+import styled from 'styled-components';
+import Logo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 
 const Header = () => {
+  const COSLogo = styled.img`
+    max-width: 148.15px;
+  `;
   return (
     <header
       style={{
@@ -16,6 +21,8 @@ const Header = () => {
           display: `flex`,
         }}
       >
+        <COSLogo src={Logo} className="App-logo" alt="logo" />
+
         <Menu />
       </div>
     </header>
