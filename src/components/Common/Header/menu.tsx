@@ -35,9 +35,15 @@ class Movie extends Component<OwnProps, OwnState> {
       });
   }
 
-  handleHover = () => {
+  open = () => {
     this.setState(state => ({
       isOpen: 'open',
+    }));
+  };
+
+  close = () => {
+    this.setState(state => ({
+      isOpen: 'close',
     }));
   };
 
@@ -61,7 +67,11 @@ class Movie extends Component<OwnProps, OwnState> {
       <div>
         <MenuSection>
           {menus.map((item, index) => (
-            <Menu key={index} onMouseOver={this.handleHover}>
+            <Menu
+              key={index}
+              onMouseEnter={this.open}
+              onMouseLeave={this.close}
+            >
               <Link to={item.url}>{item.title}</Link>
               <MenuSubSection>
                 {item.children &&
