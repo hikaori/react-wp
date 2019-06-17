@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import './menu.css';
-
 interface OwnProps {}
 interface OwnState {
   menus: {
@@ -11,7 +9,6 @@ interface OwnState {
       { title: string; url: string; children: [{ title: string; url: string }] }
     ];
   };
-  isOpen: string;
 }
 class Movie extends Component<OwnProps, OwnState> {
   constructor(ownProps: any, ownState: any) {
@@ -20,7 +17,6 @@ class Movie extends Component<OwnProps, OwnState> {
       menus: {
         items: [{ title: '', url: '', children: [{ title: '', url: '' }] }],
       },
-      isOpen: 'close',
     };
   }
 
@@ -35,56 +31,64 @@ class Movie extends Component<OwnProps, OwnState> {
       });
   }
 
-  open = () => {
-    this.setState(state => ({
-      isOpen: 'open',
-    }));
-  };
-
-  close = () => {
-    this.setState(state => ({
-      isOpen: 'close',
-    }));
-  };
-
   render() {
     const MenuSection = styled.ul`
       display: flex;
       margin-left: 0;
       justify-content: flex-end;
+      margin-bottom: 0;
+      margin: auto 0;
     `;
     const Menu = styled.li`
-      padding: 0.5rem 0.75rem;
+      margin-bottom: 0;
+      padding: 0.5rem 3.2rem;
+      &:hover {
+        .active {
+          display: block;
+        }
+      }
     `;
     const MenuSubSection = styled.ul`
       margin-left: 0;
       position: absolute;
       text-transform: none;
+      display: none;
+      z-index: 1;
+      margin-top: 0px;
+      margin-top: 0px;
+      background-color: #fff;
+      padding-right: 20px;
+      padding-left: 20px;
+      margin-left: -20px;
+      box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 4px;
+    `;
+    const MenuSub = styled.li`
+      border-bottom: #ddd solid 1px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 0;
+      &:last-child {
+        border-bottom: #fff solid 1px;
+      }
     `;
 
     let menus = this.state.menus.items;
     return (
-      <div>
-        <MenuSection>
-          {menus.map((item, index) => (
-            <Menu
-              key={index}
-              onMouseEnter={this.open}
-              onMouseLeave={this.close}
-            >
-              <Link to={item.url}>{item.title}</Link>
-              <MenuSubSection>
-                {item.children &&
-                  item.children.map(subitem => (
-                    <li key={subitem.title} className={this.state.isOpen}>
-                      <Link to={subitem.url}>{subitem.title}</Link>
-                    </li>
-                  ))}
-              </MenuSubSection>
-            </Menu>
-          ))}
-        </MenuSection>
-      </div>
+      <MenuSection className="font14">
+        {menus.map((item, index) => (
+          <Menu key={index}>
+            <Link to={item.url}>{item.title}</Link>
+            <MenuSubSection className="active">
+              {item.children &&
+                item.children.map(subitem => (
+                  <MenuSub key={subitem.title}>
+                    <Link to={subitem.url}>{subitem.title}</Link>
+                  </MenuSub>
+                ))}
+            </MenuSubSection>
+          </Menu>
+        ))}
+      </MenuSection>
     );
   }
 }

@@ -5,6 +5,7 @@ import Footer from './Common/Footer/Footer';
 import LandingPage from '../components/LandingPage/LandingPage';
 import Movie from './Movie';
 import NotFound from './NotFound/NotFound';
+import ImagePluTextBox from './Common/ImagePluTextBox/imagePluTextBox';
 
 export {
   BaseContainer,
@@ -14,4 +15,5 @@ export {
   LandingPage,
   Movie,
   NotFound,
+  ImagePluTextBox,
 };

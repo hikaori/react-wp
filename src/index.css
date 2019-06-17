@@ -46,6 +46,8 @@ a {
   display: block;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  text-decoration: none;
+  color: #666;
 }
 a:active,
 a:hover {
@@ -189,7 +191,7 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
+  font-size: 62.5%;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -619,6 +621,15 @@ pre code:after,
 pre tt:before,
 pre tt:after {
   content: '';
+}
+.image-shadow {
+  box-shadow: 2px 2px teal;
+}
+.font14 {
+  font-size: 1.4rem;
+}
+.shadow {
+  box-shadow: 2px 2px 4px grey;
 }
 @media only screen and (max-width: 480px) {
   html {
