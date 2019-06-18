@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from './menu';
+import Menu from './Menu';
 import styled from 'styled-components';
 
 import Logo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';

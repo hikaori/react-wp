@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BasicLayout } from '../';
+import { BasicLayout, News } from '../';
 import ReactPlayer from 'react-player';
 
 import { ImagePluTextBox } from '../';
@@ -32,6 +32,7 @@ class LandingPage extends Component {
             COSでは目的ごとに大きく異なる専門知識の提供、サポートを確実に行えるように、保育留学・就職、クリエイター留学・就職、高校留学を別々のサービスとして運営しています。`}
           isImgRightSide={true}
         />
+        <News />
       </BasicLayout>
     );
   }
