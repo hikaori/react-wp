@@ -1,13 +1,49 @@
-import React, { Component } from 'react';
-import { BasicLayout, News } from '../';
+import React, { Component, Fragment } from 'react';
+import { BasicLayout, News, ProgramContainer } from '../';
 import ReactPlayer from 'react-player';
 
 import { ImagePluTextBox } from '../';
 // import hero from '../../assets/images/COS-WebsiteHomePageHeroVideoOptimized.mp4';
 import defImage from '../../assets/images/defalt.jpg';
+import styled from 'styled-components';
 
-class LandingPage extends Component {
+interface OwnProps {}
+interface OwnState {
+  data: { acf: { herotext: string; ryugakutext: string } };
+}
+const HeroBox = styled.div`
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  & p {
+    text-align: center;
+  }
+`;
+
+class LandingPage extends Component<OwnProps, OwnState> {
+  constructor(ownProps: any, ownState: any) {
+    super(ownProps, ownState);
+    this.state = {
+      data: {
+        acf: { herotext: '', ryugakutext: '' },
+      },
+    };
+  }
+  componentDidMount() {
+    // 5 => wordpressのLanding page id
+    let dataURL = 'http://localhost/wp-json/wp/v2/pages/5';
+    fetch(dataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          data: res,
+        });
+      });
+  }
+
   render() {
+    let data = this.state.data.acf;
+    console.log(data.herotext);
     return (
       <BasicLayout>
         <div style={{ position: 'relative' }}>
@@ -19,20 +55,13 @@ class LandingPage extends Component {
             width="100%"
             height="100%"
           />
-          <div style={{ position: 'absolute', top: '50%', right: '25%' }}>
-            あなたにとっての、海外への架け橋として
-          </div>
+          <HeroBox dangerouslySetInnerHTML={{ __html: data.herotext }} />
         </div>
-        <ImagePluTextBox
-          imgURL={defImage}
-          alt={'留学'}
-          text={`『留学』というのは手段であり、必ず目的が伴います。
-            世界中に友達を作りたい。将来武器になる高い英語力、専門知識をつけて日本でキャリアアップ。海外に生活の拠点を移す。
-            皆様の目的は何でしょうか。
-            COSでは目的ごとに大きく異なる専門知識の提供、サポートを確実に行えるように、保育留学・就職、クリエイター留学・就職、高校留学を別々のサービスとして運営しています。`}
-          isImgRightSide={true}
-        />
+        <ImagePluTextBox imgURL={defImage} alt={'留学'} isImgRightSide={true}>
+          <div dangerouslySetInnerHTML={{ __html: data.ryugakutext }} />
+        </ImagePluTextBox>
         <News />
+        <ProgramContainer />
       </BasicLayout>
     );
   }

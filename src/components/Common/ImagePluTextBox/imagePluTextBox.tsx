@@ -4,7 +4,6 @@ import styled from 'styled-components';
 interface OwnProps {
   imgURL: string;
   alt: string;
-  text: string;
   isImgRightSide: boolean;
 }
 
@@ -22,15 +21,15 @@ const ImgLeft = styled.img`
 
 class ImagePluTextBox extends Component<OwnProps> {
   render() {
-    const { imgURL, alt, text, isImgRightSide } = this.props;
+    const { imgURL, alt, isImgRightSide } = this.props;
     return isImgRightSide ? (
       <Container className="font14">
         <ImgLeft src={imgURL} alt={alt} className="shadow" />
-        <div>{text}</div>
+        <div>{this.props.children}</div>
       </Container>
     ) : (
       <Container className="font14">
-        <div>{text}</div>
+        <div>{this.props.children}</div>
         <ImgRight src={imgURL} alt={alt} className="shadow" />
       </Container>
     );

@@ -4,4 +4,6 @@ export default {
   blue: '#2699FB',
   lightGray: '#F0F0F0',
   darkGray: '#ccc',
+  buttonLightBlue: '#3EAADD',
+  buttonDarkBlue: '#3798C4',
 };

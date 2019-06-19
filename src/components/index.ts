@@ -8,6 +8,7 @@ import Movie from './Movie';
 import NotFound from './NotFound/NotFound';
 import ImagePluTextBox from './Common/ImagePluTextBox/imagePluTextBox';
 import News from './News/News';
+import ProgramContainer from './Common/Program/ProgramContainer';
 
 export {
   BaseContainer,
@@ -20,4 +21,5 @@ export {
   NotFound,
   ImagePluTextBox,
   News,
+  ProgramContainer,
 };

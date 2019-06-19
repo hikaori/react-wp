@@ -25,7 +25,7 @@ class Movie extends Component<OwnProps, OwnState> {
     };
   }
   componentDidMount() {
-    let dataURL = 'http://localhost:8000/wp-json/wp/v2/movies?_embed';
+    let dataURL = 'http://localhost/wp-json/wp/v2/movies?_embed';
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {
