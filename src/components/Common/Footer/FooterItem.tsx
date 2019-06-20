@@ -13,12 +13,39 @@ const FlexBox = styled.div`
   }
   padding-bottom: 6.5rem;
 `;
+const MenuBox = styled.div`
+  margin: 0 2%;
+`;
 
 interface OwnProps {}
 interface OwnState {
   menus: {
     items: [
-      { title: string; url: string; children: [{ title: string; url: string }] }
+      {
+        title: string;
+        url: string;
+        children: [{ title: string; url: string }];
+      },
+      {
+        title: string;
+        url: string;
+        children: [{ title: string; url: string }];
+      },
+      {
+        title: string;
+        url: string;
+        children: [{ title: string; url: string }];
+      },
+      {
+        title: string;
+        url: string;
+        children: [{ title: string; url: string }];
+      },
+      {
+        title: string;
+        url: string;
+        children: [{ title: string; url: string }];
+      }
     ];
   };
 }
@@ -28,7 +55,13 @@ class FooterItem extends Component<OwnProps, OwnState> {
     super(ownProps, ownState);
     this.state = {
       menus: {
-        items: [{ title: '', url: '', children: [{ title: '', url: '' }] }],
+        items: [
+          { title: '', url: '', children: [{ title: '', url: '' }] },
+          { title: '', url: '', children: [{ title: '', url: '' }] },
+          { title: '', url: '', children: [{ title: '', url: '' }] },
+          { title: '', url: '', children: [{ title: '', url: '' }] },
+          { title: '', url: '', children: [{ title: '', url: '' }] },
+        ],
       },
     };
   }
@@ -45,12 +78,22 @@ class FooterItem extends Component<OwnProps, OwnState> {
   }
   render() {
     let menus = this.state.menus.items;
-    console.log(this.state.menus);
+    console.log(menus[0]);
     // const menus = this.state.menus.items;
     return (
       <FlexBox>
-        <FooterProgram menu={menus[0]} />
-        <FooterCompanyInfo />
+        <FlexBox theme={{ width: '100%' }}>
+          <FooterProgram menu={menus[0]} />
+          <FooterProgram menu={menus[1]} />
+          <MenuBox>
+            <FooterProgram menu={menus[2]} />
+            <FooterProgram menu={menus[3]} />
+          </MenuBox>
+          <FooterProgram menu={menus[4]} />
+        </FlexBox>
+        <div>
+          <FooterCompanyInfo />
+        </div>
       </FlexBox>
     );
   }

@@ -2,6 +2,25 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+const MenuBox = styled.div`
+  margin: 0 2%;
+  &:first-child {
+    margin-left: 0;
+  }
+`;
+const MenuBoxUl = styled.ul`
+  font-family:${({ theme }) => theme.fontFamily}
+  font-size:${({ theme }) => theme.fontSize}
+  margin-left: 0;
+  & a {
+    display: block;
+    padding: 0.6rem 0;
+  }
+  & li {
+    margin-bottom: 0.4rem;
+  }
+`;
+
 interface OwnProps {
   menu: {
     title: string;
@@ -20,11 +39,21 @@ class FooterProgram extends Component<OwnProps, OwnState> {
   }
   render() {
     return (
-      <div>
-        <ul>
+      <MenuBox>
+        <MenuBoxUl
+          theme={{
+            fontFamily: 'a-otf-midashi-go-mb31-pr6n',
+            fontSize: '1.4rem',
+          }}
+        >
           <li>
             <Link to={this.props.menu.url}>{this.props.menu.title}</Link>
-            <ul>
+            <MenuBoxUl
+              theme={{
+                fontFamily: 'a-otf-gothic-bbb-pr6n',
+                fontSize: '1.2rem',
+              }}
+            >
               {this.props.menu.children &&
                 this.props.menu.children.map(subitem => (
                   <li key={subitem.title}>
@@ -34,10 +63,10 @@ class FooterProgram extends Component<OwnProps, OwnState> {
               <li>
                 <Link to={'/'}>保育の留学・就職</Link>
               </li>
-            </ul>
+            </MenuBoxUl>
           </li>
-        </ul>
-      </div>
+        </MenuBoxUl>
+      </MenuBox>
     );
   }
 }
