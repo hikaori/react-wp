@@ -14,9 +14,13 @@ const Container = styled.div`
 `;
 const ImgRight = styled.img`
   margin-left: 7.6rem;
+  max-width: 304px;
+  margin-right: 192px;
 `;
 const ImgLeft = styled.img`
   margin-right: 7.6rem;
+  max-width: 304px;
+  margin-right: 192px;
 `;
 
 class ImagePluTextBox extends Component<OwnProps> {

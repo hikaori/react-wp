@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import color from '../colors';
 
 const H3 = styled.h3`

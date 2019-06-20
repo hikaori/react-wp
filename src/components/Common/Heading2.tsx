@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import color from '../colors';
 
 const H2 = styled.h2`
   text-align: center;
   font-size: 2.4rem;
+  margin-bottom: 5.5rem;
   & span {
-    padding-bottom: 2rem;
+    padding-top: 2rem;
     display: block;
     margin: 0 auto;
     width: 4rem;

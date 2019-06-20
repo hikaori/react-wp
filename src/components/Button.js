@@ -14,6 +14,7 @@ export const Button = styled.button`
     ${color.buttonLightBlue},
     ${color.buttonDarkBlue}
   );
+  max-width: ${({ theme }) => theme.main};
 `;
 
 export const RedButton = styled(Button)`

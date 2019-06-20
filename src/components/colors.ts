@@ -6,4 +6,5 @@ export default {
   darkGray: '#ccc',
   buttonLightBlue: '#3EAADD',
   buttonDarkBlue: '#3798C4',
+  footerBackGroudn: '#666666',
 };
