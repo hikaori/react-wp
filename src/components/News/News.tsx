@@ -32,18 +32,63 @@ const More = styled.div`
   }
 `;
 
-class News extends Component {
+interface OwnProps {}
+interface OwnState {
+  news: [
+    {
+      modified: string;
+      title: { rendered: string };
+      excerpt: { rendered: string };
+      acf: { link: string };
+    }
+  ];
+}
+
+class News extends Component<OwnProps, OwnState> {
+  constructor(ownProps: any, ownState: any) {
+    super(ownProps, ownState);
+    this.state = {
+      news: [
+        {
+          modified: '',
+          title: { rendered: '' },
+          excerpt: { rendered: '' },
+          acf: { link: '' },
+        },
+      ],
+    };
+  }
+  componentDidMount() {
+    let dataURL = 'http://localhost/wp-json/wp/v2/news?_embed';
+    fetch(dataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          news: res,
+        });
+      });
+  }
+  dateFormat(date: string) {
+    let split = date.split('T');
+    let regex = /-/gi;
+    let result = split[0].replace(regex, '/');
+    return result;
+  }
   render() {
+    const news = this.state.news;
     return (
       <NewsContainer>
         <Heading2>最新情報</Heading2>
         <div style={{ margin: '0px 8.3rem' }}>
-          <Newsbox>
-            <NewsDay>2019/01/01</NewsDay>
-            <NewsText>
-              ここに最新情報が書かれますここに最新情報が書かれますここに最新情報が書かれますここに最新情報が書かれますここに最新情報が書かれますここに最新情報が書かれますここに最新情報が書かれます
-            </NewsText>
-          </Newsbox>
+          {news.map(item => (
+            <Newsbox>
+              <NewsDay>{this.dateFormat(item.modified)}</NewsDay>
+              <NewsText
+                dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }}
+              />
+            </Newsbox>
+          ))}
+
           <More>
             <Link to={'/'}>一覧を見る</Link>
           </More>
