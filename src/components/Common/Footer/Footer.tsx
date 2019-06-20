@@ -8,7 +8,11 @@ import FooterItem from './FooterItem';
 const FooterBox = styled.footer`
   background-color: ${color.footerBackGroudn};
   color: #fff;
-  padding: 8rem;
+  padding: 8.3rem;
+  // 100vw = 画面フルサイズ　100% = 対象コンテンツフルサイズ　
+  // -1　：ネガティブマージンを使う事で幅が広がる為、マイナス値を掛ける。
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
 `;
 const FlexBox = styled.div`
   display: flex;

@@ -4,10 +4,8 @@ import Header from './Header/header';
 import Footer from './Footer/Footer';
 
 const LayoutBox = styled.div`
-  margin: 0 auto,
-  maxWidth: 1366,
-  padding: 0px 1.0875rem 1.45rem,
-  paddingTop: 0,
+  padding: 0px 8.3rem 1.45rem;
+  padding-top: 0;
 `;
 
 class BasicLayout extends Component {

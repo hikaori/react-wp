@@ -21,6 +21,12 @@ interface OwnState {
   };
 }
 const HeroBox = styled.div`
+  position: relative;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+`;
+
+const HeroText = styled.div`
   position: absolute;
   top: 50%;
   width: 100%;
@@ -33,6 +39,8 @@ const BottomBox = styled.div`
   padding-top: 8rem;
   padding-bottom: 8rem;
   text-align: center;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
 `;
 
 class LandingPage extends Component<OwnProps, OwnState> {
@@ -66,7 +74,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
     console.log(data.herotext);
     return (
       <BasicLayout>
-        <div style={{ position: 'relative' }}>
+        <HeroBox>
           <ReactPlayer
             url="https://cosvancouver.com/wp-content/uploads/2019/06/COS-WebsiteHomePageHeroVideoOptimized.mp4"
             playing={true}
@@ -75,8 +83,8 @@ class LandingPage extends Component<OwnProps, OwnState> {
             width="100%"
             height="100%"
           />
-          <HeroBox dangerouslySetInnerHTML={{ __html: data.herotext }} />
-        </div>
+          <HeroText dangerouslySetInnerHTML={{ __html: data.herotext }} />
+        </HeroBox>
         <ImagePluTextBox
           imgURL={data.ryugakuimg}
           alt={data.ryugakuimgalt}

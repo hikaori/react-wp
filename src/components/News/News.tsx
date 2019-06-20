@@ -8,6 +8,8 @@ import { Heading2 } from '../';
 const NewsContainer = styled.div`
   padding: 8.4rem 0rem 8rem;
   background-color: ${color.lightGray};
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
 `;
 const Newsbox = styled.div`
   border-bottom: solid 1px ${color.darkGray};
@@ -35,7 +37,7 @@ class News extends Component {
     return (
       <NewsContainer>
         <Heading2>最新情報</Heading2>
-        <div style={{ margin: '0px 23.5rem' }}>
+        <div style={{ margin: '0px 8.3rem' }}>
           <Newsbox>
             <NewsDay>2019/01/01</NewsDay>
             <NewsText>

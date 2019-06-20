@@ -11,11 +11,13 @@ const MenuSection = styled.ul`
 `;
 const MenuParent = styled.li`
   margin-bottom: 0;
-  padding: 0.5rem 3.2rem;
   &:hover {
     .active {
       display: block;
     }
+  }
+  & a {
+    padding: 0.5rem 3.2rem;
   }
 `;
 const MenuSubSection = styled.ul`
@@ -25,7 +27,6 @@ const MenuSubSection = styled.ul`
   display: none;
   z-index: 1;
   margin-top: 0px;
-  margin-top: 0px;
   background-color: #fff;
   padding-right: 20px;
   padding-left: 20px;
@@ -34,11 +35,13 @@ const MenuSubSection = styled.ul`
 `;
 const MenuSub = styled.li`
   border-bottom: #ddd solid 1px;
-  padding-top: 20px;
-  padding-bottom: 20px;
   margin-bottom: 0;
   &:last-child {
     border-bottom: #fff solid 1px;
+  }
+  & a {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 `;
 

@@ -10,7 +10,7 @@ interface OwnProps {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  margin: 8rem 8.3rem;
+  margin: 8rem 0rem;
 `;
 const ImgRight = styled.img`
   margin-left: 7.6rem;
