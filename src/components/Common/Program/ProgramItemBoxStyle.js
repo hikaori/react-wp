@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import color from '../../colors';
-import babyCarriageImg from '../../../assets/images/baby-carriage-solid.svg'; 
+import babyCarriageImg from '../../../assets/images/baby-carriage-solid.svg';
 import babySolidImg from '../../../assets/images/baby-solid.svg';
 import graduationImg from '../../../assets/images/graduation-cap-solid.svg';
 import laptopImg from '../../../assets/images/laptop-code-solid.svg';
 import atlasImg from '../../../assets/images/atlas-solid.svg';
 
 const ProgramItemBoxStyle = styled.div`
-  background: ${color.lightGray}
   padding-top:6.7rem;
   padding-bottom:6.398rem
   padding-right:6.4rem
@@ -17,7 +16,7 @@ const ProgramItemBoxStyle = styled.div`
   background-position: 50%;
 `;
 
-export const ProgramItemBoxHoikupeia = styled(ProgramItemBoxStyle)`
+export const ProgramItemBoxHoikupedia = styled(ProgramItemBoxStyle)`
   background-image: url(${babyCarriageImg});
 `;
 
