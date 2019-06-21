@@ -3,18 +3,17 @@ import styled from 'styled-components';
 
 import Heading3 from '../Heading3';
 import { Button } from '../../Button';
-import {
-  ProgramItemBoxHoikupedia,
-  ProgramItemBoxFrog,
-  ProgramItemBoxNadeshiko,
-  ProgramItemBoxNanny,
-  ProgramItemBoxImmigration,
-} from './ProgramItemBoxStyle';
+import { ProgramItemBoxStyle } from './ProgramItemBoxStyle';
 import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
 import frogLogo from '../../../assets/logo/FrogLogo.svg';
 import nadeshikoLogo from '../../../assets/logo/NadeshikoRyugakuLogo.svg';
 import nannyLogo from '../../../assets/logo/NannyFromJapanLogo.svg';
 import immigrationLogo from '../../../assets/logo/COSImmigrationLogo.svg';
+import babyCarriageImg from '../../../assets/images/baby-carriage-solid.svg';
+import babySolidImg from '../../../assets/images/baby-solid.svg';
+import graduationImg from '../../../assets/images/graduation-cap-solid.svg';
+import laptopImg from '../../../assets/images/laptop-code-solid.svg';
+import atlasImg from '../../../assets/images/atlas-solid.svg';
 
 const Title = styled.div`
   font-size: 1.6rem;
@@ -36,6 +35,9 @@ const HoikupediaDiv = styled(LogoDiv)`
     height: auto;
   }
 `;
+const ButtonLogoDiv = styled.div`
+  margin-top: auto;
+`;
 
 interface OwnProps {
   hedding3: string;
@@ -44,63 +46,56 @@ interface OwnProps {
 }
 
 class ProgramItemBox extends Component<OwnProps> {
-  baseDom = (imgURL: any) => {
+  baseDom = (boxWidth: string, backImageUrl: any, imgUrl: any) => {
+    let logoDom: JSX.Element;
+    if (this.props.hedding3 === 'ホイクペディア') {
+      logoDom = (
+        <HoikupediaDiv>
+          <img src={imgUrl} />
+        </HoikupediaDiv>
+      );
+    } else {
+      logoDom = (
+        <LogoDiv>
+          <img src={imgUrl} />
+        </LogoDiv>
+      );
+    }
+
     return (
       <Fragment>
-        <Heading3>{this.props.hedding3}</Heading3>
-        <Title>{this.props.subTitle}</Title>
-        <p>{this.props.text}</p>
-        <div>
-          <Button>more</Button>
-          <LogoDiv>
-            <img src={imgURL} />
-          </LogoDiv>
-        </div>
+        <ProgramItemBoxStyle
+          theme={{
+            width: { boxWidth },
+            backImageURL: `${backImageUrl}`,
+          }}
+        >
+          <Heading3>{this.props.hedding3}</Heading3>
+          <Title>{this.props.subTitle}</Title>
+          <p>{this.props.text}</p>
+          <ButtonLogoDiv>
+            <Button>more</Button>
+            {logoDom}
+          </ButtonLogoDiv>
+        </ProgramItemBoxStyle>
       </Fragment>
     );
   };
 
-  hoikupediaDom = (
-    <Fragment>
-      <Heading3>{this.props.hedding3}</Heading3>
-      <Title>{this.props.subTitle}</Title>
-      <p>{this.props.text}</p>
-      <Button>more</Button>
-    </Fragment>
-  );
   createDom(program: any) {
     switch (program) {
       case 'ホイクペディア':
-        return (
-          <ProgramItemBoxHoikupedia>
-            {this.hoikupediaDom}
-            <HoikupediaDiv>
-              <img src={hoikupediaLogo} />
-            </HoikupediaDiv>
-          </ProgramItemBoxHoikupedia>
-        );
+        return this.baseDom('50%', babyCarriageImg, hoikupediaLogo);
       case 'Frog':
-        return (
-          <ProgramItemBoxFrog>{this.baseDom(frogLogo)}</ProgramItemBoxFrog>
-        );
+        return this.baseDom('50%', laptopImg, frogLogo);
       case 'ナデシコ留学':
-        return (
-          <ProgramItemBoxNadeshiko>
-            {this.baseDom(nadeshikoLogo)}
-          </ProgramItemBoxNadeshiko>
-        );
+        return this.baseDom('33%', graduationImg, nadeshikoLogo);
       case 'Nanny From Japan':
-        return (
-          <ProgramItemBoxNanny>{this.baseDom(nannyLogo)}</ProgramItemBoxNanny>
-        );
+        return this.baseDom('33%', babySolidImg, nannyLogo);
       case 'COS Immigration Consulting':
-        return (
-          <ProgramItemBoxImmigration>
-            {this.baseDom(immigrationLogo)}
-          </ProgramItemBoxImmigration>
-        );
+        return this.baseDom('33%', atlasImg, immigrationLogo);
       default:
-        return 'foo';
+        return '';
     }
   }
   render() {
