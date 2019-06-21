@@ -80,8 +80,8 @@ class News extends Component<OwnProps, OwnState> {
       <NewsContainer>
         <Heading2>最新情報</Heading2>
         <div style={{ margin: '0px 8.3rem' }}>
-          {news.map(item => (
-            <Newsbox>
+          {news.map((item, index) => (
+            <Newsbox key={index}>
               <NewsDay>{this.dateFormat(item.modified)}</NewsDay>
               <NewsText
                 dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }}

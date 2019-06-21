@@ -51,13 +51,13 @@ class ProgramItemBox extends Component<OwnProps> {
     if (this.props.hedding3 === 'ホイクペディア') {
       logoDom = (
         <HoikupediaDiv>
-          <img src={imgUrl} />
+          <img src={imgUrl} alt={this.props.hedding3} />
         </HoikupediaDiv>
       );
     } else {
       logoDom = (
         <LogoDiv>
-          <img src={imgUrl} />
+          <img src={imgUrl} alt={this.props.hedding3} />
         </LogoDiv>
       );
     }

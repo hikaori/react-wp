@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ class Footer extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/5';
+    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/4';
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {
@@ -68,9 +68,6 @@ class Footer extends Component<OwnProps, OwnState> {
             {` `}COS{` `}Educational{` `}Consulting{` `}Inc.
           </CopyRight>
           <FlexBox theme={{ width: '100%', content: 'flex-end' }}>
-            {/* <Link to={'/'}>
-              <OtherItem>{'0000'}</OtherItem>
-            </Link> */}
             {menus.map((item, index) => (
               <OtherItem key={index}>
                 <Link to={'/'}>{item.title}</Link>

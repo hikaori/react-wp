@@ -3,21 +3,11 @@ import styled from 'styled-components';
 
 import Heading2 from '../Heading2';
 import ProgramItemBox from './ProgramItemBox';
-import color from '../../colors';
 
 const FlexBox = styled.div`
   display: flex;
 `;
-const GrayBackDiv = styled.div`
-  background: ${color.lightGray};
-`;
-const HarfL = styled(GrayBackDiv)`
-  margin-right: 1.4rem;
-  background: ${color.lightGray};
-`;
-const OneThird = styled(GrayBackDiv)`
-  margin-right: 1.4rem;
-`;
+
 const Container = styled.div`
   padding-top: 8.4rem;
   padding-bottom: 8rem;

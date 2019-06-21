@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Eng.svg';
@@ -26,7 +26,7 @@ const Icon = styled.img`
 const FooterCompanyInfo = () => {
   return (
     <div>
-      <img src={cosLogo} />
+      <img src={cosLogo} alt="cosLogo" />
       <FlexBox>
         <Icon src={facebook} />
         <Icon src={twitter} />

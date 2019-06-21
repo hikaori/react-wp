@@ -36,7 +36,7 @@ class Movie extends Component<OwnProps, OwnState> {
   }
   render() {
     const movies2 = this.state.movies;
-    console.log(movies2[0].title);
+    // console.log(movies2[0].title);
     let movies = this.state.movies.map((movie, index) => {
       return (
         <div key={index}>

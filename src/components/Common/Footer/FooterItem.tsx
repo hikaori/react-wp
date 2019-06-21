@@ -67,7 +67,7 @@ class FooterItem extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/4';
+    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/5';
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {
@@ -78,8 +78,7 @@ class FooterItem extends Component<OwnProps, OwnState> {
   }
   render() {
     let menus = this.state.menus.items;
-    console.log(menus[0]);
-    // const menus = this.state.menus.items;
+    // console.log(menus[0]);
     return (
       <FlexBox>
         <FlexBox theme={{ width: '100%' }}>
