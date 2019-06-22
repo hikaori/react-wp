@@ -12,11 +12,11 @@ const Head = styled.header`
 `;
 const COSLogo = styled.img`
   max-width: 148.15px;
-  margin-bottom: 0rem;
+  margin-bottom: 2rem;
 `;
 const SearchIcon = styled.img`
   max-width: 16px;
-  margin-bottom: 0rem;
+  margin-bottom: 2rem;
 `;
 const FlexBox = styled.div`
   margin: 0 auto;
@@ -32,11 +32,7 @@ const FlexEnd = styled.div`
 
 const Header = () => {
   return (
-    <Head
-      style={{
-        marginBottom: `1.45rem`,
-      }}
-    >
+    <Head>
       <FlexBox>
         <COSLogo src={Logo} className="" alt="logo" />
         <FlexEnd>

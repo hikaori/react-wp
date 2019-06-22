@@ -4,6 +4,23 @@ import styled from 'styled-components';
 import Heading2 from '../Heading2';
 import ProgramItemBox from './ProgramItemBox';
 
+interface OwnProps {}
+interface OwnState {
+  data: {
+    acf: {
+      hoikupediaSubTitle: string;
+      hoikupediaText: string;
+      frogSubTitle: string;
+      frogText: string;
+      nadeshikoText: string;
+      nannySubTitle: string;
+      nannyText: string;
+      immigrationSubTitle: string;
+      immigrationText: string;
+    };
+  };
+}
+
 const FlexBox = styled.div`
   display: flex;
 `;
@@ -13,55 +30,69 @@ const Container = styled.div`
   padding-bottom: 8rem;
 `;
 
-class ProgramContainer extends Component {
+class ProgramContainer extends Component<OwnProps, OwnState> {
+  constructor(ownProps: any, ownState: any) {
+    super(ownProps, ownState);
+    this.state = {
+      data: {
+        acf: {
+          hoikupediaSubTitle: '',
+          hoikupediaText: '',
+          frogSubTitle: '',
+          frogText: '',
+          nadeshikoText: '',
+          nannySubTitle: '',
+          nannyText: '',
+          immigrationSubTitle: '',
+          immigrationText: '',
+        },
+      },
+    };
+  }
+  componentDidMount() {
+    let dataURL = 'http://localhost/wp-json/wp/v2/pages/37';
+    fetch(dataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          data: res,
+        });
+      });
+  }
   render() {
+    let data = this.state.data.acf;
     return (
       <Container>
         <Heading2>運営・提携事業紹介</Heading2>
         <FlexBox>
           <ProgramItemBox
             hedding3="ホイクペディア"
-            subTitle="カナダの保育留学専門サービス"
-            text="保育士資格書き換えや保育ボランティアといった独自のサービスや、保育士を目指す方への語学学校や専門学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップ、就活対策、会員様にのみの就職紹介サービスなど、
-        保育に関するサービスはホイクペディアだけです。保育士資格書き換えや保育ボランティアといった独自のサービスや、学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップもご好評いただいております。"
+            subTitle={data.hoikupediaSubTitle}
+            text={data.hoikupediaText}
           />
           <ProgramItemBox
             hedding3="Frog"
-            subTitle="カナダの保育留学専門サービス"
-            text="保育士資格書き換えや保育ボランティアといった独自のサービスや、保育士を目指す方への語学学校や専門学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップ、就活対策、会員様にのみの就職紹介サービスなど、
-        保育に関するサービスはホイクペディアだけです。保育士資格書き換えや保育ボランティアといった独自のサービスや、学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップもご好評いただいております。"
+            subTitle={data.frogSubTitle}
+            text={data.frogText}
           />
         </FlexBox>
         <FlexBox style={{ paddingTop: '1.6rem' }}>
           <ProgramItemBox
             hedding3="ナデシコ留学"
-            subTitle="カナダの保育留学専門サービス"
-            text="保育士資格書き換えや保育ボランティアといった独自のサービスや、保育士を目指す方への語学学校や専門学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップ、就活対策、会員様にのみの就職紹介サービスなど、
-        保育に関するサービスはホイクペディアだけです。保育士資格書き換えや保育ボランティアといった独自のサービスや、学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップもご好評いただいております。"
+            subTitle={data.nannySubTitle}
+            text={data.nadeshikoText}
           />
 
           <ProgramItemBox
             hedding3="Nanny From Japan"
-            subTitle="カナダの保育留学専門サービス"
-            text="保育士資格書き換えや保育ボランティアといった独自のサービスや、保育士を目指す方への語学学校や専門学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップ、就活対策、会員様にのみの就職紹介サービスなど、
-        保育に関するサービスはホイクペディアだけです。保育士資格書き換えや保育ボランティアといった独自のサービスや、学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップもご好評いただいております。"
+            subTitle={data.nannySubTitle}
+            text={data.nannyText}
           />
 
           <ProgramItemBox
             hedding3="COS Immigration Consulting"
-            subTitle="カナダの保育留学専門サービス"
-            text="保育士資格書き換えや保育ボランティアといった独自のサービスや、保育士を目指す方への語学学校や専門学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップ、就活対策、会員様にのみの就職紹介サービスなど、
-        保育に関するサービスはホイクペディアだけです。保育士資格書き換えや保育ボランティアといった独自のサービスや、学校の紹介、
-        手続き代行を無料で行っています。現地オフィスで行われる保育ワークショップもご好評いただいております。"
+            subTitle={data.immigrationSubTitle}
+            text={data.immigrationText}
           />
         </FlexBox>
       </Container>

@@ -7,6 +7,7 @@ const MenuBox = styled.div`
   &:first-child {
     margin-left: 0;
   }
+  width: ${({ theme }) => theme.Boxwidth};
 `;
 const MenuBoxUl = styled.ul`
   font-family:${({ theme }) => theme.fontFamily}
@@ -22,6 +23,7 @@ const MenuBoxUl = styled.ul`
 `;
 
 interface OwnProps {
+  width: string;
   menu: {
     title: string;
     url: string;
@@ -39,7 +41,7 @@ class FooterProgram extends Component<OwnProps, OwnState> {
   }
   render() {
     return (
-      <MenuBox>
+      <MenuBox theme={{ Boxwidth: this.props.width }}>
         <MenuBoxUl
           theme={{
             fontFamily: 'a-otf-midashi-go-mb31-pr6n',
@@ -60,9 +62,6 @@ class FooterProgram extends Component<OwnProps, OwnState> {
                     <Link to={subitem.url}>{subitem.title}</Link>
                   </li>
                 ))}
-              <li>
-                <Link to={'/'}>保育の留学・就職</Link>
-              </li>
             </MenuBoxUl>
           </li>
         </MenuBoxUl>

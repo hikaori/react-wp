@@ -3,18 +3,24 @@ import styled from 'styled-components';
 
 import FooterProgram from './FooterProgram';
 import FooterCompanyInfo from './FooterCompanyInfo';
+import color from '../../colors';
 
 const FlexBox = styled.div`
   display: flex;
   justify-content: ${({ theme }) => theme.content};
   width: ${({ theme }) => theme.width};
+  padding-right: ${({ theme }) => theme.paddingRigt};
   & a {
     color: #fff;
+  }
+  & a:hover {
+    color: ${color.primary};
   }
   padding-bottom: 6.5rem;
 `;
 const MenuBox = styled.div`
   margin: 0 2%;
+  width: 25%;
 `;
 
 interface OwnProps {}
@@ -67,7 +73,7 @@ class FooterItem extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/5';
+    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/3';
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {
@@ -81,14 +87,14 @@ class FooterItem extends Component<OwnProps, OwnState> {
     // console.log(menus[0]);
     return (
       <FlexBox>
-        <FlexBox theme={{ width: '100%' }}>
-          <FooterProgram menu={menus[0]} />
-          <FooterProgram menu={menus[1]} />
+        <FlexBox theme={{ width: '100%', paddingRigt: '160px' }}>
+          <FooterProgram menu={menus[0]} width="25%" />
+          <FooterProgram menu={menus[1]} width="25%" />
           <MenuBox>
-            <FooterProgram menu={menus[2]} />
-            <FooterProgram menu={menus[3]} />
+            <FooterProgram menu={menus[2]} width="100%" />
+            <FooterProgram menu={menus[3]} width="100%" />
           </MenuBox>
-          <FooterProgram menu={menus[4]} />
+          <FooterProgram menu={menus[4]} width="25%" />
         </FlexBox>
         <div>
           <FooterCompanyInfo />

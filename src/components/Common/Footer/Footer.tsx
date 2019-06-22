@@ -24,6 +24,9 @@ const OtherItem = styled.div`
   & a {
     color: #fff;
   }
+  & a:hover {
+    color: ${color.primary};
+  }
 `;
 const CopyRight = styled.div`
   width: 100%;

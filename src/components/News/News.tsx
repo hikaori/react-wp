@@ -30,6 +30,9 @@ const More = styled.div`
   & a {
     color: ${color.blue};
   }
+  & a:hover {
+    color: ${color.primary};
+  }
 `;
 
 interface OwnProps {}

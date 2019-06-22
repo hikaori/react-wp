@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import color from '../../colors';
 
 const MenuSection = styled.ul`
   display: flex;
@@ -10,7 +11,7 @@ const MenuSection = styled.ul`
   margin: auto 0;
 `;
 const MenuParent = styled.li`
-  margin-bottom: 0;
+  padding-bottom: 2rem;
   &:hover {
     .active {
       display: block;
@@ -19,6 +20,9 @@ const MenuParent = styled.li`
   & a {
     padding: 0.5rem 3.2rem;
   }
+  & a:hover {
+    color: ${color.primary};
+  }
 `;
 const MenuSubSection = styled.ul`
   margin-left: 0;
@@ -26,7 +30,7 @@ const MenuSubSection = styled.ul`
   text-transform: none;
   display: none;
   z-index: 1;
-  margin-top: 0px;
+  margin-top: 2rem;
   background-color: #fff;
   padding-right: 20px;
   padding-left: 20px;
@@ -65,7 +69,7 @@ class Menu extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/3';
+    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/5';
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

@@ -14,6 +14,13 @@ export const Button = styled.button`
     ${color.buttonLightBlue},
     ${color.buttonDarkBlue}
   );
+  &:hover {
+    box-shadow: none;
+    background: radial-gradient(
+      ${color.buttonDarkBlue},
+      ${color.buttonLightBlue}
+    );
+  }
   max-width: ${({ theme }) => theme.main};
 `;
 

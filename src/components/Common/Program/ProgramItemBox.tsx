@@ -32,7 +32,9 @@ const LogoDiv = styled.div`
 `;
 const HoikupediaDiv = styled(LogoDiv)`
   & img {
-    height: auto;
+    height: 6.4rem;
+    width: auto;
+    max-width: unset;
   }
 `;
 const ButtonLogoDiv = styled.div`
@@ -73,13 +75,13 @@ class ProgramItemBox extends Component<OwnProps> {
       <Fragment>
         <ProgramItemBoxStyle
           theme={{
-            width: { boxWidth },
+            width: `${boxWidth}`,
             backImageURL: `${backImageUrl}`,
           }}
         >
           <Heading3>{this.props.hedding3}</Heading3>
           <Title>{this.props.subTitle}</Title>
-          <p>{this.props.text}</p>
+          <p dangerouslySetInnerHTML={{ __html: this.props.text }} />
           <ButtonLogoDiv>
             {buttonDom}
             {logoDom}

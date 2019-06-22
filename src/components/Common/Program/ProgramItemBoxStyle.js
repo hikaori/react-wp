@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import color from '../../colors';
 
 export const ProgramItemBoxStyle = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-top:6.7rem;
   padding-bottom:6.398rem
   padding-right:6.4rem
