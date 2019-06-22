@@ -84,13 +84,13 @@ class LandingPage extends Component<OwnProps, OwnState> {
           />
           <HeroText dangerouslySetInnerHTML={{ __html: data.herotext }} />
         </HeroBox>
-        {/* <ImagePluTextBox
+        <ImagePluTextBox
           imgURL={data.ryugakuimg}
           alt={data.ryugakuimgalt}
           isImgRightSide={true}
         >
           <div dangerouslySetInnerHTML={{ __html: data.ryugakutext }} />
-        </ImagePluTextBox> */}
+        </ImagePluTextBox>
         <News />
         <ProgramContainer />
         <BottomBox>

@@ -48,6 +48,7 @@ interface OwnProps {
 class ProgramItemBox extends Component<OwnProps> {
   baseDom = (boxWidth: string, backImageUrl: any, imgUrl: any) => {
     let logoDom: JSX.Element;
+    let buttonDom: JSX.Element;
     if (this.props.hedding3 === 'ホイクペディア') {
       logoDom = (
         <HoikupediaDiv>
@@ -62,6 +63,12 @@ class ProgramItemBox extends Component<OwnProps> {
       );
     }
 
+    if (this.props.hedding3 === 'COS Immigration Consulting') {
+      buttonDom = <Button>COS Immigrationの詳細はこちら</Button>;
+    } else {
+      buttonDom = <Button>{this.props.hedding3}の詳細はこちら</Button>;
+    }
+
     return (
       <Fragment>
         <ProgramItemBoxStyle
@@ -74,7 +81,7 @@ class ProgramItemBox extends Component<OwnProps> {
           <Title>{this.props.subTitle}</Title>
           <p>{this.props.text}</p>
           <ButtonLogoDiv>
-            <Button>more</Button>
+            {buttonDom}
             {logoDom}
           </ButtonLogoDiv>
         </ProgramItemBoxStyle>
