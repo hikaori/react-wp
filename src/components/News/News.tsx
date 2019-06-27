@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import color from '../colors';
 import { Heading2 } from '../';
+import { media } from '../../utile/Helper';
 
 const NewsContainer = styled.div`
   padding: 8.4rem 0rem 8rem;
@@ -11,12 +12,16 @@ const NewsContainer = styled.div`
   margin-left: calc(((100vw - 100%) / 2) * -1);
   margin-right: calc(((100vw - 100%) / 2) * -1);
 `;
-const Newsbox = styled.div`
+const NewsBox = styled.div`
+  margin: 0px 8.3rem;
+  ${media.tablet`margin: 0px 1.8rem`};
+`;
+const NewsItemBox = styled.div`
   border-bottom: solid 1px ${color.darkGray};
   padding-top: 2.6rem;
   padding-bottom: 2.6rem;
-  display: flex;
-  justify-content: flex-start;
+  ${media.desktop`display: flex;
+  justify-content: flex-start;`}
 `;
 const NewsDay = styled.span`
   padding-right: 5.9rem;
@@ -82,20 +87,20 @@ class News extends Component<OwnProps, OwnState> {
     return (
       <NewsContainer>
         <Heading2>最新情報</Heading2>
-        <div style={{ margin: '0px 8.3rem' }}>
+        <NewsBox>
           {news.map((item, index) => (
-            <Newsbox key={index}>
+            <NewsItemBox key={index}>
               <NewsDay>{this.dateFormat(item.modified)}</NewsDay>
               <NewsText
                 dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }}
               />
-            </Newsbox>
+            </NewsItemBox>
           ))}
 
           <More>
             <Link to={'/'}>一覧を見る</Link>
           </More>
-        </div>
+        </NewsBox>
       </NewsContainer>
     );
   }

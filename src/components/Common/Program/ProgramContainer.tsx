@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Heading2 from '../Heading2';
 import ProgramItemBox from './ProgramItemBox';
+import { media } from '../../../utile/Helper';
 
 interface OwnProps {}
 interface OwnState {
@@ -22,7 +23,7 @@ interface OwnState {
 }
 
 const FlexBox = styled.div`
-  display: flex;
+  ${media.desktop`display: flex;`}
 `;
 
 const Container = styled.div`

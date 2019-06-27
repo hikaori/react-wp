@@ -14,6 +14,7 @@ import babySolidImg from '../../../assets/images/baby-solid.svg';
 import graduationImg from '../../../assets/images/graduation-cap-solid.svg';
 import laptopImg from '../../../assets/images/laptop-code-solid.svg';
 import atlasImg from '../../../assets/images/atlas-solid.svg';
+import { media } from '../../../utile/Helper';
 
 const Title = styled.div`
   font-size: 1.6rem;
@@ -35,6 +36,7 @@ const HoikupediaDiv = styled(LogoDiv)`
     height: 6.4rem;
     width: auto;
     max-width: unset;
+    ${media.tablet`height: 3.9rem;`}
   }
 `;
 const ButtonLogoDiv = styled.div`
@@ -48,7 +50,12 @@ interface OwnProps {
 }
 
 class ProgramItemBox extends Component<OwnProps> {
-  baseDom = (boxWidth: string, backImageUrl: any, imgUrl: any) => {
+  baseDom = (
+    boxWidth: string,
+    backImageUrl: any,
+    imgUrl: any,
+    backImageTabletSize: string,
+  ) => {
     let logoDom: JSX.Element;
     let buttonDom: JSX.Element;
     if (this.props.hedding3 === 'ホイクペディア') {
@@ -77,6 +84,7 @@ class ProgramItemBox extends Component<OwnProps> {
           theme={{
             width: `${boxWidth}`,
             backImageURL: `${backImageUrl}`,
+            backImageTabletSize: `${backImageTabletSize}`,
           }}
         >
           <Heading3>{this.props.hedding3}</Heading3>
@@ -94,15 +102,15 @@ class ProgramItemBox extends Component<OwnProps> {
   createDom(program: any) {
     switch (program) {
       case 'ホイクペディア':
-        return this.baseDom('50%', babyCarriageImg, hoikupediaLogo);
+        return this.baseDom('50%', babyCarriageImg, hoikupediaLogo, '40%');
       case 'Frog':
-        return this.baseDom('50%', laptopImg, frogLogo);
+        return this.baseDom('50%', laptopImg, frogLogo, '40%');
       case 'ナデシコ留学':
-        return this.baseDom('33%', graduationImg, nadeshikoLogo);
+        return this.baseDom('33%', graduationImg, nadeshikoLogo, '40%');
       case 'Nanny From Japan':
-        return this.baseDom('33%', babySolidImg, nannyLogo);
+        return this.baseDom('33%', babySolidImg, nannyLogo, '30%');
       case 'COS Immigration Consulting':
-        return this.baseDom('33%', atlasImg, immigrationLogo);
+        return this.baseDom('33%', atlasImg, immigrationLogo, '30%');
       default:
         return '';
     }

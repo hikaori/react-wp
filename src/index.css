@@ -107,7 +107,7 @@ figure {
   margin: 1em 40px;
 }
 hr {
-  box-sizing: content-box;
+  box-sizing: border-box;
   height: 0;
   overflow: visible;
 }
@@ -196,13 +196,13 @@ html {
   overflow-y: scroll;
 }
 * {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 *:before {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
@@ -622,7 +622,4 @@ pre tt:after {
   box-shadow: 2px 2px 4px grey;
 }
 @media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
-  }
 }

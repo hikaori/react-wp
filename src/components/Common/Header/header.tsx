@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import Logo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import Search from '../../../assets/images/search.svg';
 
-const Head = styled.header`
-  marginbottom: 1.45rem;
+const Head = styled.div`
+  margin-bottom: 1.45rem;
   padding-right: 8.3rem;
   padding-left: 8.3rem;
 `;

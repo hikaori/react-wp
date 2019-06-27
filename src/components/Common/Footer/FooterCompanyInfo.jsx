@@ -5,11 +5,22 @@ import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_
 import facebook from '../../../assets/icon/facebook.svg';
 import twitter from '../../../assets/icon/twitter.svg';
 import youtube from '../../../assets/icon/youtube.svg';
+import { media } from '../../../utile/Helper';
 
+const CompanyContainter = styled.div`
+  ${media.tablet`margin-bottom: 3.2rem;`}
+`;
 const FlexBox = styled.div`
   display: flex;
   justify-content: ${({ theme }) => theme.content};
   width: ${({ theme }) => theme.width};
+  ${media.tablet`justify-content: center;`}
+`;
+const ImgBox = styled.div`
+  ${media.tablet`text-align: center;`}
+  & img {
+    ${media.tablet`width: 66%;`}
+  }
 `;
 const Icon = styled.img`
   max-width: 2.4rem;
@@ -25,8 +36,10 @@ const Icon = styled.img`
 
 const FooterCompanyInfo = () => {
   return (
-    <div>
-      <img src={cosLogo} alt="cosLogo" />
+    <CompanyContainter>
+      <ImgBox>
+        <img src={cosLogo} alt="cosLogo" />
+      </ImgBox>
       <FlexBox>
         <Icon src={facebook} />
         <Icon src={twitter} />
@@ -41,7 +54,7 @@ const FooterCompanyInfo = () => {
       <div>
         TEL:<span> +1 (604) 262-6447</span>
       </div>
-    </div>
+    </CompanyContainter>
   );
 };
 

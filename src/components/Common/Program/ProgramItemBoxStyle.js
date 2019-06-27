@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import color from '../../colors';
+import { media } from '../../../utile/Helper';
 
 export const ProgramItemBoxStyle = styled.div`
   display: flex;
@@ -19,4 +20,7 @@ export const ProgramItemBoxStyle = styled.div`
   :last-child{
     margin-right: 0rem;
   }
+  ${media.tablet`width:100%; margin-bottom: 1.6rem; padding:3.6rem; background-size: ${({
+    theme,
+  }) => theme.backImageTabletSize};`}
 `;

@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
+import Media from 'react-media';
 
 import FooterProgram from './FooterProgram';
+import FooterProgramMobile from './FooterProgramMobile';
 import FooterCompanyInfo from './FooterCompanyInfo';
 import color from '../../colors';
+import { media } from '../../../utile/Helper';
 
 const FlexBox = styled.div`
   display: flex;
@@ -17,10 +20,18 @@ const FlexBox = styled.div`
     color: ${color.primary};
   }
   padding-bottom: 6.5rem;
+  &.reverse {
+    ${media.tablet`flex-direction: column-reverse; padding-bottom: 0rem;`}
+  }
+  &.nonFlex {
+    ${media.tablet`display: block;
+     padding-right:0; padding-bottom:0rem`}
+  }
 `;
 const MenuBox = styled.div`
   margin: 0 2%;
   width: 25%;
+  ${media.tablet`width: 100%; margin: 0;`}
 `;
 
 interface OwnProps {}
@@ -84,17 +95,34 @@ class FooterItem extends Component<OwnProps, OwnState> {
   }
   render() {
     let menus = this.state.menus.items;
-    // console.log(menus[0]);
+    const desktopDom = (
+      <Fragment>
+        <FooterProgram menu={menus[0]} width="25%" />
+        <FooterProgram menu={menus[1]} width="25%" />
+        <MenuBox>
+          <FooterProgram menu={menus[2]} width="100%" />
+          <FooterProgram menu={menus[3]} width="100%" />
+        </MenuBox>
+        <FooterProgram menu={menus[4]} width="25%" />
+      </Fragment>
+    );
+    const tabletDom = (menus: any) => {
+      let returnDom: JSX.Element[] = [];
+      menus.forEach((menu: any, index: number) => {
+        returnDom.push(<FooterProgramMobile menu={menu} key={index} />);
+      });
+      return returnDom;
+    };
+
     return (
-      <FlexBox>
-        <FlexBox theme={{ width: '100%', paddingRigt: '160px' }}>
-          <FooterProgram menu={menus[0]} width="25%" />
-          <FooterProgram menu={menus[1]} width="25%" />
-          <MenuBox>
-            <FooterProgram menu={menus[2]} width="100%" />
-            <FooterProgram menu={menus[3]} width="100%" />
-          </MenuBox>
-          <FooterProgram menu={menus[4]} width="25%" />
+      <FlexBox className="reverse">
+        <FlexBox
+          theme={{ width: '100%', paddingRigt: '160px' }}
+          className="nonFlex"
+        >
+          <Media query="(max-width: 1024px)">
+            {matches => (matches ? tabletDom(menus) : desktopDom)}
+          </Media>
         </FlexBox>
         <div>
           <FooterCompanyInfo />

@@ -33,12 +33,6 @@ interface OwnProps {
 interface OwnState {}
 
 class FooterProgram extends Component<OwnProps, OwnState> {
-  constructor(ownProps: any, ownState: any) {
-    super(ownProps, ownState);
-    this.state = {
-      menu: { title: '', url: '', children: [{ title: '', url: '' }] },
-    };
-  }
   render() {
     return (
       <MenuBox theme={{ Boxwidth: this.props.width }}>
