@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { MenuAltRight, Search } from 'styled-icons/boxicons-regular';
+import { elastic as Menu } from 'react-burger-menu';
 
+import MobileMenu from './MobileMenu';
+import { styles } from './MobileMenuStyle';
 import Logo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import color from '../../colors';
 
@@ -38,16 +41,30 @@ interface OwnState {
 }
 
 class HeaderMobile extends Component<OwnProps, OwnState> {
+  state = { isMenuCliked: false, isSearchCliked: false };
+
+  handleMenuClick = () => {
+    this.setState(preState => ({ isMenuCliked: !preState.isMenuCliked }));
+  };
   render() {
     return (
-      <Head>
+      <Head id="outer-container">
+        {this.state.isMenuCliked && (
+          <Menu
+            styles={styles}
+            pageWrapId={'page-wrap'}
+            outerContainerId={'outer-container'}
+          >
+            <MobileMenu />
+          </Menu>
+        )}
         <FlexBox>
           <COSLogo src={Logo} className="" alt="logo" />
           <FlexEnd>
             <Icon>
               <Search />
             </Icon>
-            <Icon>
+            <Icon onClick={this.handleMenuClick}>
               <MenuAltRight />
             </Icon>
           </FlexEnd>

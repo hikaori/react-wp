@@ -6,6 +6,7 @@
     "@types/jest": "^24.0.14",
     "@types/node": "^12.0.8",
     "@types/react": "^16.8.19",
+    "@types/react-burger-menu": "^2.2.5",
     "@types/react-dom": "^16.8.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@types/react-router-dom": "^4.3.4",
     "@types/styled-components": "^4.1.16",
+    "react-burger-menu": "^2.6.10",
     "react-media": "^1.9.2",
     "styled-icons": "^8.1.0"
   }
