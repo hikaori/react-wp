@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import Media from 'react-media';
 
@@ -20,7 +20,7 @@ const LayoutBox = styled.div`
 class BasicLayout extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <HeadBox>
           <Media query="(max-width: 1024px)">
             {matches => (matches ? <HeaderMobile /> : <Header />)}
@@ -30,7 +30,7 @@ class BasicLayout extends Component {
           <main>{this.props.children}</main>
           <Footer />
         </LayoutBox>
-      </div>
+      </Fragment>
     );
   }
 }
