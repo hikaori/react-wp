@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { BasicLayout, News, ProgramContainer } from '../';
+import {
+  BasicLayout,
+  News,
+  ProgramContainer,
+  Button,
+  BottomSection,
+} from '../';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 
 import { ImagePluTextBox } from '../';
 // import hero from '../../assets/images/COS-WebsiteHomePageHeroVideoOptimized.mp4';
-// import defImage from '../../assets/images/defalt.jpg';
-import color from '../colors';
-import { Button } from '../Button';
+import { BottomSectionText } from '../../constants/BottomSectionText';
+import { buttonText } from '../../constants/buttonText';
 
 interface OwnProps {}
 interface OwnState {
@@ -33,14 +38,6 @@ const HeroText = styled.div`
   & p {
     text-align: center;
   }
-`;
-const BottomBox = styled.div`
-  background-color: ${color.lightGray};
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  text-align: center;
-  margin-left: calc(((100vw - 100%) / 2) * -1);
-  margin-right: calc(((100vw - 100%) / 2) * -1);
 `;
 
 class LandingPage extends Component<OwnProps, OwnState> {
@@ -93,12 +90,11 @@ class LandingPage extends Component<OwnProps, OwnState> {
         </ImagePluTextBox>
         <News />
         <ProgramContainer />
-        <BottomBox>
-          <div>
-            專門留学・海外就職・ビザ取得・移民をご検討の方はお気軽にご相談ください
-          </div>
-          <Button theme={{ main: '23.7rem' }}>無料相談</Button>
-        </BottomBox>
+        <BottomSection text={BottomSectionText.patern1}>
+          <Button theme={{ main: '23.7rem' }}>
+            {buttonText.freeConsulting}
+          </Button>
+        </BottomSection>
       </BasicLayout>
     );
   }

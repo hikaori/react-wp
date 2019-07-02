@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
 import Heading3 from '../Heading3';
-import { Button } from '../../Button';
+import { Button } from '../Button';
 import { ProgramItemBoxStyle } from './ProgramItemBoxStyle';
 import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
 import frogLogo from '../../../assets/logo/FrogLogo.svg';
