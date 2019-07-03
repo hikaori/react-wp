@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import color from '../colors';
+import { media } from '../../utile/Helper';
 
 interface OwnProps {
   text: string;
@@ -15,6 +16,7 @@ const Div = styled.div`
   text-align: center;
   margin-left: calc(((100vw - 100%) / 2) * -1);
   margin-right: calc(((100vw - 100%) / 2) * -1);
+  ${media.tablet`padding-right:1.6rem;padding-left:1.6rem`}
 `;
 
 class BottomSection extends Component<OwnProps, OwnState> {

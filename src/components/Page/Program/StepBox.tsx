@@ -1,18 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-
-import testimg from '../../../assets/images/212_119_defalt.jpg';
+import { media } from '../../../utile/Helper';
 
 const Div = styled.div`
   background: #fff;
   margin-right: 17%;
   margin-left: 17%;
+  margin-top: 96px;
+  ${media.tablet`margin-right: 0%;
+  margin-left: 0%;`}
 `;
 const FlexDiv = styled.div`
   display: flex;
   align-items: center;
   padding-right: 1.6rem;
   padding-left: 1.6rem;
+  ${media.tablet`display: block;`}
 `;
 const TitleDiv = styled.div`
   font-size: 2rem;
@@ -26,6 +29,7 @@ const TitleDiv = styled.div`
 const ContentsDiv = styled.div`
   padding: 9.2rem 6rem 3.2rem;
   position: relative;
+  ${media.tablet`padding:9.2rem 1.6rem 3.2rem;`}
 `;
 const Step = styled.span`
   width: 120px;
@@ -40,42 +44,42 @@ const Step = styled.span`
   position: absolute;
   top: -60px;
   right: calc(50% - 60px);
-  &.step-icon {
-    counter-increment: step;
-  }
   &.step-icon:after {
-    content: counter(step);
+    content: '${({ theme }) => theme.number}';
     font-size: 48px;
+    margin-left: 10px;
   }
 `;
 const TextDiv = styled.div`
   padding-right: 1.6rem;
-`;
-const Arrow = styled.span`
-  position: absolute;
-  right: 50%;
-  bottom: -36px;
+  ${media.tablet`padding-right: 0;`}
 `;
 
 interface ownProps {
+  title: string;
+  text: string;
+  img: string;
   color: string;
+  number: string;
 }
 interface ownState {}
 class StepBox extends Component<ownProps, ownState> {
-  TextImg = '../../assets/images/search.svg';
   render() {
     return (
       <Div>
         <ContentsDiv>
-          <Step className="step-icon" theme={{ color: this.props.color }}>
+          <Step
+            className="step-icon"
+            theme={{ color: this.props.color, number: this.props.number }}
+          >
             step
           </Step>
-          <TitleDiv theme={{ color: this.props.color }}>留学事業</TitleDiv>
+          <TitleDiv theme={{ color: this.props.color }}>
+            {this.props.title}
+          </TitleDiv>
           <FlexDiv>
-            <TextDiv>
-              カナダ国内でも通用する英語力、資格や知識が得られるプランのご提案をお約束します。現地就職や永住権を見据えた方は非常に大事なステップです。ビザのルール、将来必要となる英語力正確に把握し正しい選択をお手伝いいたします。
-            </TextDiv>
-            <img src={testimg} />
+            <TextDiv dangerouslySetInnerHTML={{ __html: this.props.text }} />
+            <img src={this.props.img} alt={this.props.title} />
           </FlexDiv>
         </ContentsDiv>
       </Div>

@@ -6,6 +6,7 @@ const H2 = styled.h2`
   text-align: center;
   font-size: 2.4rem;
   margin-bottom: 5.5rem;
+  line-height: 1.5;
   & span {
     padding-top: 2rem;
     display: block;

@@ -14,7 +14,7 @@ const HeadBox = styled.header`
 const LayoutBox = styled.div`
   padding: 0px 8.3rem 1.45rem;
   padding-top: 0;
-  ${media.tablet`padding: 0px 1.6rem 1.45rem;`}
+  ${media.tablet`padding: 88px 1.6rem 0rem;`}
 `;
 
 class BasicLayout extends Component {

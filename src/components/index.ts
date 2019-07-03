@@ -3,7 +3,7 @@ import BasicLayout from './Common/BasicLayout';
 import PageBaseLayout from './Common/PageBaseLayout';
 import Header from './Common/Header/header';
 import Footer from './Common/Footer/Footer';
-import FirstSection from './Common/FirstSection';
+import PageDiscription from './Common/PageDiscription';
 import BottomSection from './Common/BottomSection';
 import { Button } from './Common/Button';
 import Heading2 from './Common/Heading2';
@@ -21,7 +21,7 @@ export {
   PageBaseLayout,
   Header,
   Footer,
-  FirstSection,
+  PageDiscription,
   BottomSection,
   Button,
   Heading2,

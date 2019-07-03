@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import {
   PageBaseLayout,
-  FirstSection,
+  PageDiscription,
   BottomSection,
   Button,
   ProgramContainer,
@@ -11,23 +11,90 @@ import { BottomSectionText } from '../../../constants/BottomSectionText';
 import { buttonText } from '../../../constants/buttonText';
 import StepBox from './StepsSection';
 
-class Program extends Component {
-  TextImg = 'string ..//';
+interface OwnProps {}
+interface OwnState {
+  data: {
+    acf: {
+      fv1200_400: string;
+      subtitle: string;
+      pageDescription: string;
+      stepTitle: string;
+      step1Title: string;
+      step1color: string;
+      step1Text: string;
+      step1Img: { url: string };
+      step2Title: string;
+      step2color: string;
+      step2Text: string;
+      step2Img: { url: string };
+      step3Title: string;
+      step3color: string;
+      step3Text: string;
+      step3Img: { url: string };
+    };
+  };
+}
+
+class Program extends Component<OwnProps, OwnState> {
+  constructor(ownProps: any, ownState: any) {
+    super(ownProps, ownState);
+    this.state = {
+      data: {
+        acf: {
+          fv1200_400: '',
+          subtitle: '',
+          pageDescription: '',
+          stepTitle: '',
+          step1Title: '',
+          step1color: '',
+          step1Text: '',
+          step1Img: { url: '' },
+          step2Title: '',
+          step2color: '',
+          step2Text: '',
+          step2Img: { url: '' },
+          step3Title: '',
+          step3color: '',
+          step3Text: '',
+          step3Img: { url: '' },
+        },
+      },
+    };
+  }
+
+  componentDidMount() {
+    let dataURL = 'http://localhost/wp-json/wp/v2/pages/236';
+    fetch(dataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          data: res,
+        });
+      });
+  }
+
   render() {
+    let data = this.state.data.acf;
     return (
       <Fragment>
-        <PageBaseLayout imgURL={this.TextImg} title={'運営事業'}>
-          <FirstSection>
-            <div>
-              COSはカナダに来る全ての皆様に、カナダに住むという選択肢も選べるプランのご提案をいたします。
-            </div>
-            <div>
-              専門分野の知識、移民法の正しい理解、現地でのサポート体制により、異国の地での成功を
-              全面的にサポートいたします。
-            </div>
-          </FirstSection>
+        <PageBaseLayout imgURL={data.fv1200_400} title={'運営事業'}>
+          <PageDiscription>
+            <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
+          </PageDiscription>
           <StepBox
-            title={'現地サポート体制 × 業界とのつながり × 移民コンサルティング'}
+            mainTitle={data.stepTitle}
+            step1Title={data.step1Title}
+            step1color={data.step1color}
+            step1Text={data.step1Text}
+            step1Img={data.step1Img.url}
+            step2Title={data.step2Title}
+            step2color={data.step2color}
+            step2Text={data.step2Text}
+            step2Img={data.step2Img.url}
+            step3Title={data.step3Title}
+            step3color={data.step3color}
+            step3Text={data.step3Text}
+            step3Img={data.step3Img.url}
           />
           <ProgramContainer />
           <BottomSection text={BottomSectionText.patern1}>

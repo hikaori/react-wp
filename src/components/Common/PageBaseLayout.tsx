@@ -1,11 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { BasicLayout } from '../';
 import color from '../colors';
-
-import testimg from '../../assets/images/1200_400_defalt.jpg';
 
 interface ownProps {
   title: string;
@@ -30,7 +28,7 @@ class PageBaseLayout extends Component<ownProps, ownState> {
     return (
       <BasicLayout>
         <ImgDiv>
-          <img src={testimg} />
+          <img src={this.props.imgURL} alt={this.props.title} />
         </ImgDiv>
         <BreadcrumbDiv>
           <span>

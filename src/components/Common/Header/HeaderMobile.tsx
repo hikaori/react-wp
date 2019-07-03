@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { MenuAltRight, Search } from 'styled-icons/boxicons-regular';
 import { elastic as Menu } from 'react-burger-menu';
