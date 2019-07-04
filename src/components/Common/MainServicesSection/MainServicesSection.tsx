@@ -16,7 +16,12 @@ const Flex = styled.div`
   display: flex;
   padding-right: 7.5rem;
   padding-left: 7.5rem;
-  ${media.tablet`flex-direction: column;`}
+  flex-wrap: wrap;
+  ${media.tablet`
+  flex-direction: column; 
+  padding-right: 1.6rem;
+  padding-left: 1.6rem;
+  `}
 `;
 
 interface OwnProps {

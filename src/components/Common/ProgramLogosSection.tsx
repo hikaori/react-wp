@@ -3,6 +3,7 @@ import { Close } from 'styled-icons/evil/Close';
 import styled from 'styled-components';
 
 import color from '../colors';
+import { media } from '../../utile/Helper';
 
 const FixDiv = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const FixDiv = styled.div`
   padding-top:82px;
   padding-bottom:82px;
   margin-bottom:100px;
+  ${media.tablet`flex-direction: column;`}
 `;
 
 const IconDiv = styled.div`

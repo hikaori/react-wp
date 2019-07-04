@@ -13,65 +13,228 @@ import {
   Button,
 } from '../..';
 
-import fv from '../../../assets/images/1200_400_defalt.jpg';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
-import test from '../../../assets/images/304_192_defalt.jpg';
 import { Titles } from '../../../constants/Titles';
 import school from '../../../assets/images/school-solid.svg';
+import { buttonText } from '../../../constants/buttonText';
+import { BottomSectionText } from '../../../constants/BottomSectionText';
 
 interface OwnProps {}
-interface OwnState {}
+interface OwnState {
+  data: {
+    title: { rendered: string };
+    acf: {
+      fv1200_400: string;
+      subtitle: string;
+      pageDescription: string;
+      programTitle: string;
+      programFeatureTitle1: string;
+      programFeatureTitle2: string;
+      programFeatureTitle3: string;
+      programFeatureText1: string;
+      programFeatureText2: string;
+      programFeatureText3: string;
+      programFeatureImg1: string;
+      programFeatureImg2: string;
+      programFeatureImg3: string;
+      serviceTitle1: string;
+      serviceText1: string;
+      serviceImg1: string;
+      serviceButton1: string;
+      serviceButtonUrl1: string;
+      serviceTitle2: string;
+      serviceText2: string;
+      serviceImg2: string;
+      serviceButton2: string;
+      serviceButtonUrl2: string;
+      serviceTitle3: string;
+      serviceText3: string;
+      serviceImg3: string;
+      serviceButton3: string;
+      serviceButtonUrl3: string;
+      serviceTitle4: string;
+      serviceText4: string;
+      serviceImg4: string;
+      serviceButton4: string;
+      serviceButtonUrl4: string;
+      serviceTitle5: string;
+      serviceText5: string;
+      serviceImg5: string;
+      serviceButton5: string;
+      serviceButtonUrl5: string;
+      serviceTitle6: string;
+      serviceText6: string;
+      serviceImg6: string;
+      serviceButton6: string;
+      serviceButtonUrl6: string;
+    };
+  };
+}
 
 class ECE extends Component<OwnProps, OwnState> {
+  constructor(ownProps: any, ownState: any) {
+    super(ownProps, ownState);
+    this.state = {
+      data: {
+        title: { rendered: '' },
+        acf: {
+          fv1200_400: '',
+          subtitle: '',
+          pageDescription: '',
+          programTitle: '',
+          programFeatureTitle1: '',
+          programFeatureTitle2: '',
+          programFeatureTitle3: '',
+          programFeatureText1: '',
+          programFeatureText2: '',
+          programFeatureText3: '',
+          programFeatureImg1: '',
+          programFeatureImg2: '',
+          programFeatureImg3: '',
+          serviceTitle1: '',
+          serviceText1: '',
+          serviceImg1: '',
+          serviceButton1: '',
+          serviceButtonUrl1: '',
+          serviceTitle2: '',
+          serviceText2: '',
+          serviceImg2: '',
+          serviceButton2: '',
+          serviceButtonUrl2: '',
+          serviceTitle3: '',
+          serviceText3: '',
+          serviceImg3: '',
+          serviceButton3: '',
+          serviceButtonUrl3: '',
+          serviceTitle4: '',
+          serviceText4: '',
+          serviceImg4: '',
+          serviceButton4: '',
+          serviceButtonUrl4: '',
+          serviceTitle5: '',
+          serviceText5: '',
+          serviceImg5: '',
+          serviceButton5: '',
+          serviceButtonUrl5: '',
+          serviceTitle6: '',
+          serviceText6: '',
+          serviceImg6: '',
+          serviceButton6: '',
+          serviceButtonUrl6: '',
+        },
+      },
+    };
+  }
+  componentDidMount() {
+    let dataURL = 'http://localhost/wp-json/wp/v2/pages/242';
+    fetch(dataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          data: res,
+        });
+      });
+  }
   render() {
+    let data = this.state.data.acf;
+    let title = this.state.data.title;
     return (
       <PageBaseLayout
-        imgURL={fv}
-        title={'保育の留学・就職'}
-        subTitle={'自由と個性を尊重するカナダから、理想の保育士へ'}
+        imgURL={data.fv1200_400}
+        title={title.rendered}
+        subTitle={data.subtitle}
       >
         <PageDescription>
-          カナダで保育士として働きたい方から、インターナショナルスクールで働く為に英語を勉強したい保育士さん、海外の保育園を視察し、日本での働き方に活かしたいという方まで、”カナダ”、”保育”、”子ども”というキーワードで関わるすべての方にお役に立てるサービスを目指します。
+          <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
         </PageDescription>
         <ProgramLogosSection logo1={cosLogo} logo2={hoikupediaLogo} />
-        <Heading2>ホイクペディアの保育留学サービス</Heading2>
-        <ImagePluTextBox imgURL={test} alt={'test'} isImgRightSide={true}>
-          <Heading3>年間200名以上のサポート実績、60以上の提携保育園</Heading3>
-          2011年、COSは保育留学をメインに扱う留学エージェントとして創業しました。
-          以来、カナダにおける数多くの日本人保育士を対象とし、現在は年間200名以上の方をサポートさせていただいております。
-          創業以来8年間の間に、日本・カナダ国内の多くの保育園との友好関係も築くことができ、保育士の就職支援も始めることが可能となりました。
+        <Heading2>{data.programTitle}</Heading2>
+        <ImagePluTextBox
+          imgURL={data.programFeatureImg1}
+          alt={data.programFeatureTitle1}
+          isImgRightSide={true}
+        >
+          <Heading3>{data.programFeatureTitle1}</Heading3>
+          <div dangerouslySetInnerHTML={{ __html: data.programFeatureText1 }} />
         </ImagePluTextBox>
-        <ImagePluTextBox imgURL={test} alt={'test'} isImgRightSide={false}>
-          <Heading3>カナダで働くということ</Heading3>
-          人口の半分が外国人。“多文化が共生しやすい”というと日本にいる日本人にはわかりにくいですが、半分程度がカナダ以外をルーツにするバンクーバーでは外国人にとっても、カナダ人にとっても重要な事です。“個人を尊重する、不必要な干渉はしない”という文化は、一緒に働く先生も外国人、子どもたちも外国人という街だからこそ根付いた文化であり、この“自分らしくて良い”という文化に惹かれて長期的に住むことを決める方も多いです。
+        <ImagePluTextBox
+          imgURL={data.programFeatureImg2}
+          alt={data.programFeatureTitle2}
+          isImgRightSide={false}
+        >
+          <Heading3>{data.programFeatureTitle2}</Heading3>
+          <div dangerouslySetInnerHTML={{ __html: data.programFeatureText2 }} />
         </ImagePluTextBox>
-        <ImagePluTextBox imgURL={test} alt={'test'} isImgRightSide={true}>
-          <Heading3>残業無し、持ち帰り無し、書物無し</Heading3>
-          日本の保育士さんの悩みで一番多いのは仕事量の多さと、休みの取りにくさと言われています。
-          子ども一人ひとりの記録やシーズンごとの行事の準備などをこなしながら、30名程度の子どもの安全を守るのは不可能に近い仕事です。カナダは子どもが保育園にいる間に安全に楽しく過ごすという一番大事な目的の為に、重要性の低い日々の記録や、書物は必要ないとしている園がほとんどです。また、年間に2〜3週間程度の有給消化など、質の高い保育をする為に、まずハッピーな保育士の労働環境をということが徹底されています。
+        <ImagePluTextBox
+          imgURL={data.programFeatureImg3}
+          alt={data.programFeatureTitle3}
+          isImgRightSide={true}
+        >
+          <Heading3>{data.programFeatureTitle3}</Heading3>
+          <div dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }} />
         </ImagePluTextBox>
         <MainServicesSection h2={Titles.mainService}>
           <ServiceBox
-            title={'日本の保育士資格をカナダの資格に書換えサポート'}
+            title={data.serviceTitle1}
             img={school}
-            imgAlt={'test'}
-            buttonText={'詳しく見る（ホイクペディアのサイトに移動します）'}
-            link={'/'}
+            imgAlt={data.serviceTitle1}
+            buttonText={data.serviceButton1}
+            link={data.serviceButtonUrl1}
           >
-            日本の保育士資格をカナダの州政府機関に申請し、カナダで有効な保育士資格の発行が可能です。
-            ホイクペディアでは無料で書き換え可能か査定を行っています。
+            <div dangerouslySetInnerHTML={{ __html: data.serviceText1 }} />
           </ServiceBox>
           <ServiceBox
-            title={'日本の保育士資格をカナダの資格に書換えサポート'}
+            title={data.serviceTitle2}
             img={school}
-            imgAlt={'test'}
-            buttonText={'詳しく見る（ホイクペディアのサイトに移動します）'}
-            link={'/'}
+            imgAlt={data.serviceTitle2}
+            buttonText={data.serviceButton2}
+            link={data.serviceButtonUrl2}
           >
-            保育を勉強中の学生さん
+            <div dangerouslySetInnerHTML={{ __html: data.serviceText2 }} />
+          </ServiceBox>
+          <ServiceBox
+            title={data.serviceTitle3}
+            img={school}
+            imgAlt={data.serviceTitle3}
+            buttonText={data.serviceButton3}
+            link={data.serviceButtonUrl3}
+          >
+            <div dangerouslySetInnerHTML={{ __html: data.serviceText3 }} />
+          </ServiceBox>
+          <ServiceBox
+            title={data.serviceTitle4}
+            img={school}
+            imgAlt={data.serviceTitle4}
+            buttonText={data.serviceButton4}
+            link={data.serviceButtonUrl4}
+          >
+            <div dangerouslySetInnerHTML={{ __html: data.serviceText4 }} />
+          </ServiceBox>
+          <ServiceBox
+            title={data.serviceTitle5}
+            img={school}
+            imgAlt={data.serviceTitle5}
+            buttonText={data.serviceButton5}
+            link={data.serviceButtonUrl5}
+          >
+            <div dangerouslySetInnerHTML={{ __html: data.serviceText5 }} />
+          </ServiceBox>
+          <ServiceBox
+            title={data.serviceTitle6}
+            img={school}
+            imgAlt={data.serviceTitle6}
+            buttonText={data.serviceButton6}
+            link={data.serviceButtonUrl6}
+          >
+            <div dangerouslySetInnerHTML={{ __html: data.serviceText6 }} />
           </ServiceBox>
         </MainServicesSection>
+        <BottomSection text={BottomSectionText.patern1}>
+          <Button theme={{ main: '23.7rem' }}>
+            {buttonText.freeConsulting}
+          </Button>
+        </BottomSection>
       </PageBaseLayout>
     );
   }

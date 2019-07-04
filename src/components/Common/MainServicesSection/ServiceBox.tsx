@@ -10,11 +10,11 @@ import { ReactComponent as Logo } from '../../../assets/images/school-solid.svg'
 const Div = styled.div`
   background: #fff;
   padding: 6.4rem 7.6rem;
-  margin: 0 0.8rem;
-  width: 50%;
+  margin: 0.8rem;
+  width: 48%;
   display: flex;
   flex-direction: column;
-  ${media.tablet`width: 100%; margin-bottom:16px;`}
+  ${media.tablet`width: 100%; margin: 0 0 1.6rem 0 ; padding: 1.6rem;`}
 `;
 const ImgDiv = styled.div`
   width: 120px;
@@ -42,7 +42,7 @@ class ServiceBox extends Component<OwnProps, OwnState> {
         <ImgDiv>
           <Logo style={{ fill: color.darkGray }} />
         </ImgDiv>
-        <div>{this.props.children}</div>
+        {this.props.children}
         <ButtonDiv>
           <Link to={this.props.link}>
             <Button>{this.props.buttonText}</Button>
