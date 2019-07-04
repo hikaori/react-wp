@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Heading2 from '../Heading2';
 import ProgramItemBox from './ProgramItemBox';
 import { media } from '../../../utile/Helper';
+import { Titles } from '../../../constants/Titles';
 
 interface OwnProps {}
 interface OwnState {
@@ -64,7 +65,7 @@ class ProgramContainer extends Component<OwnProps, OwnState> {
     let data = this.state.data.acf;
     return (
       <Container>
-        <Heading2>運営・提携事業紹介</Heading2>
+        <Heading2>{Titles.ourProgram}</Heading2>
         <FlexBox>
           <ProgramItemBox
             hedding3="ホイクペディア"

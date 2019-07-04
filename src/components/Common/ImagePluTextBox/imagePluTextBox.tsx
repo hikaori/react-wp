@@ -11,7 +11,11 @@ interface OwnProps {
 const Container = styled.div`
   align-items: center;
   margin: 8rem 0rem;
-  ${media.desktop`display: flex;`}
+  display: flex;
+  ${media.tablet`flex-direction: column;`}
+  &.img-right {
+    ${media.tablet`flex-direction: column-reverse;`}
+  }
 `;
 const ImgBox = styled.div`
   ${media.tablet`text-align: center;`}
@@ -23,6 +27,7 @@ const ImgBase = styled.img`
 `;
 const ImgRight = styled(ImgBase)`
   margin-left: 7.6rem;
+  margin-right: 0px;
   ${media.tablet`margin-left: 0`}
 `;
 const ImgLeft = styled(ImgBase)`
@@ -34,20 +39,7 @@ class ImagePluTextBox extends Component<OwnProps> {
   render() {
     const { imgURL, alt, isImgRightSide } = this.props;
     return isImgRightSide ? (
-      <Container className="font14">
-        <ImgBox>
-          <ImgLeft
-            src={imgURL}
-            alt={alt}
-            className="shadow"
-            width="304"
-            height="192"
-          />
-        </ImgBox>
-        <div>{this.props.children}</div>
-      </Container>
-    ) : (
-      <Container className="font14">
+      <Container className="img-right">
         <div>{this.props.children}</div>
         <ImgBox>
           <ImgRight
@@ -58,6 +50,19 @@ class ImagePluTextBox extends Component<OwnProps> {
             height="192"
           />
         </ImgBox>
+      </Container>
+    ) : (
+      <Container>
+        <ImgBox>
+          <ImgLeft
+            src={imgURL}
+            alt={alt}
+            className="shadow"
+            width="304"
+            height="192"
+          />
+        </ImgBox>
+        <div>{this.props.children}</div>
       </Container>
     );
   }

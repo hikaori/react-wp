@@ -10,6 +10,7 @@ export const Button = styled.button`
   box-shadow: 1px 1px 4px grey;
   padding-bottom: 1.7rem;
   padding-top: 1.7rem;
+  word-break: keep-all;
   background: radial-gradient(
     ${color.buttonLightBlue},
     ${color.buttonDarkBlue}

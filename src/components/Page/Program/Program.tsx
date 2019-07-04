@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import {
   PageBaseLayout,
-  PageDiscription,
+  PageDescription,
   BottomSection,
   Button,
   ProgramContainer,
@@ -77,10 +77,16 @@ class Program extends Component<OwnProps, OwnState> {
     let data = this.state.data.acf;
     return (
       <Fragment>
-        <PageBaseLayout imgURL={data.fv1200_400} title={'運営事業'}>
-          <PageDiscription>
+        <PageBaseLayout
+          imgURL={data.fv1200_400}
+          title={'運営事業'}
+          subTitle={
+            '各分野のプロと一緒に考える、弊社の海外留学・海外就職・移民プランニング'
+          }
+        >
+          <PageDescription>
             <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
-          </PageDiscription>
+          </PageDescription>
           <StepBox
             mainTitle={data.stepTitle}
             step1Title={data.step1Title}

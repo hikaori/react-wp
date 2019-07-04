@@ -3,13 +3,30 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { BasicLayout } from '../';
+import Heading1 from './Heading1';
 import color from '../colors';
+import { media } from '../../utile/Helper';
 
 interface ownProps {
   title: string;
+  subTitle: string;
   imgURL: string;
 }
 interface ownState {}
+const FVDiv = styled.div`
+  position: relative;
+`;
+const TextDiv = styled.div`
+  position: absolute;
+  text-align: center;
+  min-width: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  ${media.tablet`font-size: 0.8rem;`}
+`;
 const ImgDiv = styled.div`
   & img {
     max-width: 100%;
@@ -27,9 +44,15 @@ class PageBaseLayout extends Component<ownProps, ownState> {
   render() {
     return (
       <BasicLayout>
-        <ImgDiv>
-          <img src={this.props.imgURL} alt={this.props.title} />
-        </ImgDiv>
+        <FVDiv>
+          <TextDiv>
+            <Heading1>{this.props.title}</Heading1>
+            <div>{this.props.subTitle}</div>
+          </TextDiv>
+          <ImgDiv>
+            <img src={this.props.imgURL} alt={this.props.title} />
+          </ImgDiv>
+        </FVDiv>
         <BreadcrumbDiv>
           <span>
             <Link to={''}>ホーム</Link>

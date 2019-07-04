@@ -13,9 +13,9 @@ const Div = styled.div`
   ${media.tablet`padding:0; margin:2.4rem 0;`}
 `;
 
-class PageDiscription extends Component<OwnProps, OwnState> {
+class PageDescription extends Component<OwnProps, OwnState> {
   render() {
     return <Div>{this.props.children}</Div>;
   }
 }
-export default PageDiscription;
+export default PageDescription;

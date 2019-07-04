@@ -5,6 +5,7 @@ import color from '../colors';
 const H3 = styled.h3`
   font-size: 1.8rem;
   font-weight: 100;
+  line-height: 1.5;
   & span {
     padding-top: 1.4rem;
     display: block;
