@@ -8,11 +8,10 @@ import {
   Heading3,
   ImagePluTextBox,
   MainServicesSection,
-  ServiceBox,
   BottomSection,
   Button,
 } from '../..';
-
+import { serviceDom } from '../../Common/MainServicesSection/CreateServiceDom';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
 import { Titles } from '../../../constants/Titles';
@@ -110,28 +109,6 @@ class ECE extends Component<OwnProps, OwnState> {
       });
   }
 
-  serviceDom(
-    index: number,
-    title: string,
-    text: string,
-    imgUrl: string,
-    buttonText: string,
-    link: string,
-  ): JSX.Element {
-    return (
-      <ServiceBox
-        key={index}
-        title={title}
-        img={imgUrl}
-        imgAlt={title}
-        buttonText={buttonText}
-        link={link}
-      >
-        <div dangerouslySetInnerHTML={{ __html: text }} />
-      </ServiceBox>
-    );
-  }
-
   render() {
     let data = this.state.data.acf;
     let title = this.state.data.title;
@@ -140,10 +117,10 @@ class ECE extends Component<OwnProps, OwnState> {
     let eceServicesData = servicesData.filter(x =>
       x.service_category.includes(categoryNum),
     );
-    let oderdeceServicesData = eceServicesData.sort(function(a, b) {
+    let orderedEceServicesData = eceServicesData.sort(function(a, b) {
       return a.acf.service_order < b.acf.service_order ? -1 : 1;
     });
-    console.log(oderdeceServicesData);
+    console.log(orderedEceServicesData);
 
     return (
       <PageBaseLayout
@@ -181,8 +158,8 @@ class ECE extends Component<OwnProps, OwnState> {
           <div dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }} />
         </ImagePluTextBox>
         <MainServicesSection h2={Titles.mainService}>
-          {oderdeceServicesData.map((x, index) =>
-            this.serviceDom(
+          {orderedEceServicesData.map((x, index) =>
+            serviceDom(
               index,
               x.acf.serviceTitle,
               x.acf.serviceText,
@@ -192,7 +169,7 @@ class ECE extends Component<OwnProps, OwnState> {
             ),
           )}
         </MainServicesSection>
-        <BottomSection text={BottomSectionText.patern1}>
+        <BottomSection text={BottomSectionText.pattern1}>
           <Button theme={{ main: '23.7rem' }}>
             {buttonText.freeConsulting}
           </Button>
