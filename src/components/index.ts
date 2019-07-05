@@ -16,6 +16,7 @@ import News from './News/News';
 import ProgramContainer from './Common/Program/ProgramContainer';
 import Program from './Page/Program/Program';
 import ECE from './Page/ECE/ECE';
+import IT from './Page/IT/IT';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -39,6 +40,7 @@ export {
   ProgramContainer,
   Program,
   ECE,
+  IT,
   ProgramLogosSection,
   MainServicesSection,
   ServiceBox,

@@ -10,6 +10,7 @@ import {
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import { buttonText } from '../../../constants/buttonText';
 import StepBox from './StepsSection';
+import colors from '../../colors';
 
 interface OwnProps {}
 interface OwnState {
@@ -103,7 +104,10 @@ class Program extends Component<OwnProps, OwnState> {
             step3Img={data.step3Img.url}
           />
           <ProgramContainer />
-          <BottomSection text={BottomSectionText.pattern1}>
+          <BottomSection
+            text={BottomSectionText.pattern1}
+            backgroundColor={colors.lightGray}
+          >
             <Button theme={{ main: '23.7rem' }}>
               {buttonText.freeConsulting}
             </Button>

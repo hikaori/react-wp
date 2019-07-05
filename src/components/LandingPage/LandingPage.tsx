@@ -13,6 +13,7 @@ import { ImagePluTextBox } from '../';
 // import hero from '../../assets/images/COS-WebsiteHomePageHeroVideoOptimized.mp4';
 import { BottomSectionText } from '../../constants/BottomSectionText';
 import { buttonText } from '../../constants/buttonText';
+import colors from '../colors';
 
 interface OwnProps {}
 interface OwnState {
@@ -90,7 +91,10 @@ class LandingPage extends Component<OwnProps, OwnState> {
         </ImagePluTextBox>
         <News />
         <ProgramContainer />
-        <BottomSection text={BottomSectionText.pattern1}>
+        <BottomSection
+          text={BottomSectionText.pattern1}
+          backgroundColor={colors.lightGray}
+        >
           <Button theme={{ main: '23.7rem' }}>
             {buttonText.freeConsulting}
           </Button>

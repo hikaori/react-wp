@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import color from '../colors';
 import { media } from '../../utile/Helper';
 
 interface OwnProps {
   text: string;
+  backgroundColor: string;
 }
 interface OwnState {}
 
 const Div = styled.div`
-  background-color: ${color.lightGray};
+  background-color: ${({ theme }) => theme.backgroundColor};
   padding-top: 8rem;
   padding-bottom: 8rem;
   text-align: center;
@@ -22,7 +22,7 @@ const Div = styled.div`
 class BottomSection extends Component<OwnProps, OwnState> {
   render() {
     return (
-      <Div>
+      <Div theme={{ backgroundColor: this.props.backgroundColor }}>
         <div>{this.props.text}</div>
         {this.props.children}
       </Div>
