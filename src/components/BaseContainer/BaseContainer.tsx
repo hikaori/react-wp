@@ -7,7 +7,16 @@ import {
   withRouter,
 } from 'react-router-dom';
 
-import { LandingPage, Movie, NotFound, Program, ECE, IT } from '../';
+import {
+  LandingPage,
+  Movie,
+  NotFound,
+  Program,
+  ECE,
+  IT,
+  Nadeshiko,
+  Nanny,
+} from '../';
 
 class Container extends Component<RouteComponentProps> {
   render() {
@@ -19,6 +28,8 @@ class Container extends Component<RouteComponentProps> {
           <Route exact path="/program" component={Program} />
           <Route exact path="/program/ECE" component={ECE} />
           <Route exact path="/program/it" component={IT} />
+          <Route exact path="/program/nadeshiko" component={Nadeshiko} />
+          <Route exact path="/program/nanny" component={Nanny} />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>
