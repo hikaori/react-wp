@@ -40,7 +40,8 @@ class ServiceBox extends Component<OwnProps, OwnState> {
       <Div>
         <Heading3>{this.props.title}</Heading3>
         <ImgDiv>
-          <Logo style={{ fill: color.darkGray }} />
+          <img src={this.props.img} className="icon" />
+          {/* <Logo style={{ fill: color.darkGray }} /> */}
         </ImgDiv>
         {this.props.children}
         <ButtonDiv>

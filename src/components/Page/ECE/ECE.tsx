@@ -16,7 +16,6 @@ import {
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
 import { Titles } from '../../../constants/Titles';
-import school from '../../../assets/images/school-solid.svg';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 
@@ -38,38 +37,21 @@ interface OwnState {
       programFeatureImg1: string;
       programFeatureImg2: string;
       programFeatureImg3: string;
-      serviceTitle1: string;
-      serviceText1: string;
-      serviceImg1: string;
-      serviceButton1: string;
-      serviceButtonUrl1: string;
-      serviceTitle2: string;
-      serviceText2: string;
-      serviceImg2: string;
-      serviceButton2: string;
-      serviceButtonUrl2: string;
-      serviceTitle3: string;
-      serviceText3: string;
-      serviceImg3: string;
-      serviceButton3: string;
-      serviceButtonUrl3: string;
-      serviceTitle4: string;
-      serviceText4: string;
-      serviceImg4: string;
-      serviceButton4: string;
-      serviceButtonUrl4: string;
-      serviceTitle5: string;
-      serviceText5: string;
-      serviceImg5: string;
-      serviceButton5: string;
-      serviceButtonUrl5: string;
-      serviceTitle6: string;
-      serviceText6: string;
-      serviceImg6: string;
-      serviceButton6: string;
-      serviceButtonUrl6: string;
     };
   };
+  servicesData: [
+    {
+      service_category: [number];
+      acf: {
+        serviceTitle: string;
+        serviceText: string;
+        serviceImg: { url: string };
+        serviceButtonText: string;
+        serviceButtonUrl: string;
+        service_order: string;
+      };
+    }
+  ];
 }
 
 class ECE extends Component<OwnProps, OwnState> {
@@ -92,38 +74,21 @@ class ECE extends Component<OwnProps, OwnState> {
           programFeatureImg1: '',
           programFeatureImg2: '',
           programFeatureImg3: '',
-          serviceTitle1: '',
-          serviceText1: '',
-          serviceImg1: '',
-          serviceButton1: '',
-          serviceButtonUrl1: '',
-          serviceTitle2: '',
-          serviceText2: '',
-          serviceImg2: '',
-          serviceButton2: '',
-          serviceButtonUrl2: '',
-          serviceTitle3: '',
-          serviceText3: '',
-          serviceImg3: '',
-          serviceButton3: '',
-          serviceButtonUrl3: '',
-          serviceTitle4: '',
-          serviceText4: '',
-          serviceImg4: '',
-          serviceButton4: '',
-          serviceButtonUrl4: '',
-          serviceTitle5: '',
-          serviceText5: '',
-          serviceImg5: '',
-          serviceButton5: '',
-          serviceButtonUrl5: '',
-          serviceTitle6: '',
-          serviceText6: '',
-          serviceImg6: '',
-          serviceButton6: '',
-          serviceButtonUrl6: '',
         },
       },
+      servicesData: [
+        {
+          service_category: [0],
+          acf: {
+            serviceTitle: '',
+            serviceText: '',
+            serviceImg: { url: '' },
+            serviceButtonText: '',
+            serviceButtonUrl: '',
+            service_order: '',
+          },
+        },
+      ],
     };
   }
   componentDidMount() {
@@ -135,10 +100,51 @@ class ECE extends Component<OwnProps, OwnState> {
           data: res,
         });
       });
+    let serviceDataURL = 'http://localhost/wp-json/wp/v2/services/';
+    fetch(serviceDataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          servicesData: res,
+        });
+      });
   }
+
+  serviceDom(
+    index: number,
+    title: string,
+    text: string,
+    imgUrl: string,
+    buttonText: string,
+    link: string,
+  ): JSX.Element {
+    return (
+      <ServiceBox
+        key={index}
+        title={title}
+        img={imgUrl}
+        imgAlt={title}
+        buttonText={buttonText}
+        link={link}
+      >
+        <div dangerouslySetInnerHTML={{ __html: text }} />
+      </ServiceBox>
+    );
+  }
+
   render() {
     let data = this.state.data.acf;
     let title = this.state.data.title;
+    let servicesData = this.state.servicesData;
+    const categoryNum: number = 7;
+    let eceServicesData = servicesData.filter(x =>
+      x.service_category.includes(categoryNum),
+    );
+    let oderdeceServicesData = eceServicesData.sort(function(a, b) {
+      return a.acf.service_order < b.acf.service_order ? -1 : 1;
+    });
+    console.log(oderdeceServicesData);
+
     return (
       <PageBaseLayout
         imgURL={data.fv1200_400}
@@ -175,60 +181,16 @@ class ECE extends Component<OwnProps, OwnState> {
           <div dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }} />
         </ImagePluTextBox>
         <MainServicesSection h2={Titles.mainService}>
-          <ServiceBox
-            title={data.serviceTitle1}
-            img={school}
-            imgAlt={data.serviceTitle1}
-            buttonText={data.serviceButton1}
-            link={data.serviceButtonUrl1}
-          >
-            <div dangerouslySetInnerHTML={{ __html: data.serviceText1 }} />
-          </ServiceBox>
-          <ServiceBox
-            title={data.serviceTitle2}
-            img={school}
-            imgAlt={data.serviceTitle2}
-            buttonText={data.serviceButton2}
-            link={data.serviceButtonUrl2}
-          >
-            <div dangerouslySetInnerHTML={{ __html: data.serviceText2 }} />
-          </ServiceBox>
-          <ServiceBox
-            title={data.serviceTitle3}
-            img={school}
-            imgAlt={data.serviceTitle3}
-            buttonText={data.serviceButton3}
-            link={data.serviceButtonUrl3}
-          >
-            <div dangerouslySetInnerHTML={{ __html: data.serviceText3 }} />
-          </ServiceBox>
-          <ServiceBox
-            title={data.serviceTitle4}
-            img={school}
-            imgAlt={data.serviceTitle4}
-            buttonText={data.serviceButton4}
-            link={data.serviceButtonUrl4}
-          >
-            <div dangerouslySetInnerHTML={{ __html: data.serviceText4 }} />
-          </ServiceBox>
-          <ServiceBox
-            title={data.serviceTitle5}
-            img={school}
-            imgAlt={data.serviceTitle5}
-            buttonText={data.serviceButton5}
-            link={data.serviceButtonUrl5}
-          >
-            <div dangerouslySetInnerHTML={{ __html: data.serviceText5 }} />
-          </ServiceBox>
-          <ServiceBox
-            title={data.serviceTitle6}
-            img={school}
-            imgAlt={data.serviceTitle6}
-            buttonText={data.serviceButton6}
-            link={data.serviceButtonUrl6}
-          >
-            <div dangerouslySetInnerHTML={{ __html: data.serviceText6 }} />
-          </ServiceBox>
+          {oderdeceServicesData.map((x, index) =>
+            this.serviceDom(
+              index,
+              x.acf.serviceTitle,
+              x.acf.serviceText,
+              x.acf.serviceImg.url,
+              x.acf.serviceButtonText,
+              x.acf.serviceButtonUrl,
+            ),
+          )}
         </MainServicesSection>
         <BottomSection text={BottomSectionText.patern1}>
           <Button theme={{ main: '23.7rem' }}>

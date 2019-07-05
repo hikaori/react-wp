@@ -13,6 +13,7 @@
     "react-player": "^1.11.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "remove": "^0.1.5",
     "styled-components": "^4.3.1",
     "typescript": "^3.5.2"
   },
@@ -42,6 +43,7 @@
     "@types/styled-components": "^4.1.16",
     "react-burger-menu": "^2.6.10",
     "react-media": "^1.9.2",
+    "react-svgmt": "^1.1.8",
     "styled-icons": "^8.1.0"
   }
 }
