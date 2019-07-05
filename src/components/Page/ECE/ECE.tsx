@@ -17,7 +17,6 @@ import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
 import { Titles } from '../../../constants/Titles';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
-import colors from '../../colors';
 
 interface OwnProps {}
 interface OwnState {

@@ -17,7 +17,6 @@ import NadeshikoRyugakuLogo from '../../../assets/logo/NadeshikoRyugakuLogo.svg'
 import { Titles } from '../../../constants/Titles';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
-import { media } from '../../../utile/Helper';
 
 interface OwnProps {}
 interface OwnState {
