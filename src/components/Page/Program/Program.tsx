@@ -103,7 +103,7 @@ class Program extends Component<OwnProps, OwnState> {
             step3Img={data.step3Img.url}
           />
           <ProgramContainer />
-          <BottomSection text={BottomSectionText.patern1}>
+          <BottomSection text={BottomSectionText.pattern1}>
             <Button theme={{ main: '23.7rem' }}>
               {buttonText.freeConsulting}
             </Button>

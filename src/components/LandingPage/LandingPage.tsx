@@ -90,7 +90,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
         </ImagePluTextBox>
         <News />
         <ProgramContainer />
-        <BottomSection text={BottomSectionText.patern1}>
+        <BottomSection text={BottomSectionText.pattern1}>
           <Button theme={{ main: '23.7rem' }}>
             {buttonText.freeConsulting}
           </Button>
