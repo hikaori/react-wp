@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { Heading3, Button } from '../../';
 import { media } from '../../../utile/Helper';
-import color from '../../colors';
-import { ReactComponent as Logo } from '../../../assets/images/school-solid.svg';
 
 const Div = styled.div`
   background: #fff;
@@ -40,7 +38,7 @@ class ServiceBox extends Component<OwnProps, OwnState> {
       <Div>
         <Heading3>{this.props.title}</Heading3>
         <ImgDiv>
-          <img src={this.props.img} className="icon" />
+          <img src={this.props.img} className="icon" alt={this.props.title} />
           {/* <Logo style={{ fill: color.darkGray }} /> */}
         </ImgDiv>
         {this.props.children}

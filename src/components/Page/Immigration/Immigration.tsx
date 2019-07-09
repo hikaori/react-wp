@@ -12,9 +12,7 @@ import {
   Button,
 } from '../..';
 import ImmigrationStepsSection from './ImmigrationStepsSection';
-import { serviceDom } from '../../Common/MainServicesSection/CreateServiceDom';
 import COSImmigrationLogoJp from '../../../assets/logo/COSImmigrationConsultingJp.svg';
-import { Titles } from '../../../constants/Titles';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import colors from '../../colors';

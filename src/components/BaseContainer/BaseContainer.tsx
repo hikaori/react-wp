@@ -17,6 +17,7 @@ import {
   Nadeshiko,
   Nanny,
   Immigration,
+  VisaCollection,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -32,6 +33,11 @@ class Container extends Component<RouteComponentProps> {
           <Route exact path="/program/nadeshiko" component={Nadeshiko} />
           <Route exact path="/program/nanny" component={Nanny} />
           <Route exact path="/program/immigration" component={Immigration} />
+          <Route
+            exact
+            path="/program/immigration/collection"
+            component={VisaCollection}
+          />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>

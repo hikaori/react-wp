@@ -20,6 +20,7 @@ import IT from './Page/IT/IT';
 import Nadeshiko from './Page/Nadeshiko/Nadeshiko';
 import Nanny from './Page/Nanny/Nanny';
 import Immigration from './Page/Immigration/Immigration';
+import VisaCollection from './Page/Immigration/VisaCollection/VisaCollection';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -47,6 +48,7 @@ export {
   Nadeshiko,
   Nanny,
   Immigration,
+  VisaCollection,
   ProgramLogosSection,
   MainServicesSection,
   ServiceBox,

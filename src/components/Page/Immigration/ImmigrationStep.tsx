@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import color from '../../colors';
 import { media } from '../../../utile/Helper';
 
 const ImmigrationStepDiv = styled.div`
@@ -76,7 +75,12 @@ class ImmigrationStep extends Component<ownProps> {
           <Title>{this.props.text}</Title>
         </TextDiv>
         <IconDiv>
-          <img src={this.props.img} width="60px" height="48px" />
+          <img
+            src={this.props.img}
+            width="60px"
+            height="48px"
+            alt={this.props.text}
+          />
         </IconDiv>
       </ImmigrationStepDiv>
     );
