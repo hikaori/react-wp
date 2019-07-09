@@ -16,10 +16,24 @@ import COSImmigrationLogoJp from '../../../assets/logo/COSImmigrationConsultingJ
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import colors from '../../colors';
+import { Link } from 'react-router-dom';
 
 const PriceDiv = styled.div`
   margin-top: 80px;
   margin-bottom: 80px;
+`;
+const FlexDiv = styled.div`
+  display: flex;
+  & .buttonL,
+  .buttonR {
+    width: 50%;
+  }
+  & .buttonL {
+    margin-right: 0.8rem;
+  }
+  & .buttonR {
+    margin-left: 0.8rem;
+  }
 `;
 
 interface OwnProps {}
@@ -30,6 +44,10 @@ interface OwnState {
       fv1200_400: string;
       subtitle: string;
       pageDescription: string;
+      ButtonText1: string;
+      ButtonUrl1: string;
+      ButtonText2: string;
+      ButtonUrl2: string;
       programTitle: string;
       programText: string;
       programFeatureTitle1: string;
@@ -66,6 +84,10 @@ class Immigration extends Component<OwnProps, OwnState> {
           fv1200_400: '',
           subtitle: '',
           pageDescription: '',
+          ButtonText1: '',
+          ButtonUrl1: '',
+          ButtonText2: '',
+          ButtonUrl2: '',
           programTitle: '',
           programText: '',
           programFeatureTitle1: '',
@@ -116,10 +138,23 @@ class Immigration extends Component<OwnProps, OwnState> {
       >
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
+          <FlexDiv>
+            <div className="buttonL">
+              <Link to={data.ButtonUrl1}>
+                <Button theme={{ main: '100%' }}>{data.ButtonText1}</Button>
+              </Link>
+            </div>
+            <div className="buttonR">
+              <Link to={data.ButtonUrl2}>
+                <Button theme={{ main: '100%' }}>{data.ButtonText2}</Button>
+              </Link>
+            </div>
+          </FlexDiv>
         </PageDescription>
         <ProgramLogosSection logo1={COSImmigrationLogoJp} logo2={''} />
         <Heading2>{data.programTitle}</Heading2>
         <div dangerouslySetInnerHTML={{ __html: data.programText }} />
+
         <ImagePluTextBox
           imgURL={data.programFeatureImg1}
           alt={data.programFeatureTitle1}
