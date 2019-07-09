@@ -120,7 +120,7 @@ class Nanny extends Component<OwnProps, OwnState> {
     let data = this.state.data.acf;
     let title = this.state.data.title;
     let servicesData = this.state.servicesData;
-    const categoryNum: number = 11;
+    const categoryNum: number = 6;
     let eceServicesData = servicesData.filter(x =>
       x.service_category.includes(categoryNum),
     );

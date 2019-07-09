@@ -19,6 +19,7 @@ import ECE from './Page/ECE/ECE';
 import IT from './Page/IT/IT';
 import Nadeshiko from './Page/Nadeshiko/Nadeshiko';
 import Nanny from './Page/Nanny/Nanny';
+import Immigration from './Page/Immigration/Immigration';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -45,6 +46,7 @@ export {
   IT,
   Nadeshiko,
   Nanny,
+  Immigration,
   ProgramLogosSection,
   MainServicesSection,
   ServiceBox,

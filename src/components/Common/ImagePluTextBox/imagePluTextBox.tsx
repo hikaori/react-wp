@@ -38,7 +38,6 @@ const ImgLeft = styled(ImgBase)`
 class ImagePluTextBox extends Component<OwnProps> {
   render() {
     const { imgURL, alt, isImgRightSide } = this.props;
-    console.log(imgURL);
     return isImgRightSide ? (
       <Container className="img-right">
         <div>{this.props.children}</div>

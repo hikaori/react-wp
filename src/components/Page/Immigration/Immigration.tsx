@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
@@ -9,20 +8,20 @@ import {
   Heading2,
   Heading3,
   ImagePluTextBox,
-  MainServicesSection,
   BottomSection,
   Button,
 } from '../..';
+import ImmigrationStepsSection from './ImmigrationStepsSection';
 import { serviceDom } from '../../Common/MainServicesSection/CreateServiceDom';
-import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
-import FrogLogoHorizontal from '../../../assets/logo/FrogLogoHorizontal.svg';
+import COSImmigrationLogoJp from '../../../assets/logo/COSImmigrationConsultingJp.svg';
 import { Titles } from '../../../constants/Titles';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
-import { media } from '../../../utile/Helper';
+import colors from '../../colors';
 
-const ButtonDiv = styled.div`
-  ${media.tablet`text-align: center;`}
+const PriceDiv = styled.div`
+  margin-top: 80px;
+  margin-bottom: 80px;
 `;
 
 interface OwnProps {}
@@ -44,26 +43,22 @@ interface OwnState {
       programFeatureImg1: string;
       programFeatureImg2: string;
       programFeatureImg3: string;
-      serviceButtonText3: string;
-      programFeatureButtonUrl3: string;
+      stepTitle: string;
+      step1Title: string;
+      step1Img: string;
+      step2Title: string;
+      step2Img: string;
+      step3Title: string;
+      step3Img: string;
+      step4Title: string;
+      step4Img: string;
+      priceTitle: string;
+      priceTable: string;
     };
   };
-  servicesData: [
-    {
-      service_category: [number];
-      acf: {
-        serviceTitle: string;
-        serviceText: string;
-        serviceImg: { url: string };
-        serviceButtonText: string;
-        serviceButtonUrl: string;
-        service_order: string;
-      };
-    }
-  ];
 }
 
-class IT extends Component<OwnProps, OwnState> {
+class Immigration extends Component<OwnProps, OwnState> {
   constructor(ownProps: any, ownState: any) {
     super(ownProps, ownState);
     this.state = {
@@ -84,27 +79,23 @@ class IT extends Component<OwnProps, OwnState> {
           programFeatureImg1: '',
           programFeatureImg2: '',
           programFeatureImg3: '',
-          serviceButtonText3: '',
-          programFeatureButtonUrl3: '',
+          stepTitle: '',
+          step1Title: '',
+          step1Img: '',
+          step2Title: '',
+          step2Img: '',
+          step3Title: '',
+          step3Img: '',
+          step4Title: '',
+          step4Img: '',
+          priceTitle: '',
+          priceTable: '',
         },
       },
-      servicesData: [
-        {
-          service_category: [0],
-          acf: {
-            serviceTitle: '',
-            serviceText: '',
-            serviceImg: { url: '' },
-            serviceButtonText: '',
-            serviceButtonUrl: '',
-            service_order: '',
-          },
-        },
-      ],
     };
   }
   componentDidMount() {
-    let pageId = 327;
+    let pageId = 462;
     let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
     fetch(dataURL)
       .then(res => res.json())
@@ -113,27 +104,11 @@ class IT extends Component<OwnProps, OwnState> {
           data: res,
         });
       });
-    let serviceDataURL = 'http://localhost/wp-json/wp/v2/services/';
-    fetch(serviceDataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          servicesData: res,
-        });
-      });
   }
 
   render() {
     let data = this.state.data.acf;
     let title = this.state.data.title;
-    let servicesData = this.state.servicesData;
-    const categoryNum: number = 4;
-    let eceServicesData = servicesData.filter(x =>
-      x.service_category.includes(categoryNum),
-    );
-    let orderedEceServicesData = eceServicesData.sort(function(a, b) {
-      return a.acf.service_order < b.acf.service_order ? -1 : 1;
-    });
 
     return (
       <PageBaseLayout
@@ -144,7 +119,7 @@ class IT extends Component<OwnProps, OwnState> {
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
         </PageDescription>
-        <ProgramLogosSection logo1={cosLogo} logo2={FrogLogoHorizontal} />
+        <ProgramLogosSection logo1={COSImmigrationLogoJp} logo2={''} />
         <Heading2>{data.programTitle}</Heading2>
         <div dangerouslySetInnerHTML={{ __html: data.programText }} />
         <ImagePluTextBox
@@ -169,34 +144,26 @@ class IT extends Component<OwnProps, OwnState> {
           isImgRightSide={true}
         >
           <Heading3>{data.programFeatureTitle3}</Heading3>
-          <div>
-            <div
-              dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }}
-            />
-            <ButtonDiv>
-              <Link to={data.programFeatureButtonUrl3}>
-                <Button theme={{ main: '32.7rem' }}>
-                  {data.serviceButtonText3}
-                </Button>
-              </Link>
-            </ButtonDiv>
-          </div>
+          <div dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }} />
         </ImagePluTextBox>
-        <MainServicesSection h2={Titles.mainService}>
-          {orderedEceServicesData.map((x, index) =>
-            serviceDom(
-              index,
-              x.acf.serviceTitle,
-              x.acf.serviceText,
-              x.acf.serviceImg.url,
-              x.acf.serviceButtonText,
-              x.acf.serviceButtonUrl,
-            ),
-          )}
-        </MainServicesSection>
+        <ImmigrationStepsSection
+          title={data.stepTitle}
+          step1Title={data.step1Title}
+          step1Img={data.step1Img}
+          step2Title={data.step2Title}
+          step2Img={data.step2Img}
+          step3Title={data.step3Title}
+          step3Img={data.step3Img}
+          step4Title={data.step4Title}
+          step4Img={data.step4Img}
+        />
+        <PriceDiv>
+          <Heading2>{data.priceTitle}</Heading2>
+          <div dangerouslySetInnerHTML={{ __html: data.priceTable }} />
+        </PriceDiv>
         <BottomSection
           text={BottomSectionText.pattern1}
-          backgroundColor={'#fff'}
+          backgroundColor={colors.lightGray}
         >
           <Button theme={{ main: '23.7rem' }}>
             {buttonText.freeConsulting}
@@ -206,4 +173,4 @@ class IT extends Component<OwnProps, OwnState> {
     );
   }
 }
-export default IT;
+export default Immigration;

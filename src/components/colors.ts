@@ -7,4 +7,5 @@ export default {
   buttonLightBlue: '#3EAADD',
   buttonDarkBlue: '#3798C4',
   footerBackGroudn: '#666666',
+  immigrationBlue: '#282EE8',
 };

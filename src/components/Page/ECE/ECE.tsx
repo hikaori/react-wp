@@ -114,7 +114,7 @@ class ECE extends Component<OwnProps, OwnState> {
     let data = this.state.data.acf;
     let title = this.state.data.title;
     let servicesData = this.state.servicesData;
-    const categoryNum: number = 7;
+    const categoryNum: number = 3;
     let eceServicesData = servicesData.filter(x =>
       x.service_category.includes(categoryNum),
     );

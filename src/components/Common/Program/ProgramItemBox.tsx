@@ -8,7 +8,7 @@ import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
 import frogLogo from '../../../assets/logo/FrogLogo.svg';
 import nadeshikoLogo from '../../../assets/logo/NadeshikoRyugakuLogo.svg';
 import nannyLogo from '../../../assets/logo/NannyFromJapanLogo.svg';
-import immigrationLogo from '../../../assets/logo/COSImmigrationLogo.svg';
+import immigrationLogo from '../../../assets/logo/COSImmigrationConsultingJp.svg';
 import babyCarriageImg from '../../../assets/images/baby-carriage-solid.svg';
 import babySolidImg from '../../../assets/images/baby-solid.svg';
 import graduationImg from '../../../assets/images/graduation-cap-solid.svg';

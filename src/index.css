@@ -577,14 +577,7 @@ th {
   padding-top: 0.725rem;
   padding-bottom: calc(0.725rem - 1px);
 }
-th:first-child,
-td:first-child {
-  padding-left: 0;
-}
-th:last-child,
-td:last-child {
-  padding-right: 0;
-}
+
 tt,
 code {
   background-color: hsla(0, 0%, 0%, 0.04);
@@ -622,4 +615,30 @@ pre tt:after {
   box-shadow: 2px 2px 4px grey;
 }
 @media only screen and (max-width: 480px) {
+}
+
+.tablepress tbody {
+  border-left: solid 3px red;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.tablepress tr {
+  border-top: 1px solid hsla(0, 0%, 0%, 0.12);
+}
+
+.tablepress td {
+  text-align: center;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-right: 1px solid hsla(0, 0%, 0%, 0.12);
+}
+
+.tablepress .column-1 {
+  background-color: #fde9e9;
+}
+.tablepress .column-2 {
+  background-color: #ecedf6;
+}
+.tablepress .column-3 {
+  background-color: #f5f5f5;
 }
