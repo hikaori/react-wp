@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import { media } from '../../../../utile/Helper';
 
 const ProgramDive = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor};
@@ -17,7 +16,7 @@ interface ownState {}
 class TargetCategory extends Component<ownProps> {
   createDom = () => {
     let returnDom: JSX.Element[] = [];
-    this.props.target.map(x => {
+    this.props.target.forEach(x => {
       if (x === '保育') {
         returnDom.push(
           <ProgramDive key="保育" theme={{ backgroundColor: 'pink' }}>

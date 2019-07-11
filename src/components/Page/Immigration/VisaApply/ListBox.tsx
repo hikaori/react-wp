@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import font from '../../../fonts';
-import { media } from '../../../../utile/Helper';
 
 const ItemDiv = styled.div`
   margin: 35.5px 0;
