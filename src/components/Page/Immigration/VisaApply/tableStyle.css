@@ -1,0 +1,39 @@
+.tablepress td {
+  padding-left: 3.2rem;
+  text-align: left;
+}
+@media only screen and (max-width: 1024px) {
+  .tablepress td {
+    padding-left: 0.96667rem;
+  }
+}
+
+.column-1 {
+  font-family: 'a-otf-midashi-go-mb31-pr6n';
+}
+.row-3 .column-2,
+.row-4 .column-2,
+.row-5 .column-2,
+.row-6 .column-2 {
+  background-color: #f0f0f0;
+}
+.category {
+  padding: 0.8rem 1.6rem;
+  display: inline-block;
+  color: #fff;
+}
+.pink {
+  background-color: #fd84ac;
+}
+.green {
+  background-color: #6cbc67;
+}
+.red-bullet,
+.red-bullet li {
+  margin: 0;
+}
+.red-bullet ul::before,
+.red-bullet li::before {
+  content: '• ';
+  color: #e8282b;
+}

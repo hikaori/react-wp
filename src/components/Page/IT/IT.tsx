@@ -24,6 +24,9 @@ import { media } from '../../../utile/Helper';
 const ButtonDiv = styled.div`
   ${media.tablet`text-align: center;`}
 `;
+const DescriptionDiv = styled.div`
+  ${media.tablet`margin-bottom: 8.2rem;`}
+`;
 
 interface OwnProps {}
 interface OwnState {
@@ -146,7 +149,7 @@ class IT extends Component<OwnProps, OwnState> {
         </PageDescription>
         <ProgramLogosSection logo1={cosLogo} logo2={FrogLogoHorizontal} />
         <Heading2>{data.programTitle}</Heading2>
-        <div dangerouslySetInnerHTML={{ __html: data.programText }} />
+        <DescriptionDiv dangerouslySetInnerHTML={{ __html: data.programText }} />
         <ImagePluTextBox
           imgURL={data.programFeatureImg1}
           alt={data.programFeatureTitle1}

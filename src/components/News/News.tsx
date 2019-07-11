@@ -17,7 +17,7 @@ const NewsBox = styled.div`
   ${media.tablet`margin: 0px 1.8rem`};
 `;
 const NewsItemBox = styled.div`
-  border-bottom: solid 1px ${color.darkGray};
+  border-bottom: solid 1px ${color.gray};
   padding-top: 2.6rem;
   padding-bottom: 2.6rem;
   ${media.desktop`display: flex;

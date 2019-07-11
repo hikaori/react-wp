@@ -12,7 +12,7 @@ const Container = styled.div`
   align-items: center;
   margin: 8rem 0rem;
   display: flex;
-  ${media.tablet`flex-direction: column;margin: 1.6rem 0rem;`}
+  ${media.tablet`flex-direction: column;margin: 3.2rem 0rem;`}
   &.img-right {
     ${media.tablet`flex-direction: column-reverse;`}
   }

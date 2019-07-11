@@ -637,8 +637,18 @@ pre tt:after {
   background-color: #fde9e9;
 }
 .tablepress .column-2 {
-  background-color: #ecedf6;
+  background-color: #fff;
 }
 .tablepress .column-3 {
+  background-color: #fff;
+}
+
+.tablepress.immigrationPrice .column-1 {
+  background-color: #fde9e9;
+}
+.tablepress.immigrationPrice .column-2 {
+  background-color: #ecedf6;
+}
+.tablepress.immigrationPrice .column-3 {
   background-color: #f5f5f5;
 }

@@ -15,7 +15,7 @@ const FixDiv = styled.div`
   padding-top:82px;
   padding-bottom:82px;
   margin-bottom:100px;
-  ${media.tablet`flex-direction: column;`}
+  ${media.tablet`flex-direction: column;margin-bottom:5.5rem;`}
 `;
 
 const IconDiv = styled.div`
