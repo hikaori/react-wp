@@ -41,7 +41,7 @@ class ProgramBox extends Component<ownProps> {
       cecData,
       fswData,
     } = this.props;
-    console.log(internationalGraduateData);
+
     return (
       <Fragment>
         <SectionDive theme={{ backgroundColor: colors.lightGray }}>
