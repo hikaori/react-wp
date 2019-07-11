@@ -35,14 +35,16 @@ class MobileMenu extends Component<OwnProps, OwnState> {
   render() {
     let menus = this.state.menus.items;
     return (
-      <ul id="page-wrap">
-        {menus.map((item, index) => (
-          <li key={index}>
-            <Link to={item.url}>{item.title}</Link>
-            {item.children && <MobileSubMenu subMenus={item.children} />}
-          </li>
-        ))}
-      </ul>
+      <main id="page-wrap outer-container">
+        <ul id="">
+          {menus.map((item, index) => (
+            <li key={index}>
+              <Link to={item.url}>{item.title}</Link>
+              {item.children && <MobileSubMenu subMenus={item.children} />}
+            </li>
+          ))}
+        </ul>
+      </main>
     );
   }
 }

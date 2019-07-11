@@ -49,7 +49,7 @@ class HeaderMobile extends Component<OwnProps, OwnState> {
   };
   render() {
     return (
-      <Head id="outer-container">
+      <Head>
         {this.state.isMenuCliked && (
           <Menu
             styles={styles}
