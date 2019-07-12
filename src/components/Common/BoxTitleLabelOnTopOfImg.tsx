@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { Button } from '../..';
-import { buttonText } from '../../../constants/buttonText';
-import font from '../../fonts';
-import { media } from '../../../utile/Helper';
+import { Button } from '../';
+import { buttonText } from '../../constants/buttonText';
+import font from '../fonts';
+import { media } from '../../utile/Helper';
 
 const BoxDiv = styled.div`
   display: flex;
@@ -64,21 +64,25 @@ const ButtonDiv = styled.div`
 
 interface ownProps {
   title: string;
-  subTitle: string;
+  subTitle: string | null;
   backgroundColor: string;
   img: string;
   buttonLink: string;
 }
 interface ownState {}
-class ProgramItem extends Component<ownProps> {
+class BoxTitleLabelOnTopOfImg extends Component<ownProps> {
   render() {
     return (
       <BoxDiv className="program-box">
         <img src={this.props.img} alt={this.props.title} />
         <TitleDiv theme={{ backgroundColor: this.props.backgroundColor }}>
-          <Title>{this.props.title}</Title>
-          <span />
-          <SubTitle>{this.props.subTitle}</SubTitle>
+          {this.props.subTitle && (
+            <Fragment>
+              <Title>{this.props.title}</Title>
+              <span />
+              <SubTitle>{this.props.subTitle}</SubTitle>
+            </Fragment>
+          )}
         </TitleDiv>
         <ButtonDiv>
           <Link to={this.props.buttonLink}>
@@ -89,4 +93,4 @@ class ProgramItem extends Component<ownProps> {
     );
   }
 }
-export default ProgramItem;
+export default BoxTitleLabelOnTopOfImg;

@@ -26,6 +26,7 @@ import School from './Page/School/School';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
+import BoxTitleLabelOnTopOfImg from './Common/BoxTitleLabelOnTopOfImg';
 
 export {
   BaseContainer,
@@ -56,4 +57,5 @@ export {
   ProgramLogosSection,
   MainServicesSection,
   ServiceBox,
+  BoxTitleLabelOnTopOfImg,
 };

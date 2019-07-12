@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Heading2 } from '../..';
-import ProgramItem from './ProgramItem';
+import { Heading2, BoxTitleLabelOnTopOfImg } from '../..';
 import color from '../../colors';
 import { media } from '../../../utile/Helper';
 
@@ -66,7 +65,7 @@ class ProgramBox extends Component<ownProps> {
 
     programData.map((x, index) =>
       returnDom.push(
-        <ProgramItem
+        <BoxTitleLabelOnTopOfImg
           key={index}
           title={x.title}
           subTitle={x.subTitle}
