@@ -11,4 +11,6 @@ export default {
   immigrationBlue: '#282EE8',
   red: '#E8282B',
   bulletsGray: '#666',
+  pink: '#fd84ac',
+  green: '#6cbc67',
 };

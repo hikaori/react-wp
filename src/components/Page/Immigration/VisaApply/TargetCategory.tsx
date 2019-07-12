@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
+import color from '../../../colors';
+
 const ProgramDive = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor};
   padding: 0.8rem 1.6rem;
@@ -19,13 +21,13 @@ class TargetCategory extends Component<ownProps> {
     this.props.target.forEach(x => {
       if (x === '保育') {
         returnDom.push(
-          <ProgramDive key="保育" theme={{ backgroundColor: 'pink' }}>
+          <ProgramDive key="保育" theme={{ backgroundColor: color.pink }}>
             保育
           </ProgramDive>,
         );
       } else if (x === 'IT・クリエイティブ') {
         returnDom.push(
-          <ProgramDive key="it" theme={{ backgroundColor: 'green' }}>
+          <ProgramDive key="it" theme={{ backgroundColor: color.green }}>
             IT・クリエイティブ
           </ProgramDive>,
         );

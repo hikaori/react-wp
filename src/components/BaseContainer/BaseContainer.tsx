@@ -19,6 +19,7 @@ import {
   Immigration,
   VisaCollection,
   VisaApply,
+  School,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -44,6 +45,7 @@ class Container extends Component<RouteComponentProps> {
             path="/program/immigration/visa-apply"
             component={VisaApply}
           />
+          <Route exact path="/school" component={School} />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>
