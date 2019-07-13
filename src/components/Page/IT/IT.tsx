@@ -135,7 +135,7 @@ class IT extends Component<OwnProps, OwnState> {
       x.service_category.includes(categoryNum),
     );
     let orderedEceServicesData = eceServicesData.sort(function(a, b) {
-      return a.acf.service_order < b.acf.service_order ? -1 : 1;
+      return Number(a.acf.service_order) < Number(b.acf.service_order) ? -1 : 1;
     });
 
     return (
@@ -149,7 +149,9 @@ class IT extends Component<OwnProps, OwnState> {
         </PageDescription>
         <ProgramLogosSection logo1={cosLogo} logo2={FrogLogoHorizontal} />
         <Heading2>{data.programTitle}</Heading2>
-        <DescriptionDiv dangerouslySetInnerHTML={{ __html: data.programText }} />
+        <DescriptionDiv
+          dangerouslySetInnerHTML={{ __html: data.programText }}
+        />
         <ImagePluTextBox
           imgURL={data.programFeatureImg1}
           alt={data.programFeatureTitle1}

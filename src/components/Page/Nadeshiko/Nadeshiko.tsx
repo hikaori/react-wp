@@ -125,7 +125,7 @@ class Nadeshiko extends Component<OwnProps, OwnState> {
       x.service_category.includes(categoryNum),
     );
     let orderedEceServicesData = eceServicesData.sort(function(a, b) {
-      return a.acf.service_order < b.acf.service_order ? -1 : 1;
+      return Number(a.acf.service_order) < Number(b.acf.service_order) ? -1 : 1;
     });
 
     return (

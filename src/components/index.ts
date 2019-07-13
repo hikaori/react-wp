@@ -23,6 +23,7 @@ import Immigration from './Page/Immigration/Immigration';
 import VisaCollection from './Page/Immigration/VisaCollection/VisaCollection';
 import VisaApply from './Page/Immigration/VisaApply/VisaApply';
 import School from './Page/School/School';
+import Teen from './Page/School/Teen/Teen';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -54,6 +55,7 @@ export {
   VisaCollection,
   VisaApply,
   School,
+  Teen,
   ProgramLogosSection,
   MainServicesSection,
   ServiceBox,
