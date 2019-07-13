@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import { PageBaseLayout, PageDescription } from '../..';
-import { buttonText } from '../../../constants/buttonText';
-import { BottomSectionText } from '../../../constants/BottomSectionText';
-import ProgramBox from './ProgramBox';
+import { PageBaseLayout, PageDescription } from '../../..';
+import { buttonText } from '../../../../constants/buttonText';
+import { BottomSectionText } from '../../../../constants/BottomSectionText';
 
 interface OwnProps {}
 interface OwnState {
@@ -13,16 +12,11 @@ interface OwnState {
       fv1200_400: string;
       subtitle: string;
       pageDescription: string;
-      programTitle1: string;
-      programSubtitle1: string;
-      programColor1: string;
-      programImg1: string;
-      programLink1: string;
     };
   };
 }
 
-class School extends Component<OwnProps, OwnState> {
+class SummerCamp extends Component<OwnProps, OwnState> {
   constructor(ownProps: any, ownState: any) {
     super(ownProps, ownState);
     this.state = {
@@ -32,11 +26,6 @@ class School extends Component<OwnProps, OwnState> {
           fv1200_400: '',
           subtitle: '',
           pageDescription: '',
-          programTitle1: '',
-          programSubtitle1: '',
-          programColor1: '',
-          programImg1: '',
-          programLink1: '',
         },
       },
     };
@@ -70,9 +59,8 @@ class School extends Component<OwnProps, OwnState> {
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
         </PageDescription>
-        <ProgramBox data={data} />
       </PageBaseLayout>
     );
   }
 }
-export default School;
+export default SummerCamp;

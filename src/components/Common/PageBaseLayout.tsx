@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { BasicLayout } from '../';
+import { BasicLayout, BottomSection, Button } from '../';
 import Heading1 from './Heading1';
 import color from '../colors';
 import { media } from '../../utile/Helper';
@@ -11,6 +11,10 @@ interface ownProps {
   title: string;
   subTitle: string;
   imgURL: string;
+  bottomSectionText: string;
+  bottomSectionColor: string;
+  bottomButtonText: string;
+  bottomButtonSize: string;
 }
 interface ownState {}
 const FVDiv = styled.div`
@@ -62,7 +66,16 @@ class PageBaseLayout extends Component<ownProps, ownState> {
           {` `}
           <span>{this.props.title}</span>
         </BreadcrumbDiv>
+
         {this.props.children}
+        <BottomSection
+          text={this.props.bottomSectionText}
+          backgroundColor={this.props.bottomSectionColor}
+        >
+          <Button theme={{ main: this.props.bottomButtonSize }}>
+            {this.props.bottomButtonText}
+          </Button>
+        </BottomSection>
       </BasicLayout>
     );
   }

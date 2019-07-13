@@ -8,8 +8,6 @@ import {
   Heading3,
   ImagePluTextBox,
   MainServicesSection,
-  BottomSection,
-  Button,
 } from '../..';
 import { serviceDom } from '../../Common/MainServicesSection/CreateServiceDom';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
@@ -133,6 +131,10 @@ class Nadeshiko extends Component<OwnProps, OwnState> {
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}
+        bottomSectionText={BottomSectionText.pattern1}
+        bottomSectionColor={'#fff'}
+        bottomButtonText={buttonText.freeConsulting}
+        bottomButtonSize={'23.7rem'}
       >
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
@@ -176,14 +178,6 @@ class Nadeshiko extends Component<OwnProps, OwnState> {
             ),
           )}
         </MainServicesSection>
-        <BottomSection
-          text={BottomSectionText.pattern1}
-          backgroundColor={'#fff'}
-        >
-          <Button theme={{ main: '23.7rem' }}>
-            {buttonText.freeConsulting}
-          </Button>
-        </BottomSection>
       </PageBaseLayout>
     );
   }

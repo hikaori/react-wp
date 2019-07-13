@@ -10,7 +10,6 @@ import {
   Heading3,
   ImagePluTextBox,
   MainServicesSection,
-  BottomSection,
   Button,
 } from '../..';
 import { serviceDom } from '../../Common/MainServicesSection/CreateServiceDom';
@@ -143,6 +142,10 @@ class IT extends Component<OwnProps, OwnState> {
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}
+        bottomSectionText={BottomSectionText.pattern1}
+        bottomSectionColor={'#fff'}
+        bottomButtonText={buttonText.freeConsulting}
+        bottomButtonSize={'23.7rem'}
       >
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
@@ -199,14 +202,6 @@ class IT extends Component<OwnProps, OwnState> {
             ),
           )}
         </MainServicesSection>
-        <BottomSection
-          text={BottomSectionText.pattern1}
-          backgroundColor={'#fff'}
-        >
-          <Button theme={{ main: '23.7rem' }}>
-            {buttonText.freeConsulting}
-          </Button>
-        </BottomSection>
       </PageBaseLayout>
     );
   }

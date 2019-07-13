@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import {
-  PageBaseLayout,
-  PageDescription,
-  BottomSection,
-  Button,
-} from '../../..';
+import { PageBaseLayout, PageDescription } from '../../..';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import colors from '../../../colors';
@@ -169,6 +164,10 @@ class VisaCollection extends Component<OwnProps, OwnState> {
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}
+        bottomSectionText={BottomSectionText.pattern1}
+        bottomSectionColor={'#fff'}
+        bottomButtonText={buttonText.freeConsulting}
+        bottomButtonSize={'23.7rem'}
       >
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
@@ -187,15 +186,6 @@ class VisaCollection extends Component<OwnProps, OwnState> {
             />
           </CollectionDiv>
         </MainSectionDiv>
-
-        <BottomSection
-          text={BottomSectionText.pattern1}
-          backgroundColor={'#fff'}
-        >
-          <Button theme={{ main: '23.7rem' }}>
-            {buttonText.freeConsulting}
-          </Button>
-        </BottomSection>
       </PageBaseLayout>
     );
   }

@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import {
-  PageBaseLayout,
-  ImagePluTextBox,
-  BottomSection,
-  Button,
-} from '../../..';
+import { PageBaseLayout, ImagePluTextBox, Button } from '../../..';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import { Link } from 'react-router-dom';
@@ -151,6 +146,10 @@ class VisaApply extends Component<OwnProps, OwnState> {
         imgURL={data.fv1200_400}
         title={title}
         subTitle={data.subtitle}
+        bottomSectionText={BottomSectionText.pattern1}
+        bottomSectionColor={'#fff'}
+        bottomButtonText={buttonText.freeConsulting}
+        bottomButtonSize={'23.7rem'}
       >
         <ImagePluTextBox
           imgURL={data.pageDescriptionImg}
@@ -172,15 +171,6 @@ class VisaApply extends Component<OwnProps, OwnState> {
           cecData={this.createCECData(data)}
           fswData={this.createFSWData(data)}
         />
-
-        <BottomSection
-          text={BottomSectionText.pattern1}
-          backgroundColor={'#fff'}
-        >
-          <Button theme={{ main: '23.7rem' }}>
-            {buttonText.freeConsulting}
-          </Button>
-        </BottomSection>
       </PageBaseLayout>
     );
   }

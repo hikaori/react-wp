@@ -1,12 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import {
-  PageBaseLayout,
-  PageDescription,
-  BottomSection,
-  Button,
-  ProgramContainer,
-} from '../..';
+import { PageBaseLayout, PageDescription, ProgramContainer } from '../..';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import { buttonText } from '../../../constants/buttonText';
 import StepBox from './StepsSection';
@@ -15,6 +9,7 @@ import colors from '../../colors';
 interface OwnProps {}
 interface OwnState {
   data: {
+    title: { rendered: string };
     acf: {
       fv1200_400: string;
       subtitle: string;
@@ -41,6 +36,7 @@ class Program extends Component<OwnProps, OwnState> {
     super(ownProps, ownState);
     this.state = {
       data: {
+        title: { rendered: '' },
         acf: {
           fv1200_400: '',
           subtitle: '',
@@ -76,14 +72,17 @@ class Program extends Component<OwnProps, OwnState> {
 
   render() {
     let data = this.state.data.acf;
+    let title = this.state.data.title.rendered;
     return (
       <Fragment>
         <PageBaseLayout
           imgURL={data.fv1200_400}
-          title={'運営事業'}
-          subTitle={
-            '各分野のプロと一緒に考える、弊社の海外留学・海外就職・移民プランニング'
-          }
+          title={title}
+          subTitle={data.subtitle}
+          bottomSectionText={BottomSectionText.pattern1}
+          bottomSectionColor={colors.lightGray}
+          bottomButtonText={buttonText.freeConsulting}
+          bottomButtonSize={'23.7rem'}
         >
           <PageDescription>
             <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
@@ -104,14 +103,6 @@ class Program extends Component<OwnProps, OwnState> {
             step3Img={data.step3Img.url}
           />
           <ProgramContainer />
-          <BottomSection
-            text={BottomSectionText.pattern1}
-            backgroundColor={colors.lightGray}
-          >
-            <Button theme={{ main: '23.7rem' }}>
-              {buttonText.freeConsulting}
-            </Button>
-          </BottomSection>
         </PageBaseLayout>
       </Fragment>
     );

@@ -8,7 +8,6 @@ import {
   Heading2,
   Heading3,
   ImagePluTextBox,
-  BottomSection,
   Button,
 } from '../..';
 import ImmigrationStepsSection from './ImmigrationStepsSection';
@@ -135,6 +134,10 @@ class Immigration extends Component<OwnProps, OwnState> {
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}
+        bottomSectionText={BottomSectionText.pattern1}
+        bottomSectionColor={colors.lightGray}
+        bottomButtonText={buttonText.freeConsulting}
+        bottomButtonSize={'23.7rem'}
       >
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
@@ -194,14 +197,6 @@ class Immigration extends Component<OwnProps, OwnState> {
           <Heading2>{data.priceTitle}</Heading2>
           <div dangerouslySetInnerHTML={{ __html: data.priceTable }} />
         </PriceDiv>
-        <BottomSection
-          text={BottomSectionText.pattern1}
-          backgroundColor={colors.lightGray}
-        >
-          <Button theme={{ main: '23.7rem' }}>
-            {buttonText.freeConsulting}
-          </Button>
-        </BottomSection>
       </PageBaseLayout>
     );
   }
