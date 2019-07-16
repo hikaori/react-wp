@@ -86,6 +86,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
           imgURL={data.ryugakuimg}
           alt={data.ryugakuimgalt}
           isImgRightSide={true}
+          classname={null}
         >
           <div dangerouslySetInnerHTML={{ __html: data.ryugakutext }} />
         </ImagePluTextBox>

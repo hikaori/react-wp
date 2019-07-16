@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { PageBaseLayout, PageDescription } from '../..';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
-import ProgramBox from './ProgramBox';
+import SchoolProgramBox from './SchoolProgramBox';
 
 interface OwnProps {}
 interface OwnState {
@@ -70,7 +70,7 @@ class School extends Component<OwnProps, OwnState> {
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
         </PageDescription>
-        <ProgramBox data={data} />
+        <SchoolProgramBox data={data} />
       </PageBaseLayout>
     );
   }

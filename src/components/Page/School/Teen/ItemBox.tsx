@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { Heading3 } from '../../..';
-import colors from '../../../colors';
 import font from '../../../fonts';
 
 const BoxDiv = styled.div`
@@ -25,14 +24,6 @@ const TextDiv = styled.div`
   padding-top: 18px;
   &.link {
     padding: 0px;
-  }
-  &.link a {
-    display: inline-block;
-    padding: 18px 18px 18px 0;
-    color: ${colors.textLinkBlue};
-  }
-  &.link a:hover {
-    text-decoration: underline;
   }
 `;
 

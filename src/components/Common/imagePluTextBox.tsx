@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { media } from '../../../utile/Helper';
+import { media } from '../../utile/Helper';
 
 interface OwnProps {
   imgURL: string;
   alt: string;
   isImgRightSide: boolean;
+  classname: string | null;
 }
 
 const Container = styled.div`
@@ -37,9 +38,9 @@ const ImgLeft = styled(ImgBase)`
 
 class ImagePluTextBox extends Component<OwnProps> {
   render() {
-    const { imgURL, alt, isImgRightSide } = this.props;
+    const { imgURL, alt, isImgRightSide, classname } = this.props;
     return isImgRightSide ? (
-      <Container className="img-right">
+      <Container className={`img-right ${classname}`}>
         <div>{this.props.children}</div>
         <ImgBox>
           <ImgRight
@@ -52,7 +53,7 @@ class ImagePluTextBox extends Component<OwnProps> {
         </ImgBox>
       </Container>
     ) : (
-      <Container>
+      <Container className={`${classname}`}>
         <ImgBox>
           <ImgLeft
             src={imgURL}

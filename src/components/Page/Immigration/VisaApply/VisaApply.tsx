@@ -155,6 +155,7 @@ class VisaApply extends Component<OwnProps, OwnState> {
           imgURL={data.pageDescriptionImg}
           alt={title}
           isImgRightSide={false}
+          classname={null}
         >
           <div dangerouslySetInnerHTML={{ __html: data.pageDescriptionText }} />
           <ButtonDiv>

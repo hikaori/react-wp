@@ -7,7 +7,6 @@ import TargetCategory from './TargetCategory';
 import font from '../../../fonts';
 import { media } from '../../../../utile/Helper';
 import colors from '../../../colors';
-import './tableStyle.css';
 
 const SectionDive = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor};
@@ -15,6 +14,41 @@ const SectionDive = styled.div`
   margin-left: calc(((100vw - 100%) / 2) * -1);
   padding: 8rem 17.2%;
   ${media.tablet`padding: 8rem 7%;`}
+  .tablepress td {
+    padding-left: 3.2rem;
+    ${media.tablet`padding-left: 0.96667rem;`}
+    text-align: left;
+  }
+
+  .column-1 {
+    font-family: 'a-otf-midashi-go-mb31-pr6n';
+  }
+  .row-3 .column-2,
+  .row-4 .column-2,
+  .row-5 .column-2,
+  .row-6 .column-2 {
+    background-color: #f0f0f0;
+  }
+  .category {
+    padding: 0.8rem 1.6rem;
+    display: inline-block;
+    color: #fff;
+  }
+  .pink {
+    background-color: #fd84ac;
+  }
+  .green {
+    background-color: #6cbc67;
+  }
+  .red-bullet,
+  .red-bullet li {
+    margin: 0;
+  }
+  .red-bullet ul::before,
+  .red-bullet li::before {
+    content: '• ';
+    color: #e8282b;
+  }
 `;
 
 const VisaDescription = styled.div`

@@ -149,6 +149,7 @@ class Nanny extends Component<OwnProps, OwnState> {
           imgURL={data.programFeatureImg1}
           alt={data.programFeatureTitle1}
           isImgRightSide={true}
+          classname={null}
         >
           <Heading3>{data.programFeatureTitle1}</Heading3>
           <div dangerouslySetInnerHTML={{ __html: data.programFeatureText1 }} />
@@ -157,6 +158,7 @@ class Nanny extends Component<OwnProps, OwnState> {
           imgURL={data.programFeatureImg2}
           alt={data.programFeatureTitle2}
           isImgRightSide={false}
+          classname={null}
         >
           <Heading3>{data.programFeatureTitle2}</Heading3>
           <div dangerouslySetInnerHTML={{ __html: data.programFeatureText2 }} />

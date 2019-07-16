@@ -11,7 +11,7 @@ import Heading3 from './Common/Heading3';
 import LandingPage from './LandingPage/LandingPage';
 import Movie from './Movie';
 import NotFound from './NotFound/NotFound';
-import ImagePluTextBox from './Common/ImagePluTextBox/imagePluTextBox';
+import ImagePluTextBox from './Common/imagePluTextBox';
 import News from './News/News';
 import ProgramContainer from './Common/Program/ProgramContainer';
 import Program from './Page/Program/Program';
@@ -24,6 +24,7 @@ import VisaCollection from './Page/Immigration/VisaCollection/VisaCollection';
 import VisaApply from './Page/Immigration/VisaApply/VisaApply';
 import School from './Page/School/School';
 import Teen from './Page/School/Teen/Teen';
+import SummerCamp from './Page/School/SummerCamp/SummerCamp';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -56,6 +57,7 @@ export {
   VisaApply,
   School,
   Teen,
+  SummerCamp,
   ProgramLogosSection,
   MainServicesSection,
   ServiceBox,

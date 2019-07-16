@@ -13,5 +13,4 @@ export default {
   bulletsGray: '#666',
   pink: '#fd84ac',
   green: '#6cbc67',
-  textLinkBlue: '#2699FB',
 };

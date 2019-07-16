@@ -28,7 +28,7 @@ interface ownProps {
   data: any;
 }
 interface ownState {}
-class ProgramBox extends Component<ownProps> {
+class SchoolProgramBox extends Component<ownProps> {
   programItemDom(data: any) {
     let programData = [
       {
@@ -90,4 +90,4 @@ class ProgramBox extends Component<ownProps> {
     );
   }
 }
-export default ProgramBox;
+export default SchoolProgramBox;
