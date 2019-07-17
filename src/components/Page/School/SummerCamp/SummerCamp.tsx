@@ -4,7 +4,6 @@ import { PageBaseLayout, PageDescription } from '../../..';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import SummerCampSection from './SummerCampSection';
-import colors from '../../../colors';
 
 interface OwnProps {}
 interface OwnState {

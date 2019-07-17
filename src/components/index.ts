@@ -25,6 +25,7 @@ import VisaApply from './Page/Immigration/VisaApply/VisaApply';
 import School from './Page/School/School';
 import Teen from './Page/School/Teen/Teen';
 import SummerCamp from './Page/School/SummerCamp/SummerCamp';
+import ServicePrice from './Page/ServicePrice/ServicePrice';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -58,6 +59,7 @@ export {
   School,
   Teen,
   SummerCamp,
+  ServicePrice,
   ProgramLogosSection,
   MainServicesSection,
   ServiceBox,
