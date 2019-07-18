@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 import { Button } from '../';
 import { buttonText } from '../../constants/buttonText';
@@ -39,6 +40,10 @@ const TitleDiv = styled.div`
   padding-top: 24px;
   padding-bottom: 24px;
   line-height: 1;
+  &.onlyTitle {
+    padding-top: 47px;
+    padding-bottom: 47px;
+  }
   & span {
     padding-top: 1.6rem;
     display: block;
@@ -72,17 +77,23 @@ interface ownProps {
 interface ownState {}
 class BoxTitleLabelOnTopOfImg extends Component<ownProps> {
   render() {
+    console.log(this.props.buttonLink);
     return (
       <BoxDiv className="program-box">
         <img src={this.props.img} alt={this.props.title} />
-        <TitleDiv theme={{ backgroundColor: this.props.backgroundColor }}>
-          {this.props.subTitle && (
-            <Fragment>
-              <Title>{this.props.title}</Title>
-              <span />
-              <SubTitle>{this.props.subTitle}</SubTitle>
-            </Fragment>
-          )}
+        <TitleDiv
+          theme={{ backgroundColor: this.props.backgroundColor }}
+          className={classnames({ onlyTitle: !this.props.subTitle })}
+        >
+          <Fragment>
+            <Title>{this.props.title}</Title>
+            {this.props.subTitle && (
+              <Fragment>
+                <span />
+                <SubTitle>{this.props.subTitle}</SubTitle>
+              </Fragment>
+            )}
+          </Fragment>
         </TitleDiv>
         <ButtonDiv>
           <Link to={this.props.buttonLink}>

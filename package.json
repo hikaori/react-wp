@@ -39,8 +39,10 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.9",
     "@types/react-router-dom": "^4.3.4",
     "@types/styled-components": "^4.1.16",
+    "classnames": "^2.2.6",
     "react-burger-menu": "^2.6.10",
     "react-media": "^1.9.2",
     "react-svgmt": "^1.1.8",

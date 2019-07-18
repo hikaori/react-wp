@@ -27,6 +27,7 @@ import Teen from './Page/School/Teen/Teen';
 import SummerCamp from './Page/School/SummerCamp/SummerCamp';
 import ServicePrice from './Page/ServicePrice/ServicePrice';
 import TeenServicePrice from './Page/ServicePrice/TeenServicePrice';
+import AboutCOS from './Page/AboutCOS/AboutCOS';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -64,6 +65,7 @@ export {
   TeenServicePrice,
   ProgramLogosSection,
   MainServicesSection,
+  AboutCOS,
   ServiceBox,
   BoxTitleLabelOnTopOfImg,
 };

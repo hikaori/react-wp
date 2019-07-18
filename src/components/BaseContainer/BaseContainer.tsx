@@ -24,6 +24,7 @@ import {
   SummerCamp,
   ServicePrice,
   TeenServicePrice,
+  AboutCOS,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -58,6 +59,7 @@ class Container extends Component<RouteComponentProps> {
             path="/service-price/teen-service-price"
             component={TeenServicePrice}
           />
+          <Route exact path="/about" component={AboutCOS} />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>
