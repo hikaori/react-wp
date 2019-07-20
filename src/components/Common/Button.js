@@ -4,12 +4,10 @@ import color from '../colors';
 export const Button = styled.button`
   box-sizing: border-box;
   width: 100%;
-  margin-top: 3.2rem;
   color: #fff;
+  margin-top: 3.2rem;
   border: none;
   box-shadow: 1px 1px 4px grey;
-  padding-bottom: 1.7rem;
-  padding-top: 1.7rem;
   word-break: keep-all;
   background: radial-gradient(
     ${color.buttonLightBlue},
@@ -23,6 +21,11 @@ export const Button = styled.button`
     );
   }
   max-width: ${({ theme }) => theme.main};
+  & a {
+    padding-bottom: 1.7rem;
+    padding-top: 1.7rem;
+    color: #fff;
+  }
 `;
 
 export const RedButton = styled(Button)`

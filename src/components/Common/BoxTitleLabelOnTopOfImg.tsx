@@ -77,7 +77,6 @@ interface ownProps {
 interface ownState {}
 class BoxTitleLabelOnTopOfImg extends Component<ownProps> {
   render() {
-    console.log(this.props.buttonLink);
     return (
       <BoxDiv className="program-box">
         <img src={this.props.img} alt={this.props.title} />

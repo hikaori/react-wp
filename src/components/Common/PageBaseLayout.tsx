@@ -73,7 +73,7 @@ class PageBaseLayout extends Component<ownProps, ownState> {
           backgroundColor={this.props.bottomSectionColor}
         >
           <Button theme={{ main: this.props.bottomButtonSize }}>
-            {this.props.bottomButtonText}
+            <Link to={'/'}>{this.props.bottomButtonText}</Link>
           </Button>
         </BottomSection>
       </BasicLayout>

@@ -24,7 +24,11 @@ import {
   SummerCamp,
   ServicePrice,
   TeenServicePrice,
-  AboutCOS,
+  About,
+  Company,
+  Staff,
+  JobList,
+  Job,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -59,7 +63,11 @@ class Container extends Component<RouteComponentProps> {
             path="/service-price/teen-service-price"
             component={TeenServicePrice}
           />
-          <Route exact path="/about" component={AboutCOS} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/about/company" component={Company} />
+          <Route exact path="/about/staff" component={Staff} />
+          <Route exact path="/about/job-list" component={JobList} />
+          <Route exact path="/about/job-list/1" component={Job} />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>
