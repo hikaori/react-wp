@@ -15,6 +15,10 @@ const LayoutBox = styled.div`
   padding: 0px 8.3rem 1.45rem;
   padding-top: 0;
   ${media.tablet`padding: 88px 1.6rem 0rem;`}
+  & main{
+    max-width: 1366px;
+    margin: auto;
+  }
 `;
 
 class BasicLayout extends Component {

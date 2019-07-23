@@ -29,6 +29,7 @@ import {
   Staff,
   JobList,
   Job,
+  HelpfulInfo,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -68,6 +69,7 @@ class Container extends Component<RouteComponentProps> {
           <Route exact path="/about/staff" component={Staff} />
           <Route exact path="/about/job-list" component={JobList} />
           <Route exact path="/about/job-list/1" component={Job} />
+          <Route exact path="/helpful-info" component={HelpfulInfo} />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>

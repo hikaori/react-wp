@@ -32,6 +32,7 @@ import Company from './Page/About/Company/Company';
 import Staff from './Page/About/Staff/Staff';
 import JobList from './Page/About/JobList/JobList';
 import Job from './Page/About/JobList/Job';
+import HelpfulInfo from './Page/HelpfulInfo/HelpfulInfo';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
@@ -74,6 +75,7 @@ export {
   Staff,
   JobList,
   Job,
+  HelpfulInfo,
   ServiceBox,
   BoxTitleLabelOnTopOfImg,
 };

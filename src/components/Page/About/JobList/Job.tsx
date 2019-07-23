@@ -97,7 +97,6 @@ class JobList extends Component<OwnProps, OwnState> {
       }
     ],
   ) => {
-    console.log(this.state.jobData);
     const targetData = jobData.filter(x => x.id == 1173);
     console.log(targetData);
     return targetData;
