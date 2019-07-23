@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { PageBaseLayout, PageDescription } from '../../..';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
-import JobContent from './JobContent';
 import color from '../../../colors';
 
 interface OwnProps {}
@@ -97,8 +96,7 @@ class JobList extends Component<OwnProps, OwnState> {
       }
     ],
   ) => {
-    const targetData = jobData.filter(x => x.id == 1173);
-    console.log(targetData);
+    const targetData = jobData.filter(x => x.id === 1173);
     return targetData;
   };
 

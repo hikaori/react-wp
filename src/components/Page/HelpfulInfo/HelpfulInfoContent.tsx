@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 
-import { Heading2, Heading3, BoxTitleLabelOnTopOfImg } from '../..';
+import { Heading2 } from '../..';
 import HelpfulInfoItemBox from '../HelpfulInfo/HelpfulInfoItemBox';
 import color from '../../colors';
 import { media } from '../../../utile/Helper';

@@ -30,6 +30,11 @@ import {
   JobList,
   Job,
   HelpfulInfo,
+  Etransfer,
+  StudentVisaApply,
+  WhVisaApply,
+  BiometricsJp,
+  BiometricsSea,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -70,6 +75,27 @@ class Container extends Component<RouteComponentProps> {
           <Route exact path="/about/job-list" component={JobList} />
           <Route exact path="/about/job-list/1" component={Job} />
           <Route exact path="/helpful-info" component={HelpfulInfo} />
+          <Route exact path="/helpful-info/e-transfer" component={Etransfer} />
+          <Route
+            exact
+            path="/helpful-info/student-visa-apply"
+            component={StudentVisaApply}
+          />
+          <Route
+            exact
+            path="/helpful-info/wh-visa-apply"
+            component={WhVisaApply}
+          />
+          <Route
+            exact
+            path="/helpful-info/biometrics-japan"
+            component={BiometricsJp}
+          />
+          <Route
+            exact
+            path="/helpful-info/biometrics-seattle"
+            component={BiometricsSea}
+          />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>

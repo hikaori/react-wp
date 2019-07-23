@@ -33,8 +33,13 @@ import Staff from './Page/About/Staff/Staff';
 import JobList from './Page/About/JobList/JobList';
 import Job from './Page/About/JobList/Job';
 import HelpfulInfo from './Page/HelpfulInfo/HelpfulInfo';
+import Etransfer from './Page/HelpfulInfo/Etransfer/Etransfer';
+import StudentVisaApply from './Page/HelpfulInfo/StudentVisaApply/StudentVisaApply';
+import WhVisaApply from './Page/HelpfulInfo/WhVisaApply/WhVisaApply';
 import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
+import BiometricsJp from './Page/HelpfulInfo/BiometricsJp/BiometricsJp';
+import BiometricsSea from './Page/HelpfulInfo/BiometricsSea/BiometricsSea';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
 import BoxTitleLabelOnTopOfImg from './Common/BoxTitleLabelOnTopOfImg';
 
@@ -76,6 +81,11 @@ export {
   JobList,
   Job,
   HelpfulInfo,
+  Etransfer,
+  StudentVisaApply,
+  WhVisaApply,
+  BiometricsJp,
+  BiometricsSea,
   ServiceBox,
   BoxTitleLabelOnTopOfImg,
 };

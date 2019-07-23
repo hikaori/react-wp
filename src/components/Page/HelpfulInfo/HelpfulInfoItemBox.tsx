@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Heading3, BoxTitleLabelOnTopOfImg, Button } from '../..';
-import color from '../../colors';
+import { Heading3, Button } from '../..';
 import { media } from '../../../utile/Helper';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +35,12 @@ class HelpfulInfoItemBox extends Component<ownProps> {
     return (
       <BoxDiv theme={{ backgroundColor: this.props.backgroundColor }}>
         <Heading3>{this.props.title}</Heading3>
-        <img src={this.props.img} height={'202.5px'} width={'360px'} />
+        <img
+          src={this.props.img}
+          height={'202.5px'}
+          width={'360px'}
+          alt={this.props.title}
+        />
         <div dangerouslySetInnerHTML={{ __html: this.props.text }} />
         <ButtonDiv>
           <Button theme={{ main: '100%' }}>
