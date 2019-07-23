@@ -12,7 +12,7 @@ import LandingPage from './LandingPage/LandingPage';
 import Movie from './Movie';
 import NotFound from './NotFound/NotFound';
 import ImagePluTextBox from './Common/imagePluTextBox';
-import News from './News/News';
+import ExcerptNews from './LandingPage/ExcerptNews/ExcerptNews';
 import ProgramContainer from './Common/Program/ProgramContainer';
 import Program from './Page/Program/Program';
 import ECE from './Page/ECE/ECE';
@@ -58,7 +58,7 @@ export {
   Movie,
   NotFound,
   ImagePluTextBox,
-  News,
+  ExcerptNews,
   ProgramContainer,
   Program,
   ECE,

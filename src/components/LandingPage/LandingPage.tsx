@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   BasicLayout,
-  News,
+  ExcerptNews,
   ProgramContainer,
   Button,
   BottomSection,
@@ -90,7 +90,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
         >
           <div dangerouslySetInnerHTML={{ __html: data.ryugakutext }} />
         </ImagePluTextBox>
-        <News />
+        <ExcerptNews />
         <ProgramContainer />
         <BottomSection
           text={BottomSectionText.pattern1}

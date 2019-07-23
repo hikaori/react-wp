@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import color from '../colors';
-import { Heading2 } from '../';
-import { media } from '../../utile/Helper';
+import color from '../../colors';
+import { Heading2 } from '../..';
+import { media } from '../../../utile/Helper';
 
 const NewsContainer = styled.div`
   padding: 8.4rem 0rem 8rem;
@@ -52,7 +52,7 @@ interface OwnState {
   ];
 }
 
-class News extends Component<OwnProps, OwnState> {
+class ExcerptNews extends Component<OwnProps, OwnState> {
   constructor(ownProps: any, ownState: any) {
     super(ownProps, ownState);
     this.state = {
@@ -106,4 +106,4 @@ class News extends Component<OwnProps, OwnState> {
   }
 }
 
-export default News;
+export default ExcerptNews;
