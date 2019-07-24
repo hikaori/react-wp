@@ -33,6 +33,7 @@ import Staff from './Page/About/Staff/Staff';
 import JobList from './Page/About/JobList/JobList';
 import Job from './Page/About/JobList/Job';
 import HelpfulInfo from './Page/HelpfulInfo/HelpfulInfo';
+import Insurance from './Page/HelpfulInfo/Insurance/Insurance';
 import Etransfer from './Page/HelpfulInfo/Etransfer/Etransfer';
 import StudentVisaApply from './Page/HelpfulInfo/StudentVisaApply/StudentVisaApply';
 import WhVisaApply from './Page/HelpfulInfo/WhVisaApply/WhVisaApply';
@@ -83,6 +84,7 @@ export {
   JobList,
   Job,
   HelpfulInfo,
+  Insurance,
   Etransfer,
   StudentVisaApply,
   WhVisaApply,

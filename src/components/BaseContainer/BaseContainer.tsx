@@ -30,6 +30,7 @@ import {
   JobList,
   Job,
   HelpfulInfo,
+  Insurance,
   Etransfer,
   StudentVisaApply,
   WhVisaApply,
@@ -78,6 +79,7 @@ class Container extends Component<RouteComponentProps> {
           <Route exact path="/about/job-list/1" component={Job} />
           <Route exact path="/helpful-info" component={HelpfulInfo} />
           <Route exact path="/helpful-info/e-transfer" component={Etransfer} />
+          <Route exact path="/helpful-info/insurance" component={Insurance} />
           <Route
             exact
             path="/helpful-info/student-visa-apply"
