@@ -40,6 +40,8 @@ import ProgramLogosSection from './Common/ProgramLogosSection';
 import MainServicesSection from './Common/MainServicesSection/MainServicesSection';
 import BiometricsJp from './Page/HelpfulInfo/BiometricsJp/BiometricsJp';
 import BiometricsSea from './Page/HelpfulInfo/BiometricsSea/BiometricsSea';
+import TermsOfService from './Page/TermsOfService/TermsOfService';
+import PrivacyPolicy from './Page/PrivacyPolicy/PrivacyPolicy';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
 import BoxTitleLabelOnTopOfImg from './Common/BoxTitleLabelOnTopOfImg';
 
@@ -86,6 +88,8 @@ export {
   WhVisaApply,
   BiometricsJp,
   BiometricsSea,
+  TermsOfService,
+  PrivacyPolicy,
   ServiceBox,
   BoxTitleLabelOnTopOfImg,
 };

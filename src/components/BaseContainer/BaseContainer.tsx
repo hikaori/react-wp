@@ -35,6 +35,8 @@ import {
   WhVisaApply,
   BiometricsJp,
   BiometricsSea,
+  TermsOfService,
+  PrivacyPolicy,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -96,6 +98,8 @@ class Container extends Component<RouteComponentProps> {
             path="/helpful-info/biometrics-seattle"
             component={BiometricsSea}
           />
+          <Route exact path="/terms-of-service" component={TermsOfService} />
+          <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route path="/404" component={NotFound} />
           <Redirect from="*" to="404" />
         </Switch>

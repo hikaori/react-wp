@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import color from '../../colors';
+import color from '../colors';
 
 const BoxDiv = styled.div`
   h2 {
@@ -40,6 +40,10 @@ const BoxDiv = styled.div`
       padding-top: 1.7rem;
       color: #fff;
     }
+  }
+  & .Policy h3,
+  .PrivacyPolicy h3 {
+    margin-top: 2.5rem;
   }
 `;
 

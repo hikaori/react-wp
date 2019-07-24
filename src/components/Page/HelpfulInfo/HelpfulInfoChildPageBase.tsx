@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { PageBaseLayout, Heading2 } from '../..';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
-import EditorContent from './EditorContent';
+import EditorContent from '../../Common/EditorContent';
 import color from '../../colors';
 
 const MainSection = styled.section`
