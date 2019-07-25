@@ -52,7 +52,7 @@ class ProgramContainer extends Component<OwnProps, OwnState> {
     };
   }
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp/v2/pages/37';
+    let dataURL = 'http://localhost/wp-json/wp/v2/pages/1313';
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

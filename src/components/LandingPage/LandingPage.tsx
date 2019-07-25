@@ -57,8 +57,8 @@ class LandingPage extends Component<OwnProps, OwnState> {
     };
   }
   componentDidMount() {
-    // 5 => wordpressのLanding page id
-    let dataURL = 'http://localhost/wp-json/wp/v2/pages/37';
+    let pageId = '1313';
+    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

@@ -84,7 +84,8 @@ class FooterItem extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp-api-menus/v2/menus/7';
+    let menuId = 9;
+    let dataURL = `http://localhost/wp-json/wp-api-menus/v2/menus/${menuId}`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {
