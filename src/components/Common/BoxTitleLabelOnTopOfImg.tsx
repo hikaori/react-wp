@@ -95,9 +95,9 @@ class BoxTitleLabelOnTopOfImg extends Component<ownProps> {
           </Fragment>
         </TitleDiv>
         <ButtonDiv>
-          <Link to={this.props.buttonLink}>
-            <Button theme={{ main: '23.7rem' }}>{buttonText.more}</Button>
-          </Link>
+          <Button theme={{ main: '23.7rem' }}>
+            <Link to={this.props.buttonLink}>{buttonText.more}</Link>
+          </Button>
         </ButtonDiv>
       </BoxDiv>
     );

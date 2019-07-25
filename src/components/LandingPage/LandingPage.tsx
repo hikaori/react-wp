@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   BasicLayout,
   ExcerptNews,
@@ -97,7 +98,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
           backgroundColor={colors.lightGray}
         >
           <Button theme={{ main: '23.7rem' }}>
-            {buttonText.freeConsulting}
+            <Link to={'/contact'}>{buttonText.freeConsulting}</Link>
           </Button>
         </BottomSection>
       </BasicLayout>

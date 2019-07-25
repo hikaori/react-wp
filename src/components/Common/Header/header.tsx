@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from './Menu';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Logo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import Search from '../../../assets/images/search.svg';
@@ -10,9 +11,12 @@ const Head = styled.div`
   padding-right: 8.3rem;
   padding-left: 8.3rem;
 `;
-const COSLogo = styled.img`
-  max-width: 148.15px;
+const LogoDiv = styled.div`
+  width: 148.15px;
   margin-bottom: 2rem;
+`;
+const COSLogo = styled.img`
+  margin-bottom: 0;
 `;
 const SearchIcon = styled.img`
   max-width: 16px;
@@ -34,7 +38,11 @@ const Header = () => {
   return (
     <Head>
       <FlexBox>
-        <COSLogo src={Logo} className="" alt="logo" />
+        <LogoDiv>
+          <Link to="/">
+            <COSLogo src={Logo} className="" alt="logo" />
+          </Link>
+        </LogoDiv>
         <FlexEnd>
           <Menu />
           <SearchIcon src={Search} className="" alt="search" />

@@ -24,3 +24,30 @@ export const ProgramItemBoxStyle = styled.div`
     theme,
   }) => theme.backImageTabletSize};`}
 `;
+
+export const Title = styled.div`
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1.8rem;
+  font-family: a-otf-midashi-go-mb31-pr6n;
+`;
+export const LogoDiv = styled.div`
+  text-align: end;
+  margin-top: 3.2rem;
+  & img {
+    max-width: 160px;
+    height: 6.4rem;
+    margin-bottom: 0rem;
+  }
+`;
+export const HoikupediaDiv = styled(LogoDiv)`
+  & img {
+    height: 6.4rem;
+    width: auto;
+    max-width: unset;
+    ${media.tablet`height: 3.9rem;`}
+  }
+`;
+export const ButtonLogoDiv = styled.div`
+  margin-top: auto;
+`;

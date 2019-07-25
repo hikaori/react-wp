@@ -43,9 +43,9 @@ class ServiceBox extends Component<OwnProps, OwnState> {
         </ImgDiv>
         {this.props.children}
         <ButtonDiv>
-          <Link to={this.props.link}>
-            <Button>{this.props.buttonText}</Button>
-          </Link>
+          <Button>
+            <Link to={this.props.link}>{this.props.buttonText}</Link>
+          </Button>
         </ButtonDiv>
       </Div>
     );

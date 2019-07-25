@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Heading3 from '../Heading3';
 import { Button } from '../Button';
-import { ProgramItemBoxStyle } from './ProgramItemBoxStyle';
+import {
+  ProgramItemBoxStyle,
+  Title,
+  LogoDiv,
+  HoikupediaDiv,
+  ButtonLogoDiv,
+} from './ProgramItemBoxStyle';
 import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
 import frogLogo from '../../../assets/logo/FrogLogo.svg';
 import nadeshikoLogo from '../../../assets/logo/NadeshikoRyugakuLogo.svg';
@@ -16,37 +22,11 @@ import laptopImg from '../../../assets/images/laptop-code-solid.svg';
 import atlasImg from '../../../assets/images/atlas-solid.svg';
 import { media } from '../../../utile/Helper';
 
-const Title = styled.div`
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-bottom: 1.8rem;
-  font-family: a-otf-midashi-go-mb31-pr6n;
-`;
-const LogoDiv = styled.div`
-  text-align: end;
-  margin-top: 3.2rem;
-  & img {
-    max-width: 160px;
-    height: 6.4rem;
-    margin-bottom: 0rem;
-  }
-`;
-const HoikupediaDiv = styled(LogoDiv)`
-  & img {
-    height: 6.4rem;
-    width: auto;
-    max-width: unset;
-    ${media.tablet`height: 3.9rem;`}
-  }
-`;
-const ButtonLogoDiv = styled.div`
-  margin-top: auto;
-`;
-
 interface OwnProps {
   hedding3: string;
   subTitle: string;
   text: string;
+  link: string;
 }
 
 class ProgramItemBox extends Component<OwnProps> {
@@ -61,21 +41,33 @@ class ProgramItemBox extends Component<OwnProps> {
     if (this.props.hedding3 === 'ホイクペディア') {
       logoDom = (
         <HoikupediaDiv>
-          <img src={imgUrl} alt={this.props.hedding3} />
+          <Link to={this.props.link}>
+            <img src={imgUrl} alt={this.props.hedding3} />
+          </Link>
         </HoikupediaDiv>
       );
     } else {
       logoDom = (
         <LogoDiv>
-          <img src={imgUrl} alt={this.props.hedding3} />
+          <Link to={this.props.link}>
+            <img src={imgUrl} alt={this.props.hedding3} />
+          </Link>
         </LogoDiv>
       );
     }
 
     if (this.props.hedding3 === 'COS Immigration Consulting') {
-      buttonDom = <Button>COS Immigrationの詳細はこちら</Button>;
+      buttonDom = (
+        <Button>
+          <Link to={this.props.link}>COS Immigrationの詳細はこちら</Link>
+        </Button>
+      );
     } else {
-      buttonDom = <Button>{this.props.hedding3}の詳細はこちら</Button>;
+      buttonDom = (
+        <Button>
+          <Link to={this.props.link}>{this.props.hedding3}の詳細はこちら</Link>
+        </Button>
+      );
     }
 
     return (

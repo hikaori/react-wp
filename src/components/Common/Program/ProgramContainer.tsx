@@ -71,11 +71,13 @@ class ProgramContainer extends Component<OwnProps, OwnState> {
             hedding3="ホイクペディア"
             subTitle={data.hoikupediaSubTitle}
             text={data.hoikupediaText}
+            link={'/program/ECE'}
           />
           <ProgramItemBox
             hedding3="Frog"
             subTitle={data.frogSubTitle}
             text={data.frogText}
+            link={'/program/it'}
           />
         </FlexBox>
         <FlexBox style={{ paddingTop: '1.6rem' }}>
@@ -83,18 +85,21 @@ class ProgramContainer extends Component<OwnProps, OwnState> {
             hedding3="ナデシコ留学"
             subTitle={data.nannySubTitle}
             text={data.nadeshikoText}
+            link={'/program/nadeshiko'}
           />
 
           <ProgramItemBox
             hedding3="Nanny From Japan"
             subTitle={data.nannySubTitle}
             text={data.nannyText}
+            link={'/program/nanny'}
           />
 
           <ProgramItemBox
             hedding3="COS Immigration Consulting"
             subTitle={data.immigrationSubTitle}
             text={data.immigrationText}
+            link={'/program/immigration'}
           />
         </FlexBox>
       </Container>
