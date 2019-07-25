@@ -9,7 +9,6 @@ import { Button } from './Common/Button';
 import Heading2 from './Common/Heading2';
 import Heading3 from './Common/Heading3';
 import LandingPage from './LandingPage/LandingPage';
-import Movie from './Movie';
 import NotFound from './NotFound/NotFound';
 import ImagePluTextBox from './Common/imagePluTextBox';
 import ExcerptNews from './LandingPage/ExcerptNews/ExcerptNews';
@@ -59,7 +58,6 @@ export {
   Heading2,
   Heading3,
   LandingPage,
-  Movie,
   NotFound,
   ImagePluTextBox,
   ExcerptNews,

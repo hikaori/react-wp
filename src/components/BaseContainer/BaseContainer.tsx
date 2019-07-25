@@ -9,7 +9,6 @@ import {
 
 import {
   LandingPage,
-  Movie,
   NotFound,
   Program,
   ECE,
@@ -47,7 +46,6 @@ class Container extends Component<RouteComponentProps> {
       <Fragment>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/movie" component={Movie} />
           <Route exact path="/program" component={Program} />
           <Route exact path="/program/ECE" component={ECE} />
           <Route exact path="/program/it" component={IT} />
