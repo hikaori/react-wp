@@ -20,7 +20,6 @@ import babySolidImg from '../../../assets/images/baby-solid.svg';
 import graduationImg from '../../../assets/images/graduation-cap-solid.svg';
 import laptopImg from '../../../assets/images/laptop-code-solid.svg';
 import atlasImg from '../../../assets/images/atlas-solid.svg';
-import { media } from '../../../utile/Helper';
 
 interface OwnProps {
   hedding3: string;
