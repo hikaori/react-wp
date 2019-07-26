@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import color from '../../colors';
 import { Heading2 } from '../..';
 import { media } from '../../../utile/Helper';
+import { LinkHandle } from '../../';
 
 const NewsContainer = styled.div`
   padding: 8.4rem 0rem 8rem;
@@ -98,7 +98,7 @@ class ExcerptNews extends Component<OwnProps, OwnState> {
           ))}
 
           <More>
-            <Link to={'/'}>一覧を見る</Link>
+            <LinkHandle to={'/news'}>一覧を見る</LinkHandle>
           </More>
         </NewsBox>
       </NewsContainer>

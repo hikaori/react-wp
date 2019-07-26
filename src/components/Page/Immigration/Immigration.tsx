@@ -9,13 +9,13 @@ import {
   Heading3,
   ImagePluTextBox,
   Button,
+  LinkHandle,
 } from '../..';
 import ImmigrationStepsSection from './ImmigrationStepsSection';
 import COSImmigrationLogoJp from '../../../assets/logo/COSImmigrationConsultingJp.svg';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import colors from '../../colors';
-import { Link } from 'react-router-dom';
 
 const PriceDiv = styled.div`
   margin-top: 80px;
@@ -143,14 +143,14 @@ class Immigration extends Component<OwnProps, OwnState> {
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
           <FlexDiv>
             <div className="buttonL">
-              <Link to={data.ButtonUrl1}>
+              <LinkHandle to={data.ButtonUrl1}>
                 <Button theme={{ main: '100%' }}>{data.ButtonText1}</Button>
-              </Link>
+              </LinkHandle>
             </div>
             <div className="buttonR">
-              <Link to={data.ButtonUrl2}>
+              <LinkHandle to={data.ButtonUrl2}>
                 <Button theme={{ main: '100%' }}>{data.ButtonText2}</Button>
-              </Link>
+              </LinkHandle>
             </div>
           </FlexDiv>
         </PageDescription>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-import { BasicLayout, BottomSection, Button } from '../';
+import { BasicLayout, BottomSection, Button, LinkHandle } from '../';
 import Heading1 from './Heading1';
 import color from '../colors';
 import { media } from '../../utile/Helper';
@@ -60,7 +59,7 @@ class PageBaseLayout extends Component<ownProps, ownState> {
         </FVDiv>
         <BreadcrumbDiv>
           <span>
-            <Link to={''}>ホーム</Link>
+            <LinkHandle to={'/'}>ホーム</LinkHandle>
           </span>
           {` `}
           <span>></span>
@@ -77,7 +76,9 @@ class PageBaseLayout extends Component<ownProps, ownState> {
             theme={{ main: this.props.bottomButtonSize }}
             className={this.props.bottomButtonClass}
           >
-            <Link to={'/'}>{this.props.bottomButtonText}</Link>
+            <LinkHandle to={'/contact'}>
+              {this.props.bottomButtonText}
+            </LinkHandle>
           </Button>
         </BottomSection>
       </BasicLayout>

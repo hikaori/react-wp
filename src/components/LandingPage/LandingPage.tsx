@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {
   BasicLayout,
   ExcerptNews,
   ProgramContainer,
   Button,
   BottomSection,
+  LinkHandle,
 } from '../';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
@@ -98,7 +98,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
           backgroundColor={colors.lightGray}
         >
           <Button theme={{ main: '23.7rem' }}>
-            <Link to={'/contact'}>{buttonText.freeConsulting}</Link>
+            <LinkHandle to={'/contact'}>{buttonText.freeConsulting}</LinkHandle>
           </Button>
         </BottomSection>
       </BasicLayout>

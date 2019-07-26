@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Heading3, Button } from '../..';
+import { Heading3, Button, LinkHandle } from '../..';
 import { media } from '../../../utile/Helper';
-import { Link } from 'react-router-dom';
 
 const BoxDiv = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor};
@@ -44,7 +43,9 @@ class HelpfulInfoItemBox extends Component<ownProps> {
         <div dangerouslySetInnerHTML={{ __html: this.props.text }} />
         <ButtonDiv>
           <Button theme={{ main: '100%' }}>
-            <Link to={this.props.link}>{this.props.buttonText}</Link>
+            <LinkHandle to={this.props.link}>
+              {this.props.buttonText}
+            </LinkHandle>
           </Button>
         </ButtonDiv>
       </BoxDiv>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Button } from '../../..';
+import { Button, LinkHandle } from '../../..';
 import fonts from '../../../fonts';
 const BoxDiv = styled.div`
   width: 80%;
@@ -41,7 +40,7 @@ class JobList extends Component<OwnProps, OwnState> {
         <TextDiv dangerouslySetInnerHTML={{ __html: this.props.excerpt }} />
         <ButtonDiv>
           <Button theme={{ main: '23.7rem' }}>
-            <Link to={linkUrl}>詳しくはこちら</Link>
+            <LinkHandle to={linkUrl}>詳しくはこちら</LinkHandle>
           </Button>
         </ButtonDiv>
       </BoxDiv>

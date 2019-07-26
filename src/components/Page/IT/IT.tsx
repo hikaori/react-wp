@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
@@ -11,6 +10,7 @@ import {
   ImagePluTextBox,
   MainServicesSection,
   Button,
+  LinkHandle,
 } from '../..';
 import { serviceDom } from '../../Common/MainServicesSection/CreateServiceDom';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
@@ -186,11 +186,11 @@ class IT extends Component<OwnProps, OwnState> {
               dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }}
             />
             <ButtonDiv>
-              <Link to={data.programFeatureButtonUrl3}>
-                <Button theme={{ main: '32.7rem' }}>
+              <Button theme={{ main: '32.7rem' }}>
+                <LinkHandle to={data.programFeatureButtonUrl3}>
                   {data.serviceButtonText3}
-                </Button>
-              </Link>
+                </LinkHandle>
+              </Button>
             </ButtonDiv>
           </div>
         </ImagePluTextBox>

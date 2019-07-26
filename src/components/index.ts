@@ -45,6 +45,7 @@ import PrivacyPolicy from './Page/PrivacyPolicy/PrivacyPolicy';
 import Contact from './Page/Contact/Contact';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
 import BoxTitleLabelOnTopOfImg from './Common/BoxTitleLabelOnTopOfImg';
+import LinkHandle from '../utile/LinkHandle';
 
 export {
   BaseContainer,
@@ -94,4 +95,5 @@ export {
   Contact,
   ServiceBox,
   BoxTitleLabelOnTopOfImg,
+  LinkHandle,
 };

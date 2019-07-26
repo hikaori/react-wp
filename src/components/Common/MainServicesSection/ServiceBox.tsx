@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-import { Heading3, Button } from '../../';
+import { Heading3, Button, LinkHandle } from '../../';
 import { media } from '../../../utile/Helper';
 
 const Div = styled.div`
@@ -44,7 +43,9 @@ class ServiceBox extends Component<OwnProps, OwnState> {
         {this.props.children}
         <ButtonDiv>
           <Button>
-            <Link to={this.props.link}>{this.props.buttonText}</Link>
+            <LinkHandle to={this.props.link}>
+              {this.props.buttonText}
+            </LinkHandle>
           </Button>
         </ButtonDiv>
       </Div>

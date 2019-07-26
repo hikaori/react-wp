@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
+import { LinkHandle } from '../../';
 import MobileSubMenu from './MobileSubMenu';
 
 interface OwnProps {}
@@ -39,7 +39,7 @@ class MobileMenu extends Component<OwnProps, OwnState> {
         <ul id="">
           {menus.map((item, index) => (
             <li key={index}>
-              <Link to={item.url}>{item.title}</Link>
+              <LinkHandle to={item.url}>{item.title}</LinkHandle>
               {item.children && <MobileSubMenu subMenus={item.children} />}
             </li>
           ))}

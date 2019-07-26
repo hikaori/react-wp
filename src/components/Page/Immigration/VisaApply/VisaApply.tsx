@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { PageBaseLayout, ImagePluTextBox, Button } from '../../..';
+import { PageBaseLayout, ImagePluTextBox, Button, LinkHandle } from '../../..';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
-import { Link } from 'react-router-dom';
 import ProgramBox from './ProgramBox';
 import { media } from '../../../../utile/Helper';
 
@@ -159,11 +158,11 @@ class VisaApply extends Component<OwnProps, OwnState> {
         >
           <div dangerouslySetInnerHTML={{ __html: data.pageDescriptionText }} />
           <ButtonDiv>
-            <Link to={data.pageDescriptionButtonUrl}>
+            <LinkHandle to={data.pageDescriptionButtonUrl}>
               <Button theme={{ main: '23.7rem' }}>
                 {data.pageDescriptionButtonText}
               </Button>
-            </Link>
+            </LinkHandle>
           </ButtonDiv>
         </ImagePluTextBox>
         <ProgramBox

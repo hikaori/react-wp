@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import { Button } from '../';
+import { Button, LinkHandle } from '../';
 import { buttonText } from '../../constants/buttonText';
 import font from '../fonts';
 import { media } from '../../utile/Helper';
@@ -96,7 +95,9 @@ class BoxTitleLabelOnTopOfImg extends Component<ownProps> {
         </TitleDiv>
         <ButtonDiv>
           <Button theme={{ main: '23.7rem' }}>
-            <Link to={this.props.buttonLink}>{buttonText.more}</Link>
+            <LinkHandle to={this.props.buttonLink}>
+              {buttonText.more}
+            </LinkHandle>
           </Button>
         </ButtonDiv>
       </BoxDiv>

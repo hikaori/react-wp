@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import color from '../../colors';
+
+import { LinkHandle } from '../../';
 
 const MenuSection = styled.ul`
   display: flex;
@@ -85,12 +86,12 @@ class Menu extends Component<OwnProps, OwnState> {
       <MenuSection className="font14">
         {menus.map((item, index) => (
           <MenuParent key={index}>
-            <Link to={item.url}>{item.title}</Link>
+            <LinkHandle to={item.url}>{item.title}</LinkHandle>
             <MenuSubSection className="active">
               {item.children &&
                 item.children.map(subitem => (
                   <MenuSub key={subitem.title}>
-                    <Link to={subitem.url}>{subitem.title}</Link>
+                    <LinkHandle to={subitem.url}>{subitem.title}</LinkHandle>
                   </MenuSub>
                 ))}
             </MenuSubSection>

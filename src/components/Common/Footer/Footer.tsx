@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import color from '../../colors';
 import FooterItem from './FooterItem';
 import { media } from '../../../utile/Helper';
+import { LinkHandle } from '../../';
 
 const FooterBox = styled.footer`
   background-color: ${color.footerBackGroudn};
@@ -87,7 +87,7 @@ class Footer extends Component<OwnProps, OwnState> {
           >
             {menus.map((item, index) => (
               <OtherItem key={index}>
-                <Link to={'/'}>{item.title}</Link>
+                <LinkHandle to={'/'}>{item.title}</LinkHandle>
               </OtherItem>
             ))}
           </FlexBox>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-import { Heading3 } from '../../..';
+import { Heading3, LinkHandle } from '../../..';
 import font from '../../../fonts';
 
 const BoxDiv = styled.div`
@@ -61,7 +60,7 @@ class ItemBox extends Component<OwnProps, OwnState> {
         <TextDiv>{this.props.enrollment}</TextDiv>
         <TitleDiv>費用</TitleDiv>
         <TextDiv className="link">
-          <Link to={this.props.link}>詳しくはこちら</Link>
+          <LinkHandle to={this.props.link}>詳しくはこちら</LinkHandle>
         </TextDiv>
       </BoxDiv>
     );

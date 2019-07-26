@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AddCircleOutline, RemoveCircleOutline } from 'styled-icons/material';
+
+import { LinkHandle } from '../../';
 
 const MenuBox = styled.div``;
 const MenuBoxUl = styled.ul`
@@ -57,7 +58,7 @@ class FooterProgramMobile extends Component<OwnProps, OwnState> {
         {this.props.menu.children &&
           this.props.menu.children.map(subitem => (
             <li key={subitem.title}>
-              <Link to={subitem.url}>{subitem.title}</Link>
+              <LinkHandle to={subitem.url}>{subitem.title}</LinkHandle>
             </li>
           ))}
       </MenuBoxUl>
@@ -73,7 +74,9 @@ class FooterProgramMobile extends Component<OwnProps, OwnState> {
           }}
         >
           <li>
-            <Link to={this.props.menu.url}>{this.props.menu.title}</Link>
+            <LinkHandle to={this.props.menu.url}>
+              {this.props.menu.title}
+            </LinkHandle>
 
             {this.state.isCliked ? (
               <Fragment>

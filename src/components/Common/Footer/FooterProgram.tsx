@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { LinkHandle } from '../../';
 
 const MenuBox = styled.div`
   margin: 0 2%;
@@ -43,7 +44,9 @@ class FooterProgram extends Component<OwnProps, OwnState> {
           }}
         >
           <li>
-            <Link to={this.props.menu.url}>{this.props.menu.title}</Link>
+            <LinkHandle to={this.props.menu.url}>
+              {this.props.menu.title}
+            </LinkHandle>
             <MenuBoxUl
               theme={{
                 fontFamily: 'a-otf-gothic-bbb-pr6n',
@@ -53,7 +56,7 @@ class FooterProgram extends Component<OwnProps, OwnState> {
               {this.props.menu.children &&
                 this.props.menu.children.map(subitem => (
                   <li key={subitem.title}>
-                    <Link to={subitem.url}>{subitem.title}</Link>
+                    <LinkHandle to={subitem.url}>{subitem.title}</LinkHandle>
                   </li>
                 ))}
             </MenuBoxUl>
