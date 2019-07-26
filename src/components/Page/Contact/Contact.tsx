@@ -60,6 +60,7 @@ class Contact extends Component<OwnProps, OwnState> {
         bottomSectionColor={color.lightGray}
         bottomButtonText={buttonText.line}
         bottomButtonSize={'23.7rem'}
+        bottomButtonClass={'line-button'}
       >
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />

@@ -15,6 +15,7 @@ interface ownProps {
   bottomSectionColor: string;
   bottomButtonText: string;
   bottomButtonSize: string;
+  bottomButtonClass?: string;
 }
 interface ownState {}
 const FVDiv = styled.div`
@@ -74,7 +75,7 @@ class PageBaseLayout extends Component<ownProps, ownState> {
         >
           <Button
             theme={{ main: this.props.bottomButtonSize }}
-            className="bottom-button"
+            className={this.props.bottomButtonClass}
           >
             <Link to={'/'}>{this.props.bottomButtonText}</Link>
           </Button>

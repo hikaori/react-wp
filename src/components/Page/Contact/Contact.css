@@ -1,6 +1,6 @@
-.bottom-button {
+.line-button {
   background: radial-gradient(#59d413, #00cc00);
 }
-.bottom-button:hover {
+.line-button:hover {
   background: radial-gradient(#00cc00, #59d413);
 }
