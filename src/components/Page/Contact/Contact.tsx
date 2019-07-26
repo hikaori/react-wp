@@ -5,6 +5,7 @@ import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import { FormDiv } from './ContactStyle';
 import color from '../../colors';
+import './Contact.css';
 
 interface OwnProps {}
 interface OwnState {
@@ -55,9 +56,9 @@ class Contact extends Component<OwnProps, OwnState> {
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}
-        bottomSectionText={BottomSectionText.pattern1}
+        bottomSectionText={BottomSectionText.pattern2}
         bottomSectionColor={color.lightGray}
-        bottomButtonText={buttonText.freeConsulting}
+        bottomButtonText={buttonText.line}
         bottomButtonSize={'23.7rem'}
       >
         <PageDescription>
