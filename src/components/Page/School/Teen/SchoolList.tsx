@@ -61,7 +61,8 @@ class SchoolList extends Component<OwnProps, OwnState> {
   }
   componentDidMount() {
     let typeName = 'teen_school';
-    let serviceDataURL = `http://localhost/wp-json/wp/v2/${typeName}`;
+    let postNum = 13;
+    let serviceDataURL = `http://localhost/wp-json/wp/v2/${typeName}?per_page=${postNum}`;
     fetch(serviceDataURL)
       .then(res => res.json())
       .then(res => {

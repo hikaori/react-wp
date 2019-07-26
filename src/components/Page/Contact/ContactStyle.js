@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import color from '../../colors';
+import { media } from '../../../utile/Helper';
 
 export const FormDiv = styled.div`
   width: 50%;
+  ${media.tablet`width: 100%;`}
   margin: 0 auto;
   input {
     border-style: none;
@@ -14,9 +16,13 @@ export const FormDiv = styled.div`
     background: ${color.red};
     display: inline-block;
     margin-bottom: 1rem;
+    margin-left: 1rem;
     font-size: 0.8rem;
     color: #fff;
     font-weight: bold;
+  }
+  .wpcf7-list-item {
+    margin-right: 1rem;
   }
   .wpcf7-textarea {
     width: 100%;

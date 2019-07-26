@@ -115,7 +115,8 @@ class IT extends Component<OwnProps, OwnState> {
           data: res,
         });
       });
-    let serviceDataURL = 'http://localhost/wp-json/wp/v2/services/';
+    let postNum = 19;
+    let serviceDataURL = `http://localhost/wp-json/wp/v2/services/?per_page=${postNum}`;
     fetch(serviceDataURL)
       .then(res => res.json())
       .then(res => {
