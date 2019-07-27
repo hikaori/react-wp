@@ -7,7 +7,7 @@ interface OwnState {}
 
 class PrivacyPolicy extends Component<OwnProps, OwnState> {
   render() {
-    return <HelpfulInfoChildPageBase pageID={1283} />;
+    return <HelpfulInfoChildPageBase pageID={1323} />;
   }
 }
 export default PrivacyPolicy;

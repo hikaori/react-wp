@@ -87,7 +87,7 @@ class Footer extends Component<OwnProps, OwnState> {
           >
             {menus.map((item, index) => (
               <OtherItem key={index}>
-                <LinkHandle to={'/'}>{item.title}</LinkHandle>
+                <LinkHandle to={item.url}>{item.title}</LinkHandle>
               </OtherItem>
             ))}
           </FlexBox>
