@@ -9,7 +9,7 @@ import {
   ImagePluTextBox,
   MainServicesSection,
 } from '../..';
-import { serviceDom } from '../../Common/MainServicesSection/CreateServiceDom';
+import CreateServiceDom from '../../Common/MainServicesSection/CreateServiceDom';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import NadeshikoRyugakuLogo from '../../../assets/logo/NadeshikoRyugakuLogo.svg';
 import { Titles } from '../../../constants/Titles';
@@ -119,13 +119,7 @@ class Nadeshiko extends Component<OwnProps, OwnState> {
     let data = this.state.data.acf;
     let title = this.state.data.title;
     let servicesData = this.state.servicesData;
-    const categoryNum: number = 10;
-    let eceServicesData = servicesData.filter(x =>
-      x.service_category.includes(categoryNum),
-    );
-    let orderedEceServicesData = eceServicesData.sort(function(a, b) {
-      return Number(a.acf.service_order) < Number(b.acf.service_order) ? -1 : 1;
-    });
+    const categoryNum: number = 5;
 
     return (
       <PageBaseLayout
@@ -171,16 +165,10 @@ class Nadeshiko extends Component<OwnProps, OwnState> {
           <div dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }} />
         </ImagePluTextBox>
         <MainServicesSection h2={Titles.mainService}>
-          {orderedEceServicesData.map((x, index) =>
-            serviceDom(
-              index,
-              x.acf.serviceTitle,
-              x.acf.serviceText,
-              x.acf.serviceImg.url,
-              x.acf.serviceButtonText,
-              x.acf.serviceButtonUrl,
-            ),
-          )}
+          <CreateServiceDom
+            servicesData={servicesData}
+            categoryNum={categoryNum}
+          />
         </MainServicesSection>
       </PageBaseLayout>
     );
