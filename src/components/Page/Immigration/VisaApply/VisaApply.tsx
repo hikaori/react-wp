@@ -158,11 +158,11 @@ class VisaApply extends Component<OwnProps, OwnState> {
         >
           <div dangerouslySetInnerHTML={{ __html: data.pageDescriptionText }} />
           <ButtonDiv>
-            <LinkHandle to={data.pageDescriptionButtonUrl}>
-              <Button theme={{ main: '23.7rem' }}>
+            <Button theme={{ main: '23.7rem' }}>
+              <LinkHandle to={data.pageDescriptionButtonUrl}>
                 {data.pageDescriptionButtonText}
-              </Button>
-            </LinkHandle>
+              </LinkHandle>
+            </Button>
           </ButtonDiv>
         </ImagePluTextBox>
         <ProgramBox

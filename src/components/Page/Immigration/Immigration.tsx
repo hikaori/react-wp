@@ -142,16 +142,12 @@ class Immigration extends Component<OwnProps, OwnState> {
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
           <FlexDiv>
-            <div className="buttonL">
-              <LinkHandle to={data.ButtonUrl1}>
-                <Button theme={{ main: '100%' }}>{data.ButtonText1}</Button>
-              </LinkHandle>
-            </div>
-            <div className="buttonR">
-              <LinkHandle to={data.ButtonUrl2}>
-                <Button theme={{ main: '100%' }}>{data.ButtonText2}</Button>
-              </LinkHandle>
-            </div>
+            <Button theme={{ main: '100%' }} className="buttonL">
+              <LinkHandle to={data.ButtonUrl1}>{data.ButtonText1}</LinkHandle>
+            </Button>
+            <Button theme={{ main: '100%' }} className="buttonR">
+              <LinkHandle to={data.ButtonUrl2}>{data.ButtonText2}</LinkHandle>
+            </Button>
           </FlexDiv>
         </PageDescription>
         <ProgramLogosSection logo1={COSImmigrationLogoJp} logo2={''} />
