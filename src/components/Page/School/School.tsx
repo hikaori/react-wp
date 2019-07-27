@@ -18,6 +18,21 @@ interface OwnState {
       programColor1: string;
       programImg1: string;
       programLink1: string;
+      programTitle2: string;
+      programSubtitle2: string;
+      programColor2: string;
+      programImg2: string;
+      programLink2: string;
+      programTitle3: string;
+      programSubtitle3: string;
+      programColor3: string;
+      programImg3: string;
+      programLink3: string;
+      programTitle4: string;
+      programSubtitle4: string;
+      programColor4: string;
+      programImg4: string;
+      programLink4: string;
     };
   };
 }
@@ -37,6 +52,21 @@ class School extends Component<OwnProps, OwnState> {
           programColor1: '',
           programImg1: '',
           programLink1: '',
+          programTitle2: '',
+          programSubtitle2: '',
+          programColor2: '',
+          programImg2: '',
+          programLink2: '',
+          programTitle3: '',
+          programSubtitle3: '',
+          programColor3: '',
+          programImg3: '',
+          programLink3: '',
+          programTitle4: '',
+          programSubtitle4: '',
+          programColor4: '',
+          programImg4: '',
+          programLink4: '',
         },
       },
     };
