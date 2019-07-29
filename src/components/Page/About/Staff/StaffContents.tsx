@@ -50,7 +50,8 @@ class StaffContents extends Component<ownProps, ownState> {
   }
   componentDidMount() {
     let typeName = 'staff';
-    let DataURL = `http://localhost/wp-json/wp/v2/${typeName}/`;
+    let postsNum = 16;
+    let DataURL = `http://localhost/wp-json/wp/v2/${typeName}//?per_page=${postsNum}`;
     fetch(DataURL)
       .then(res => res.json())
       .then(res => {
@@ -127,8 +128,8 @@ class StaffContents extends Component<ownProps, ownState> {
 
   render() {
     let staffData = this.state.staffData;
-    const categoryNumOfVancouver: number = 10;
-    const categoryNumOfJapan: number = 11;
+    const categoryNumOfVancouver: number = 7;
+    const categoryNumOfJapan: number = 8;
 
     return (
       <Fragment>
