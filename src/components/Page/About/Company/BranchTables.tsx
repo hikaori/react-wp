@@ -8,10 +8,12 @@ import { media } from '../../../../utile/Helper';
 const TableBox = styled.div`
   h3 {
     width: 65.5%;
+    ${media.tablet`width: 100%;`};
     margin: 0 auto 25px;
   }
   .tablepress {
     width: 65.5%;
+    ${media.tablet`width: 100%;`};
     margin: 0 auto;
   }
   .tablepress td {
