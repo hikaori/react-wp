@@ -12,6 +12,7 @@ const DescriptionDiv = styled.div`
 
 const FlexDiv = styled.div`
   display: flex;
+  justify-content: center;
   ${media.tablet`
   flex-direction: column;
   align-items: center;

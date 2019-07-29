@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import { Heading2 } from '../../';
 import font from '../../fonts';
 import { media } from '../../../utile/Helper';
+import color from '../../colors';
 
 const BoxDiv = styled.div`
-  .parent:last-child {
-    color: red;
-  }
+  background-color: ${color.lightGray};
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  padding: 8rem 8.3rem;
+  ${media.tablet`padding: 8rem 1.6rem;`}
 `;
 
 const TableDiv = styled.div`
