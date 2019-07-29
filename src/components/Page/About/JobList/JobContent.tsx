@@ -8,13 +8,11 @@ const BoxDiv = styled.div`
   align-content: center;
   margin: 0 auto;
   padding-bottom: 32px;
-  border-bottom: 1px solid gray;
   margin-bottom: 32px;
 `;
 
 const ButtonDiv = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  text-align: center;
 `;
 const TitleDiv = styled.div`
   font-family: ${fonts.jpMedium};

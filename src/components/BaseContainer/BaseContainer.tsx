@@ -75,7 +75,7 @@ class Container extends Component<RouteComponentProps> {
           <Route exact path="/about/company" component={Company} />
           <Route exact path="/about/staff" component={Staff} />
           <Route exact path="/about/job-list" component={JobList} />
-          <Route exact path="/about/job-list/1" component={Job} />
+          <Route exact path="/about/job-list/:id" component={Job} />
           <Route exact path="/helpful-info" component={HelpfulInfo} />
           <Route exact path="/helpful-info/e-transfer" component={Etransfer} />
           <Route exact path="/helpful-info/insurance" component={Insurance} />

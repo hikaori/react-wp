@@ -33,7 +33,7 @@ interface OwnState {}
 
 class JobList extends Component<OwnProps, OwnState> {
   render() {
-    const linkUrl = `http://localhost/job/${this.props.id}`;
+    const linkUrl = `/about/job-list/${this.props.id}`;
     return (
       <BoxDiv>
         <TitleDiv>{this.props.title}</TitleDiv>
