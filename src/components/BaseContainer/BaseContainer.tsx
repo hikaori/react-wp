@@ -9,6 +9,8 @@ import {
 
 import {
   LandingPage,
+  NewsList,
+  News,
   NotFound,
   Program,
   ECE,
@@ -46,6 +48,8 @@ class Container extends Component<RouteComponentProps> {
       <Fragment>
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route exact path="/news-list" component={NewsList} />
+          <Route exact path="/news-list/:id" component={News} />
           <Route exact path="/program" component={Program} />
           <Route exact path="/program/ECE" component={ECE} />
           <Route exact path="/program/it" component={IT} />

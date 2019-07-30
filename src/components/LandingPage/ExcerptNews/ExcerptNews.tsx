@@ -98,7 +98,7 @@ class ExcerptNews extends Component<OwnProps, OwnState> {
           ))}
 
           <More>
-            <LinkHandle to={'/news'}>一覧を見る</LinkHandle>
+            <LinkHandle to={'/news-list'}>一覧を見る</LinkHandle>
           </More>
         </NewsBox>
       </NewsContainer>
