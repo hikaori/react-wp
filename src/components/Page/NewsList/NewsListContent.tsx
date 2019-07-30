@@ -11,13 +11,19 @@ const BoxDiv = styled.div`
   border-bottom: 1px solid gray;
   margin-bottom: 32px;
 `;
+const FlexDiv = styled.div`
+  display: flex;
+`;
 
 const TitleDiv = styled.div`
   font-family: ${fonts.jpMedium};
   font-size: 1.6rem;
 `;
 const TextDiv = styled.div`
-  margin: 24px auto;
+  padding-left: 5.8rem;
+  p {
+    margin-bottom: 0;
+  }
 `;
 
 interface OwnProps {
@@ -30,11 +36,18 @@ interface OwnState {}
 class NewsListContent extends Component<OwnProps, OwnState> {
   render() {
     const linkUrl = `/news-list/${this.props.id}`;
+    const T_POSITION = this.props.modifiedDate.indexOf('T');
+    const DATE = this.props.modifiedDate
+      .substr(0, T_POSITION)
+      .replace(/-/g, '/');
+    console.log(DATE);
     return (
       <BoxDiv>
         <LinkHandle to={linkUrl}>
-          <TitleDiv>{this.props.modifiedDate}</TitleDiv>
-          <TextDiv dangerouslySetInnerHTML={{ __html: this.props.excerpt }} />
+          <FlexDiv>
+            <TitleDiv>{DATE}</TitleDiv>
+            <TextDiv dangerouslySetInnerHTML={{ __html: this.props.excerpt }} />
+          </FlexDiv>
         </LinkHandle>
       </BoxDiv>
     );
