@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Heading2, BoxTitleLabelOnTopOfImg, LinkHandle } from '../..';
+import { Heading2, BoxTitleLabelOnTopOfImg } from '../..';
 import color from '../../colors';
 import { media } from '../../../utile/Helper';
 

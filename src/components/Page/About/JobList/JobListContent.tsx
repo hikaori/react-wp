@@ -31,7 +31,7 @@ interface OwnProps {
 }
 interface OwnState {}
 
-class JobList extends Component<OwnProps, OwnState> {
+class JobListContent extends Component<OwnProps, OwnState> {
   render() {
     const linkUrl = `/about/job-list/${this.props.id}`;
     return (
@@ -47,4 +47,4 @@ class JobList extends Component<OwnProps, OwnState> {
     );
   }
 }
-export default JobList;
+export default JobListContent;

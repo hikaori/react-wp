@@ -94,7 +94,6 @@ class SchoolList extends Component<OwnProps, OwnState> {
     let orderedData = data.sort(function(a, b) {
       return Number(a.acf.displayNumber) < Number(b.acf.displayNumber) ? -1 : 1;
     });
-    console.log(orderedData);
 
     return (
       <BoxDiv>

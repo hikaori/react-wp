@@ -59,7 +59,8 @@ class JobList extends Component<OwnProps, OwnState> {
         });
       });
     let typeName = 'job';
-    let jobDataURL = `http://localhost/wp-json/wp/v2/${typeName}`;
+    let postsNum = 12;
+    let jobDataURL = `http://localhost/wp-json/wp/v2/${typeName}/?per_page=${postsNum}`;
     fetch(jobDataURL)
       .then(res => res.json())
       .then(res => {

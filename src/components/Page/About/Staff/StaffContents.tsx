@@ -51,7 +51,7 @@ class StaffContents extends Component<ownProps, ownState> {
   componentDidMount() {
     let typeName = 'staff';
     let postsNum = 16;
-    let DataURL = `http://localhost/wp-json/wp/v2/${typeName}//?per_page=${postsNum}`;
+    let DataURL = `http://localhost/wp-json/wp/v2/${typeName}/?per_page=${postsNum}`;
     fetch(DataURL)
       .then(res => res.json())
       .then(res => {
