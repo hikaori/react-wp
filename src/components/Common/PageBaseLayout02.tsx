@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { BasicLayout, BottomSection, Button, LinkHandle } from '..';
@@ -60,7 +60,7 @@ class PageBaseLayout02 extends Component<ownProps, ownState> {
     let tempUrl = '';
     treeErements.map((x, index) => {
       tempUrl += `/${x.url}`;
-      returnDom.push(
+      return returnDom.push(
         <div key={index} className="bread-item">
           <LinkHandle to={tempUrl}>{x.breadText}</LinkHandle>
           <span className="bread-arrow">
