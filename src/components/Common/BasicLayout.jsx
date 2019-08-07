@@ -22,6 +22,10 @@ const LayoutBox = styled.div`
 `;
 
 class BasicLayout extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <Fragment>
