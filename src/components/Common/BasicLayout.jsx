@@ -16,7 +16,7 @@ const LayoutBox = styled.div`
   padding-top: 0;
   ${media.tablet`padding: 88px 1.6rem 0rem;`}
   & main{
-    max-width: 1366px;
+    max-width: 1200px;
     margin: auto;
   }
 `;

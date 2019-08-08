@@ -15,6 +15,7 @@ import { ImagePluTextBox } from '../';
 import { BottomSectionText } from '../../constants/BottomSectionText';
 import { buttonText } from '../../constants/buttonText';
 import colors from '../colors';
+import { media } from '../../utile/Helper';
 
 interface OwnProps {}
 interface OwnState {
@@ -31,6 +32,19 @@ const HeroBox = styled.div`
   position: relative;
   margin-left: calc(((100vw - 100%) / 2) * -1);
   margin-right: calc(((100vw - 100%) / 2) * -1);
+  .player-box {
+    overflow: hidden;
+  }
+  .player-box video {
+    ${media.phone`
+    height: 100vh !important;
+    width: auto !important;
+    position: relative;
+    left: 50%;
+    // 通常は画像の半分だが、動画内のコンテンツに合わせて微調整
+    margin-left: -450px;
+    `}
+  }
 `;
 
 const HeroText = styled.div`
@@ -80,6 +94,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
             muted={true}
             width="100%"
             height="100%"
+            className="player-box"
           />
           <HeroText dangerouslySetInnerHTML={{ __html: data.herotext }} />
         </HeroBox>
