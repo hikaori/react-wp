@@ -5,6 +5,7 @@ import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import StaffContents from './StaffContents';
 import color from '../../../colors';
+import { getData } from '../../../../utile/PageApi';
 
 type Data = {
   title: { rendered: string };
@@ -41,47 +42,14 @@ class Staff extends Component<OwnProps, OwnState> {
     };
   }
 
-  createApiUrl(pageId: number | string) {
-    let BASEURL = `http://localhost/wp-json/wp/v2/pages/`;
-    return `${BASEURL}${pageId}`;
-  }
-
-  async getData(pageId: string | number) {
-    let tempParentId = 0;
-    let dataUrl = this.createApiUrl(pageId);
-    let responseData = await fetch(dataUrl);
-    const returnData: Data = (await responseData.json()) as Data;
-
-    await this.setState({
-      data: returnData,
-      breadTreeElements: this.state.breadTreeElements.concat({
-        breadText: returnData.title.rendered,
-        url: returnData.slug,
-      }),
-    });
-    // パンくずの作成
-    tempParentId = returnData.parent;
-    while (tempParentId !== 0) {
-      tempParentId = 0;
-      let dataUrl = this.createApiUrl(this.state.data.parent);
-      let responseData = await fetch(dataUrl);
-      let data = (await responseData.json()) as Data;
-      await this.setState({
-        breadTreeElements: this.state.breadTreeElements.concat({
-          breadText: data.title.rendered,
-          url: data.slug,
-        }),
-      });
-      tempParentId = data.parent;
-    }
-    let reverseBreadData = this.state.breadTreeElements.reverse();
-    await this.setState({
-      breadTreeElements: reverseBreadData,
-    });
-  }
-
   componentDidMount() {
-    this.getData(1091);
+    // getData(1091);
+    console.log('didmount');
+    getData(1091).then(state => {
+      console.log(state);
+      this.setState(state);
+    });
+    // this.getData(1091);
   }
 
   render() {
