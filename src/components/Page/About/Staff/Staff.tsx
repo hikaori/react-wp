@@ -5,9 +5,9 @@ import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import StaffContents from './StaffContents';
 import color from '../../../colors';
-import { getData } from '../../../../utile/PageApi';
+import { getData, BreadTreeElement } from '../../../../utile/PageApi';
 
-type Data = {
+type PageDataType = {
   title: { rendered: string };
   acf: {
     fv1200_400: string;
@@ -20,8 +20,8 @@ type Data = {
 
 interface OwnProps {}
 interface OwnState {
-  data: Data;
-  breadTreeElements: { breadText: string; url: string }[];
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class Staff extends Component<OwnProps, OwnState> {
@@ -43,13 +43,9 @@ class Staff extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    // getData(1091);
-    console.log('didmount');
-    getData(1091).then(state => {
-      console.log(state);
+    getData<PageDataType>(1091).then(state => {
       this.setState(state);
     });
-    // this.getData(1091);
   }
 
   render() {

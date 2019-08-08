@@ -9,17 +9,29 @@ type Data = {
   parent: number;
 };
 
+export interface BreadTreeElement {
+  breadText: string;
+  url: string;
+}
+
+interface GetElement<D> {
+  data: D;
+  breadTreeElements: BreadTreeElement[];
+}
+
 function createApiUrl(pageId: string | number): string {
   let BASEURL = `http://localhost/wp-json/wp/v2/pages/`;
   return `${BASEURL}${pageId}`;
 }
 
-export async function getData(pageId: string | number) {
+export async function getData<T>(
+  pageId: string | number,
+): Promise<GetElement<T>> {
   let tempParentId = 0;
-  let breadTreeElements: any = [];
+  let breadTreeElements: BreadTreeElement[] = [];
   let dataUrl = createApiUrl(pageId);
   let responseData = await fetch(dataUrl);
-  const data: any = (await responseData.json()) as any;
+  const data = (await responseData.json()) as any;
   breadTreeElements.push({
     breadText: data.title.rendered,
     url: data.slug,
@@ -29,7 +41,7 @@ export async function getData(pageId: string | number) {
   while (tempParentId !== 0) {
     let dataUrl = createApiUrl(tempParentId);
     let responseData = await fetch(dataUrl);
-    const tempReturnData: any = (await responseData.json()) as any;
+    const tempReturnData = (await responseData.json()) as any;
     breadTreeElements.push({
       breadText: tempReturnData.title.rendered,
       url: tempReturnData.slug,
@@ -37,5 +49,5 @@ export async function getData(pageId: string | number) {
     tempParentId = tempReturnData.parent;
   }
 
-  return { data, breadTreeElements };
+  return { data, breadTreeElements } as GetElement<T>;
 }

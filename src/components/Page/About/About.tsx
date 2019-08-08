@@ -1,40 +1,47 @@
 import React, { Component } from 'react';
 
+import PageBaseLayout02 from '../../Common/PageBaseLayout02';
 import { PageBaseLayout, PageDescription } from '../..';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import color from '../../colors';
 import AboutCOSContents from './AboutCOSContents';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
+
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    title1: string;
+    description: string;
+    img: string;
+    title2: string;
+    boxTitle1: string;
+    boxSubtitle1: string;
+    BoxColor1: string;
+    boxImg1: string;
+    boxLink1: string;
+    boxTitle2: string;
+    boxSubtitle2: string;
+    BoxColor2: string;
+    boxImg2: string;
+    boxLink2: string;
+    boxTitle3: string;
+    boxSubtitle3: string;
+    BoxColor3: string;
+    boxImg3: string;
+    boxLink3: string;
+  };
+  slug: string;
+  parent: number;
+};
 
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      title1: string;
-      description: string;
-      img: string;
-      title2: string;
-      boxTitle1: string;
-      boxSubtitle1: string;
-      BoxColor1: string;
-      boxImg1: string;
-      boxLink1: string;
-      boxTitle2: string;
-      boxSubtitle2: string;
-      BoxColor2: string;
-      boxImg2: string;
-      boxLink2: string;
-      boxTitle3: string;
-      boxSubtitle3: string;
-      BoxColor3: string;
-      boxImg3: string;
-      boxLink3: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class AboutCOS extends Component<OwnProps, OwnState> {
@@ -67,19 +74,17 @@ class AboutCOS extends Component<OwnProps, OwnState> {
           boxImg3: '',
           boxLink3: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
+
   componentDidMount() {
-    let pageId = 1026;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    getData<PageDataType>(1026).then(state => {
+      this.setState(state);
+    });
   }
 
   render() {
@@ -87,7 +92,8 @@ class AboutCOS extends Component<OwnProps, OwnState> {
     let title = this.state.data.title;
 
     return (
-      <PageBaseLayout
+      <PageBaseLayout02
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}
@@ -126,7 +132,7 @@ class AboutCOS extends Component<OwnProps, OwnState> {
             link: data.boxLink3,
           }}
         />
-      </PageBaseLayout>
+      </PageBaseLayout02>
     );
   }
 }
