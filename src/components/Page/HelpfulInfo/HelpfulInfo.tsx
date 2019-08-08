@@ -1,65 +1,70 @@
 import React, { Component } from 'react';
 
 import { PageBaseLayout } from '../..';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import HelpfulInfoContent from '../HelpfulInfo/HelpfulInfoContent';
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    ourServiceApply1Title: string;
+    ourServiceApply1Text: string;
+    ourServiceApply1Img: string;
+    ourServiceApply1ButtonText: string;
+    ourServiceApply1ButtonLink: string;
+    ourServiceApply2Title: string;
+    ourServiceApply2Text: string;
+    ourServiceApply2Img: string;
+    ourServiceApply2ButtonText: string;
+    ourServiceApply2ButtonLink: string;
+    ourServiceApply3Title: string;
+    ourServiceApply3Img: string;
+    ourServiceApply3Text: string;
+    ourServiceApply3ButtonText: string;
+    ourServiceApply3ButtonLink: string;
+    LifeUsefulInfoApply1Title: string;
+    LifeUsefulInfoApply1Img: string;
+    LifeUsefulInfoApply1Text: string;
+    LifeUsefulInfoApply1ButtonText: string;
+    LifeUsefulInfoApply1ButtonLink: string;
+    LifeUsefulInfoApply2Title: string;
+    LifeUsefulInfoApply2Img: string;
+    LifeUsefulInfoApply2Text: string;
+    LifeUsefulInfoApply2ButtonText: string;
+    LifeUsefulInfoApply2ButtonLink: string;
+    visaApply1Title: string;
+    visaApply1Img: string;
+    visaApply1Text: string;
+    visaApply1ButtonText: string;
+    visaApply1ButtonLink: string;
+    visaApply2Title: string;
+    visaApply2Img: string;
+    visaApply2Text: string;
+    visaApply2ButtonText: string;
+    visaApply2ButtonLink: string;
+    visaApply3Title: string;
+    visaApply3Text: string;
+    visaApply3Img: string;
+    visaApply3ButtonText: string;
+    visaApply3ButtonLink: string;
+    visaApply4Title: string;
+    visaApply4Img: string;
+    visaApply4Text: string;
+    visaApply4ButtonText: string;
+    visaApply4ButtonLink: string;
+  };
+  slug: string;
+  parent: number;
+};
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      ourServiceApply1Title: string;
-      ourServiceApply1Text: string;
-      ourServiceApply1Img: string;
-      ourServiceApply1ButtonText: string;
-      ourServiceApply1ButtonLink: string;
-      ourServiceApply2Title: string;
-      ourServiceApply2Text: string;
-      ourServiceApply2Img: string;
-      ourServiceApply2ButtonText: string;
-      ourServiceApply2ButtonLink: string;
-      ourServiceApply3Title: string;
-      ourServiceApply3Img: string;
-      ourServiceApply3Text: string;
-      ourServiceApply3ButtonText: string;
-      ourServiceApply3ButtonLink: string;
-      LifeUsefulInfoApply1Title: string;
-      LifeUsefulInfoApply1Img: string;
-      LifeUsefulInfoApply1Text: string;
-      LifeUsefulInfoApply1ButtonText: string;
-      LifeUsefulInfoApply1ButtonLink: string;
-      LifeUsefulInfoApply2Title: string;
-      LifeUsefulInfoApply2Img: string;
-      LifeUsefulInfoApply2Text: string;
-      LifeUsefulInfoApply2ButtonText: string;
-      LifeUsefulInfoApply2ButtonLink: string;
-      visaApply1Title: string;
-      visaApply1Img: string;
-      visaApply1Text: string;
-      visaApply1ButtonText: string;
-      visaApply1ButtonLink: string;
-      visaApply2Title: string;
-      visaApply2Img: string;
-      visaApply2Text: string;
-      visaApply2ButtonText: string;
-      visaApply2ButtonLink: string;
-      visaApply3Title: string;
-      visaApply3Text: string;
-      visaApply3Img: string;
-      visaApply3ButtonText: string;
-      visaApply3ButtonLink: string;
-      visaApply4Title: string;
-      visaApply4Img: string;
-      visaApply4Text: string;
-      visaApply4ButtonText: string;
-      visaApply4ButtonLink: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class HelpfulInfo extends Component<OwnProps, OwnState> {
@@ -118,19 +123,21 @@ class HelpfulInfo extends Component<OwnProps, OwnState> {
           visaApply4ButtonText: '',
           visaApply4ButtonLink: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = 1187;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -212,6 +219,7 @@ class HelpfulInfo extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

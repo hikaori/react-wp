@@ -1,21 +1,27 @@
 import React, { Component, Fragment } from 'react';
 
 import { PageBaseLayout, PageDescription } from '../../..';
+import { getData, BreadTreeElement } from '../../../../utile/PageApi';
 import SchoolList from './SchoolList';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import { buttonText } from '../../../../constants/buttonText';
 import colors from '../../../colors';
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class Teen extends Component<OwnProps, OwnState> {
@@ -29,20 +35,20 @@ class Teen extends Component<OwnProps, OwnState> {
           subtitle: '',
           pageDescription: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
 
+  async createData() {
+    let pageId = 770;
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
   componentDidMount() {
-    let pageID = 770;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageID}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    this.createData();
   }
 
   render() {
@@ -51,6 +57,7 @@ class Teen extends Component<OwnProps, OwnState> {
     return (
       <Fragment>
         <PageBaseLayout
+          BreadTreeElements={this.state.breadTreeElements}
           imgURL={data.fv1200_400}
           title={title}
           subTitle={data.subtitle}

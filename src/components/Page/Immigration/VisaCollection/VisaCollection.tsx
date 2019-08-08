@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { PageBaseLayout, PageDescription } from '../../..';
+import { getData, BreadTreeElement } from '../../../../utile/PageApi';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import colors from '../../../colors';
@@ -28,40 +29,44 @@ const CollectionDiv = styled.div`
   `}
 `;
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    visaTitle: string;
+    visaTitle1: string;
+    visaText1: string;
+    visaTitle2: string;
+    visaText2: string;
+    visaTitle3: string;
+    visaText3: string;
+    permitTitle: string;
+    permitTitle1: string;
+    permitText1: string;
+    permitTitle2: string;
+    permitText2: string;
+    permitTitle3: string;
+    permitText3: string;
+    permitTitle4: string;
+    permitText4: string;
+    permitTitle5: string;
+    permitText5: string;
+    permitTitle6: string;
+    permitText6: string;
+    permitTitle7: string;
+    permitText7: string;
+    permitTitle8: string;
+    permitText8: string;
+  };
+  slug: string;
+  parent: number;
+};
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      visaTitle: string;
-      visaTitle1: string;
-      visaText1: string;
-      visaTitle2: string;
-      visaText2: string;
-      visaTitle3: string;
-      visaText3: string;
-      permitTitle: string;
-      permitTitle1: string;
-      permitText1: string;
-      permitTitle2: string;
-      permitText2: string;
-      permitTitle3: string;
-      permitText3: string;
-      permitTitle4: string;
-      permitText4: string;
-      permitTitle5: string;
-      permitText5: string;
-      permitTitle6: string;
-      permitText6: string;
-      permitTitle7: string;
-      permitText7: string;
-      permitTitle8: string;
-      permitText8: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class VisaCollection extends Component<OwnProps, OwnState> {
@@ -99,19 +104,20 @@ class VisaCollection extends Component<OwnProps, OwnState> {
           permitTitle8: '',
           permitText8: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = 589;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -161,6 +167,7 @@ class VisaCollection extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

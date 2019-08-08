@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { PageBaseLayout, ImagePluTextBox, Button, LinkHandle } from '../../..';
+import { getData, BreadTreeElement } from '../../../../utile/PageApi';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import ProgramBox from './ProgramBox';
@@ -14,40 +15,45 @@ const ButtonDiv = styled.div`
   }
 `;
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    pageDescriptionImg: string;
+    pageDescriptionText: string;
+    pageDescriptionButtonUrl: string;
+    pageDescriptionButtonText: string;
+    skilledWorkerDescription: string;
+    skilledWorkerTarget: string[];
+    skilledWorkerApplyCondition: string;
+    skilledWorkerEmployerCondition: string;
+    skilledWorkerCaution: string;
+    internationalGraduateTarget: string[];
+    internationalGraduateDescription: string;
+    internationalGraduateApplyCondition: string;
+    internationalGraduateEmployerCondition: string;
+    internationalGraduate: string;
+    pilotProgramDescription: string;
+    pilotProgramPoints: string;
+    CECTarget: string[];
+    CECDescription: string;
+    CECApplyCondition: string;
+    CECCaution: string;
+    FSWTarget: string[];
+    FSWDescription: string;
+    FSWApplyCondition: string;
+    FSWCaution: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      pageDescriptionImg: string;
-      pageDescriptionText: string;
-      pageDescriptionButtonUrl: string;
-      pageDescriptionButtonText: string;
-      skilledWorkerDescription: string;
-      skilledWorkerTarget: string[];
-      skilledWorkerApplyCondition: string;
-      skilledWorkerEmployerCondition: string;
-      skilledWorkerCaution: string;
-      internationalGraduateTarget: string[];
-      internationalGraduateDescription: string;
-      internationalGraduateApplyCondition: string;
-      internationalGraduateEmployerCondition: string;
-      internationalGraduate: string;
-      pilotProgramDescription: string;
-      pilotProgramPoints: string;
-      CECTarget: string[];
-      CECDescription: string;
-      CECApplyCondition: string;
-      CECCaution: string;
-      FSWTarget: string[];
-      FSWDescription: string;
-      FSWApplyCondition: string;
-      FSWCaution: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class VisaApply extends Component<OwnProps, OwnState> {
@@ -85,7 +91,10 @@ class VisaApply extends Component<OwnProps, OwnState> {
           FSWApplyCondition: '',
           FSWCaution: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
   createSkilledWorkerData = (data: any) => {
@@ -124,16 +133,15 @@ class VisaApply extends Component<OwnProps, OwnState> {
       caution: data.FSWCaution,
     };
   };
-  componentDidMount() {
+
+  async createData() {
     let pageId = 640;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -142,6 +150,7 @@ class VisaApply extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title}
         subTitle={data.subtitle}

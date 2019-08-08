@@ -1,67 +1,73 @@
 import React, { Component } from 'react';
 
 import { PageBaseLayout, PageDescription } from '../..';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import Support from './Support';
 import color from '../../colors';
 import Price from './Price';
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    service1Title: string;
+    service1Step1Title: string;
+    service1Step1Text: string;
+    service1Step1Img: string;
+    service1Step2Title: string;
+    service1Step2Text: string;
+    service1Step2Img: string;
+    service1Step3Title: string;
+    service1Step3Text: string;
+    service1Step3Img: string;
+    service1Step4Title: string;
+    service1Step4Text: string;
+    service1Step4Img: string;
+    service2Title: string;
+    service2Step1Title: string;
+    service2Step1Text: string;
+    service2Step1Img: string;
+    service2Step2Title: string;
+    service2Step2Text: string;
+    service2Step2Img: string;
+    service2Step3Title: string;
+    service2Step3Text: string;
+    service2Step3Img: string;
+    service2Step4Title: string;
+    service2Step4Text: string;
+    service2Step4Img: string;
+    service3Title: string;
+    service3Step1Title: string;
+    service3Step1Text: string;
+    service3Step1Img: string;
+    service3Step2Title: string;
+    service3Step2Text: string;
+    service3Step2Img: string;
+    service3Step3Title: string;
+    service3Step3Text: string;
+    service3Step3Img: string;
+    service1Description: string;
+    service1Color: string;
+    service2Description: string;
+    service2Color: string;
+    service3Description: string;
+    service3Color: string;
+    servicePriceTitle: string;
+    servicePriceDescription: string;
+    servicePriceTableShortCode: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      service1Title: string;
-      service1Step1Title: string;
-      service1Step1Text: string;
-      service1Step1Img: string;
-      service1Step2Title: string;
-      service1Step2Text: string;
-      service1Step2Img: string;
-      service1Step3Title: string;
-      service1Step3Text: string;
-      service1Step3Img: string;
-      service1Step4Title: string;
-      service1Step4Text: string;
-      service1Step4Img: string;
-      service2Title: string;
-      service2Step1Title: string;
-      service2Step1Text: string;
-      service2Step1Img: string;
-      service2Step2Title: string;
-      service2Step2Text: string;
-      service2Step2Img: string;
-      service2Step3Title: string;
-      service2Step3Text: string;
-      service2Step3Img: string;
-      service2Step4Title: string;
-      service2Step4Text: string;
-      service2Step4Img: string;
-      service3Title: string;
-      service3Step1Title: string;
-      service3Step1Text: string;
-      service3Step1Img: string;
-      service3Step2Title: string;
-      service3Step2Text: string;
-      service3Step2Img: string;
-      service3Step3Title: string;
-      service3Step3Text: string;
-      service3Step3Img: string;
-      service1Description: string;
-      service1Color: string;
-      service2Description: string;
-      service2Color: string;
-      service3Description: string;
-      service3Color: string;
-      servicePriceTitle: string;
-      servicePriceDescription: string;
-      servicePriceTableShortCode: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class ServicePrice extends Component<OwnProps, OwnState> {
@@ -120,19 +126,21 @@ class ServicePrice extends Component<OwnProps, OwnState> {
           servicePriceDescription: '',
           servicePriceTableShortCode: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = 876;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -141,6 +149,7 @@ class ServicePrice extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

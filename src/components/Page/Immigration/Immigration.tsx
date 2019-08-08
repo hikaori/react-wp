@@ -11,6 +11,7 @@ import {
   Button,
   LinkHandle,
 } from '../..';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import ImmigrationStepsSection from './ImmigrationStepsSection';
 import COSImmigrationLogoJp from '../../../assets/logo/COSImmigrationConsultingJp.svg';
 import { buttonText } from '../../../constants/buttonText';
@@ -35,42 +36,47 @@ const FlexDiv = styled.div`
   }
 `;
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    ButtonText1: string;
+    ButtonUrl1: string;
+    ButtonText2: string;
+    ButtonUrl2: string;
+    programTitle: string;
+    programText: string;
+    programFeatureTitle1: string;
+    programFeatureTitle2: string;
+    programFeatureTitle3: string;
+    programFeatureText1: string;
+    programFeatureText2: string;
+    programFeatureText3: string;
+    programFeatureImg1: string;
+    programFeatureImg2: string;
+    programFeatureImg3: string;
+    stepTitle: string;
+    step1Title: string;
+    step1Img: string;
+    step2Title: string;
+    step2Img: string;
+    step3Title: string;
+    step3Img: string;
+    step4Title: string;
+    step4Img: string;
+    priceTitle: string;
+    priceTable: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      ButtonText1: string;
-      ButtonUrl1: string;
-      ButtonText2: string;
-      ButtonUrl2: string;
-      programTitle: string;
-      programText: string;
-      programFeatureTitle1: string;
-      programFeatureTitle2: string;
-      programFeatureTitle3: string;
-      programFeatureText1: string;
-      programFeatureText2: string;
-      programFeatureText3: string;
-      programFeatureImg1: string;
-      programFeatureImg2: string;
-      programFeatureImg3: string;
-      stepTitle: string;
-      step1Title: string;
-      step1Img: string;
-      step2Title: string;
-      step2Img: string;
-      step3Title: string;
-      step3Img: string;
-      step4Title: string;
-      step4Img: string;
-      priceTitle: string;
-      priceTable: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class Immigration extends Component<OwnProps, OwnState> {
@@ -110,19 +116,20 @@ class Immigration extends Component<OwnProps, OwnState> {
           priceTitle: '',
           priceTable: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = 462;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -131,6 +138,7 @@ class Immigration extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

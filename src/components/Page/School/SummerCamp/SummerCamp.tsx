@@ -1,52 +1,58 @@
 import React, { Component } from 'react';
 
+import { getData, BreadTreeElement } from '../../../../utile/PageApi';
 import { PageBaseLayout, PageDescription } from '../../..';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import SummerCampSection from './SummerCampSection';
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    summercampDescriptionTitle: string;
+    summercampDescriptionImg: string;
+    summercampDescriptionText: string;
+    summercampProgram1Title: string;
+    summercampProgram1Table: string;
+    summercampProgram1Img1: string;
+    summercampProgram1Img2: string;
+    summercampProgram1Img3: string;
+    summercampProgram2Title: string;
+    summercampProgram2Table: string;
+    summercampProgram2Img1: string;
+    summercampProgram2Img2: string;
+    summercampProgram2Img3: string;
+    summercampProgram2Img4: string;
+    summercampProgram3Title: string;
+    summercampProgram3Table: string;
+    summercampProgram3Img1: string;
+    summercampProgram3Img2: string;
+    summercampProgram3Img3: string;
+    summercampProgram3Img4: string;
+    summercampProgram4Title: string;
+    summercampProgram4Table: string;
+    summercampProgram4Img1: string;
+    summercampProgram4Img2: string;
+    summercampProgram4Img3: string;
+    summercampProgram4Img4: string;
+    summercampProgram5Title: string;
+    summercampProgram5Table: string;
+    summercampProgram5Img1: string;
+    summercampProgram5Img2: string;
+    summercampProgram5Img3: string;
+    summercampProgram5Img4: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      summercampDescriptionTitle: string;
-      summercampDescriptionImg: string;
-      summercampDescriptionText: string;
-      summercampProgram1Title: string;
-      summercampProgram1Table: string;
-      summercampProgram1Img1: string;
-      summercampProgram1Img2: string;
-      summercampProgram1Img3: string;
-      summercampProgram2Title: string;
-      summercampProgram2Table: string;
-      summercampProgram2Img1: string;
-      summercampProgram2Img2: string;
-      summercampProgram2Img3: string;
-      summercampProgram2Img4: string;
-      summercampProgram3Title: string;
-      summercampProgram3Table: string;
-      summercampProgram3Img1: string;
-      summercampProgram3Img2: string;
-      summercampProgram3Img3: string;
-      summercampProgram3Img4: string;
-      summercampProgram4Title: string;
-      summercampProgram4Table: string;
-      summercampProgram4Img1: string;
-      summercampProgram4Img2: string;
-      summercampProgram4Img3: string;
-      summercampProgram4Img4: string;
-      summercampProgram5Title: string;
-      summercampProgram5Table: string;
-      summercampProgram5Img1: string;
-      summercampProgram5Img2: string;
-      summercampProgram5Img3: string;
-      summercampProgram5Img4: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class SummerCamp extends Component<OwnProps, OwnState> {
@@ -92,20 +98,20 @@ class SummerCamp extends Component<OwnProps, OwnState> {
           summercampProgram5Img3: '',
           summercampProgram5Img4: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
 
-  componentDidMount() {
+  async createData() {
     let pageId = 848;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -114,6 +120,7 @@ class SummerCamp extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

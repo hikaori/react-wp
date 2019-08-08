@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import PageBaseLayout02 from '../../Common/PageBaseLayout02';
 import { PageBaseLayout, PageDescription } from '../..';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
@@ -92,7 +91,7 @@ class About extends Component<OwnProps, OwnState> {
     let title = this.state.data.title;
 
     return (
-      <PageBaseLayout02
+      <PageBaseLayout
         BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
@@ -132,7 +131,7 @@ class About extends Component<OwnProps, OwnState> {
             link: data.boxLink3,
           }}
         />
-      </PageBaseLayout02>
+      </PageBaseLayout>
     );
   }
 }

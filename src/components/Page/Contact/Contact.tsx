@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 
 import { PageBaseLayout, PageDescription } from '../..';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import { FormDiv } from './ContactStyle';
 import color from '../../colors';
 import './Contact.css';
 
+type PageDateType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    formId: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      formId: string;
-    };
-  };
+  data: PageDateType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class Contact extends Component<OwnProps, OwnState> {
@@ -32,19 +38,20 @@ class Contact extends Component<OwnProps, OwnState> {
           pageDescription: '',
           formId: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async create() {
     let pageId = 1339;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDateType>(pageId);
+    this.setState(state);
+  }
+  componentDidMount() {
+    this.create();
   }
 
   render() {
@@ -53,6 +60,7 @@ class Contact extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

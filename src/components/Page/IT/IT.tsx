@@ -12,6 +12,7 @@ import {
   Button,
   LinkHandle,
 } from '../..';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import CreateServiceDom from '../../Common/MainServicesSection/CreateServiceDom';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import FrogLogoHorizontal from '../../../assets/logo/FrogLogoHorizontal.svg';
@@ -27,29 +28,33 @@ const DescriptionDiv = styled.div`
   ${media.tablet`margin-bottom: 8.2rem;`}
 `;
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    programTitle: string;
+    programText: string;
+    programFeatureTitle1: string;
+    programFeatureTitle2: string;
+    programFeatureTitle3: string;
+    programFeatureText1: string;
+    programFeatureText2: string;
+    programFeatureText3: string;
+    programFeatureImg1: string;
+    programFeatureImg2: string;
+    programFeatureImg3: string;
+    serviceButtonText3: string;
+    programFeatureButtonUrl3: string;
+  };
+  slug: string;
+  parent: number;
+};
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      programTitle: string;
-      programText: string;
-      programFeatureTitle1: string;
-      programFeatureTitle2: string;
-      programFeatureTitle3: string;
-      programFeatureText1: string;
-      programFeatureText2: string;
-      programFeatureText3: string;
-      programFeatureImg1: string;
-      programFeatureImg2: string;
-      programFeatureImg3: string;
-      serviceButtonText3: string;
-      programFeatureButtonUrl3: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
   servicesData: [
     {
       service_category: [number];
@@ -89,7 +94,10 @@ class IT extends Component<OwnProps, OwnState> {
           serviceButtonText3: '',
           programFeatureButtonUrl3: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
       servicesData: [
         {
           service_category: [0],
@@ -105,16 +113,15 @@ class IT extends Component<OwnProps, OwnState> {
       ],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = 327;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    this.createData();
     let postNum = 19;
     let serviceDataURL = `http://localhost/wp-json/wp/v2/services/?per_page=${postNum}`;
     fetch(serviceDataURL)
@@ -134,6 +141,7 @@ class IT extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

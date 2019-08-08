@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { PageBaseLayout, Heading2 } from '../..';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import EditorContent from '../../Common/EditorContent';
@@ -11,19 +12,24 @@ const MainSection = styled.section`
   padding: 8rem 0;
 `;
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    contents: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {
   pageID: number;
 }
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      contents: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class Etransfer extends Component<OwnProps, OwnState> {
@@ -38,19 +44,21 @@ class Etransfer extends Component<OwnProps, OwnState> {
           pageDescription: '',
           contents: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = this.props.pageID;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -59,6 +67,7 @@ class Etransfer extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PageBaseLayout02 from '../../../Common/PageBaseLayout02';
+import { PageBaseLayout } from '../../../';
 import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import StaffContents from './StaffContents';
@@ -43,7 +43,8 @@ class Staff extends Component<OwnProps, OwnState> {
   }
 
   async createData() {
-    const state = await getData<PageDataType>(1091);
+    let pageId = 1091;
+    const state = await getData<PageDataType>(pageId);
     this.setState(state);
   }
   componentDidMount() {
@@ -55,7 +56,7 @@ class Staff extends Component<OwnProps, OwnState> {
     let title = this.state.data.title;
 
     return (
-      <PageBaseLayout02
+      <PageBaseLayout
         BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
@@ -66,7 +67,7 @@ class Staff extends Component<OwnProps, OwnState> {
         bottomButtonSize={'23.7rem'}
       >
         <StaffContents />
-      </PageBaseLayout02>
+      </PageBaseLayout>
     );
   }
 }

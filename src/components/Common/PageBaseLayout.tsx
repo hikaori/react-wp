@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { BasicLayout, BottomSection, Button, LinkHandle } from '../';
+import { BasicLayout, BottomSection, Button, LinkHandle } from '..';
 import Heading1 from './Heading1';
 import color from '../colors';
 import { media } from '../../utile/Helper';
 
 interface ownProps {
+  BreadTreeElements: { breadText: string; url: string }[];
   title: string;
   subTitle: string;
   imgURL: string;
@@ -43,8 +44,37 @@ const BreadcrumbDiv = styled.div`
   & a {
     display: inline-block;
   }
+  &.flex {
+    display: flex;
+  }
+  .bread-item {
+    margin-right: 0.8rem;
+  }
+  .bread-item:last-child .bread-arrow {
+    display: none;
+  }
 `;
 class PageBaseLayout extends Component<ownProps, ownState> {
+  createBreadTreeDom = (
+    breadTreeElements: { breadText: string; url: string }[],
+  ) => {
+    const returnDom: JSX.Element[] = [];
+    let tempUrl = '';
+    breadTreeElements.map((x, index) => {
+      tempUrl += `/${x.url}`;
+
+      return returnDom.push(
+        <div key={index} className="bread-item">
+          <LinkHandle to={tempUrl}>{x.breadText}</LinkHandle>
+          <span className="bread-arrow">
+            {` `}>{` `}
+          </span>
+        </div>,
+      );
+    });
+    return returnDom;
+  };
+
   render() {
     return (
       <BasicLayout>
@@ -57,14 +87,15 @@ class PageBaseLayout extends Component<ownProps, ownState> {
             <img src={this.props.imgURL} alt={this.props.title} />
           </ImgDiv>
         </FVDiv>
-        <BreadcrumbDiv>
-          <span>
+        <BreadcrumbDiv className="flex">
+          <div className="bread-item">
             <LinkHandle to={'/'}>ホーム</LinkHandle>
-          </span>
-          {` `}
-          <span>></span>
-          {` `}
-          <span>{this.props.title}</span>
+            <span className="bread-arrow">
+              {` `}>{` `}
+            </span>
+          </div>
+
+          {this.createBreadTreeDom(this.props.BreadTreeElements)}
         </BreadcrumbDiv>
 
         {this.props.children}

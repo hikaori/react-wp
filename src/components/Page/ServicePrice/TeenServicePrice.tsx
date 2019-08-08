@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import { PageBaseLayout, PageDescription } from '../..';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import TeenContents from './TeenContents';
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    serviceTitle: string;
+    serviceText: string;
+    servicePriceTableShortCode: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      serviceTitle: string;
-      serviceText: string;
-      servicePriceTableShortCode: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class TeenServicePrice extends Component<OwnProps, OwnState> {
@@ -34,19 +40,21 @@ class TeenServicePrice extends Component<OwnProps, OwnState> {
           serviceText: '',
           servicePriceTableShortCode: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = 878;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -55,6 +63,7 @@ class TeenServicePrice extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}

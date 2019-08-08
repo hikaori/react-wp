@@ -1,34 +1,40 @@
 import React, { Component, Fragment } from 'react';
 
 import { PageBaseLayout, PageDescription, ProgramContainer } from '../..';
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import { buttonText } from '../../../constants/buttonText';
 import StepBox from './StepsSection';
 import colors from '../../colors';
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    stepTitle: string;
+    step1Title: string;
+    step1color: string;
+    step1Text: string;
+    step1Img: { url: string };
+    step2Title: string;
+    step2color: string;
+    step2Text: string;
+    step2Img: { url: string };
+    step3Title: string;
+    step3color: string;
+    step3Text: string;
+    step3Img: { url: string };
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      stepTitle: string;
-      step1Title: string;
-      step1color: string;
-      step1Text: string;
-      step1Img: { url: string };
-      step2Title: string;
-      step2color: string;
-      step2Text: string;
-      step2Img: { url: string };
-      step3Title: string;
-      step3color: string;
-      step3Text: string;
-      step3Img: { url: string };
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class Program extends Component<OwnProps, OwnState> {
@@ -55,19 +61,21 @@ class Program extends Component<OwnProps, OwnState> {
           step3Text: '',
           step3Img: { url: '' },
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
 
+  async createData() {
+    let pageId = 236;
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp/v2/pages/236';
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    this.createData();
   }
 
   render() {
@@ -76,6 +84,7 @@ class Program extends Component<OwnProps, OwnState> {
     return (
       <Fragment>
         <PageBaseLayout
+          BreadTreeElements={this.state.breadTreeElements}
           imgURL={data.fv1200_400}
           title={title}
           subTitle={data.subtitle}

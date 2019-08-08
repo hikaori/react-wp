@@ -1,40 +1,45 @@
 import React, { Component } from 'react';
-
+import { getData, BreadTreeElement } from '../../../utile/PageApi';
 import { PageBaseLayout, PageDescription } from '../..';
 import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import SchoolProgramBox from './SchoolProgramBox';
 
+type PageDataType = {
+  title: { rendered: string };
+  acf: {
+    fv1200_400: string;
+    subtitle: string;
+    pageDescription: string;
+    programTitle1: string;
+    programSubtitle1: string;
+    programColor1: string;
+    programImg1: string;
+    programLink1: string;
+    programTitle2: string;
+    programSubtitle2: string;
+    programColor2: string;
+    programImg2: string;
+    programLink2: string;
+    programTitle3: string;
+    programSubtitle3: string;
+    programColor3: string;
+    programImg3: string;
+    programLink3: string;
+    programTitle4: string;
+    programSubtitle4: string;
+    programColor4: string;
+    programImg4: string;
+    programLink4: string;
+  };
+  slug: string;
+  parent: number;
+};
+
 interface OwnProps {}
 interface OwnState {
-  data: {
-    title: { rendered: string };
-    acf: {
-      fv1200_400: string;
-      subtitle: string;
-      pageDescription: string;
-      programTitle1: string;
-      programSubtitle1: string;
-      programColor1: string;
-      programImg1: string;
-      programLink1: string;
-      programTitle2: string;
-      programSubtitle2: string;
-      programColor2: string;
-      programImg2: string;
-      programLink2: string;
-      programTitle3: string;
-      programSubtitle3: string;
-      programColor3: string;
-      programImg3: string;
-      programLink3: string;
-      programTitle4: string;
-      programSubtitle4: string;
-      programColor4: string;
-      programImg4: string;
-      programLink4: string;
-    };
-  };
+  data: PageDataType;
+  breadTreeElements: BreadTreeElement[];
 }
 
 class School extends Component<OwnProps, OwnState> {
@@ -68,19 +73,21 @@ class School extends Component<OwnProps, OwnState> {
           programImg4: '',
           programLink4: '',
         },
+        slug: '',
+        parent: 0,
       },
+      breadTreeElements: [],
     };
   }
-  componentDidMount() {
+
+  async createData() {
     let pageId = 689;
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
-    fetch(dataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          data: res,
-        });
-      });
+    const state = await getData<PageDataType>(pageId);
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    this.createData();
   }
 
   render() {
@@ -89,6 +96,7 @@ class School extends Component<OwnProps, OwnState> {
 
     return (
       <PageBaseLayout
+        BreadTreeElements={this.state.breadTreeElements}
         imgURL={data.fv1200_400}
         title={title.rendered}
         subTitle={data.subtitle}
