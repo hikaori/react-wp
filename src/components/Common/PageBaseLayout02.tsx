@@ -55,10 +55,12 @@ const BreadcrumbDiv = styled.div`
   }
 `;
 class PageBaseLayout02 extends Component<ownProps, ownState> {
-  createBreadTreeDom = (treeErements: { breadText: string; url: string }[]) => {
+  createBreadTreeDom = (
+    breadTreeElements: { breadText: string; url: string }[],
+  ) => {
     const returnDom: JSX.Element[] = [];
     let tempUrl = '';
-    treeErements.map((x, index) => {
+    breadTreeElements.map((x, index) => {
       tempUrl += `/${x.url}`;
       return returnDom.push(
         <div key={index} className="bread-item">

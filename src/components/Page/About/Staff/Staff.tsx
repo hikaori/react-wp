@@ -42,10 +42,12 @@ class Staff extends Component<OwnProps, OwnState> {
     };
   }
 
+  async createData() {
+    const state = await getData<PageDataType>(1091);
+    this.setState(state);
+  }
   componentDidMount() {
-    getData<PageDataType>(1091).then(state => {
-      this.setState(state);
-    });
+    this.createData();
   }
 
   render() {

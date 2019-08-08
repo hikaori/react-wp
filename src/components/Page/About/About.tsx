@@ -44,7 +44,7 @@ interface OwnState {
   breadTreeElements: BreadTreeElement[];
 }
 
-class AboutCOS extends Component<OwnProps, OwnState> {
+class About extends Component<OwnProps, OwnState> {
   constructor(ownProps: any, ownState: any) {
     super(ownProps, ownState);
     this.state = {
@@ -136,4 +136,4 @@ class AboutCOS extends Component<OwnProps, OwnState> {
     );
   }
 }
-export default AboutCOS;
+export default About;

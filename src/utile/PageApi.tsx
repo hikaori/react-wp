@@ -1,14 +1,3 @@
-type Data = {
-  title: { rendered: string };
-  acf: {
-    fv1200_400: string;
-    subtitle: string;
-    pageDescription: string;
-  };
-  slug: string;
-  parent: number;
-};
-
 export interface BreadTreeElement {
   breadText: string;
   url: string;
@@ -48,6 +37,7 @@ export async function getData<T>(
     });
     tempParentId = tempReturnData.parent;
   }
-
-  return { data, breadTreeElements } as GetElement<T>;
+  breadTreeElements.reverse();
+  const state = (await { data, breadTreeElements }) as GetElement<T>;
+  return state;
 }
