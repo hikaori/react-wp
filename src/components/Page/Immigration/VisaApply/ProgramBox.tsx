@@ -47,7 +47,7 @@ const SectionDive = styled.div`
   .red-bullet ul::before,
   .red-bullet li::before {
     content: '• ';
-    color: #e8282b;
+    color: ${colors.red};
   }
 `;
 
