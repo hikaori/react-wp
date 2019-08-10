@@ -55,13 +55,13 @@ const FooterCompanyInfo = () => {
       <div>
         日本電話番号:
         <span>
-          <a hlef="tel:052-718-5169"> 052-718-5169</a>
+          <a href="tel:052-718-5169">052-718-5169</a>
         </span>
       </div>
       <div>
         TEL:
         <span>
-          <a hlef="+1 (604) 262-6447"> +1 (604) 262-6447</a>
+          <a href="+1 (604) 262-6447"> +1 (604) 262-6447</a>
         </span>
       </div>
     </CompanyContainter>

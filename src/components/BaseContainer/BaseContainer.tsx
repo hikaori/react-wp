@@ -40,6 +40,8 @@ import {
   Contact,
   TermsOfService,
   PrivacyPolicy,
+  EceSchool,
+  ItSchool,
 } from '../';
 
 class Container extends Component<RouteComponentProps> {
@@ -67,6 +69,8 @@ class Container extends Component<RouteComponentProps> {
             component={VisaApply}
           />
           <Route exact path="/school" component={School} />
+          <Route exact path="/school/ece" component={EceSchool} />
+          <Route exact path="/school/it" component={ItSchool} />
           <Route exact path="/school/teen" component={Teen} />
           <Route exact path="/school/summercamp" component={SummerCamp} />
           <Route exact path="/service-price" component={ServicePrice} />

@@ -44,6 +44,8 @@ import BiometricsJp from './Page/HelpfulInfo/BiometricsJp/BiometricsJp';
 import BiometricsSea from './Page/HelpfulInfo/BiometricsSea/BiometricsSea';
 import TermsOfService from './Page/TermsOfService/TermsOfService';
 import PrivacyPolicy from './Page/PrivacyPolicy/PrivacyPolicy';
+import EceSchool from './Page/School/EceSchool/EceSchool';
+import ItSchool from './Page/School/ITSchool/ITSchool';
 import Contact from './Page/Contact/Contact';
 import ServiceBox from './Common/MainServicesSection/ServiceBox';
 import BoxTitleLabelOnTopOfImg from './Common/BoxTitleLabelOnTopOfImg';
@@ -96,6 +98,8 @@ export {
   BiometricsSea,
   TermsOfService,
   PrivacyPolicy,
+  EceSchool,
+  ItSchool,
   Contact,
   ServiceBox,
   BoxTitleLabelOnTopOfImg,
