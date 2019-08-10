@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import EceItSchoolBox from './EceItSchoolBox';
-import { SpecialDataType } from './SpecialDataType';
+import { SpecialSchoolType } from '../../../../type/SpecialSchoolType';
 import { getCustomPostApi } from '../../../../utile/CustomPostApi';
 import { Heading2 } from '../../..';
 import color from '../../../colors';
@@ -18,7 +18,7 @@ interface OwnProps {
   categoryNum: number;
 }
 interface OwnState {
-  specialSchoolData: SpecialDataType[];
+  specialSchoolData: SpecialSchoolType[];
 }
 
 class EceItSchoolListBox extends Component<OwnProps, OwnState> {

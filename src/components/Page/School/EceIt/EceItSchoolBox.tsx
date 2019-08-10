@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { Heading3 } from '../../..';
-import { SpecialDataType } from './SpecialDataType';
+import { SpecialSchoolType } from '../../../../type/SpecialSchoolType';
 import color from '../../../colors';
 import LinkHandle from '../../../../utile/LinkHandle';
 
@@ -82,7 +82,7 @@ const DivBox = styled.div`
 `;
 
 interface OwnProps {
-  specialData: SpecialDataType;
+  specialData: SpecialSchoolType;
 }
 interface OwnState {}
 

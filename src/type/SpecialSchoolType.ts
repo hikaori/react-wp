@@ -1,4 +1,4 @@
-export type SpecialDataType = {
+export type SpecialSchoolType = {
   title: { rendered: string };
   acf: {
     schoolOverview: string;
