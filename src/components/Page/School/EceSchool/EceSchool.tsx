@@ -65,6 +65,7 @@ class EceSchool extends Component<OwnProps, OwnState> {
         bottomSectionColor={'#fff'}
         bottomButtonText={'他の学校を見る'}
         bottomButtonSize={'23.7rem'}
+        bottomButtonLink={'https://ryugaku.hoikupedia.com/special-school/'}
       >
         <PageDescription>
           <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />

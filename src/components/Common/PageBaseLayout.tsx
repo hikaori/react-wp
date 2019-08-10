@@ -14,6 +14,7 @@ interface ownProps {
   bottomSectionText: string;
   bottomSectionColor: string;
   bottomButtonText: string;
+  bottomButtonLink?: string;
   bottomButtonSize: string;
   bottomButtonClass?: string;
 }
@@ -107,7 +108,13 @@ class PageBaseLayout extends Component<ownProps, ownState> {
             theme={{ main: this.props.bottomButtonSize }}
             className={this.props.bottomButtonClass}
           >
-            <LinkHandle to={'/contact'}>
+            <LinkHandle
+              to={
+                this.props.bottomButtonLink
+                  ? this.props.bottomButtonLink
+                  : '/contact'
+              }
+            >
               {this.props.bottomButtonText}
             </LinkHandle>
           </Button>

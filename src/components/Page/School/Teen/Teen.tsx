@@ -3,8 +3,6 @@ import React, { Component, Fragment } from 'react';
 import { PageBaseLayout, PageDescription } from '../../..';
 import { getData, BreadTreeElement } from '../../../../utile/PageApi';
 import SchoolList from './SchoolList';
-import { BottomSectionText } from '../../../../constants/BottomSectionText';
-import { buttonText } from '../../../../constants/buttonText';
 import colors from '../../../colors';
 
 type PageDataType = {
@@ -61,10 +59,13 @@ class Teen extends Component<OwnProps, OwnState> {
           imgURL={data.fv1200_400}
           title={title}
           subTitle={data.subtitle}
-          bottomSectionText={BottomSectionText.pattern1}
+          bottomSectionText={
+            'その他の学校に関しては、以下のリンクからナデシコ留学のウェブサイトをご参照ください'
+          }
           bottomSectionColor={colors.lightGray}
-          bottomButtonText={buttonText.freeConsulting}
+          bottomButtonText={'他の学校を見る'}
           bottomButtonSize={'23.7rem'}
+          bottomButtonLink={'https://nadeshikoryugaku.com/public_high_school/'}
         >
           <PageDescription>
             <div dangerouslySetInnerHTML={{ __html: data.pageDescription }} />
