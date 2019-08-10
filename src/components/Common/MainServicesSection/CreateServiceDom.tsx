@@ -17,16 +17,12 @@ interface OwnProps {
       };
     }
   ];
-  categoryNum: number;
 }
 interface OwnState {}
 
 class CreateServiceDom extends Component<OwnProps, OwnState> {
   render() {
-    let targetServicesData = this.props.servicesData.filter(x =>
-      x.service_category.includes(this.props.categoryNum),
-    );
-    let orderedTrgetServicesData = targetServicesData.sort(function(a, b) {
+    let orderedTrgetServicesData = this.props.servicesData.sort(function(a, b) {
       return Number(a.acf.service_order) < Number(b.acf.service_order) ? -1 : 1;
     });
 

@@ -10,6 +10,8 @@ import {
   MainServicesSection,
 } from '../..';
 import { getData, BreadTreeElement } from '../../../utile/PageApi';
+import { getCustomPostApi } from '../../../utile/CustomPostApi';
+import { ServiceType } from '../../../type/serviceType';
 import CreateServiceDom from '../../Common/MainServicesSection/CreateServiceDom';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import hoikupediaLogo from '../../../assets/logo/HoikupediaLogo.png';
@@ -41,19 +43,7 @@ interface OwnProps {}
 interface OwnState {
   data: PageDataType;
   breadTreeElements: BreadTreeElement[];
-  servicesData: [
-    {
-      service_category: [number];
-      acf: {
-        serviceTitle: string;
-        serviceText: string;
-        serviceImg: { url: string };
-        serviceButtonText: string;
-        serviceButtonUrl: string;
-        service_order: string;
-      };
-    }
-  ];
+  servicesData: [ServiceType];
 }
 
 class ECE extends Component<OwnProps, OwnState> {
@@ -102,25 +92,25 @@ class ECE extends Component<OwnProps, OwnState> {
     const state = await getData<PageDataType>(pageId);
     this.setState(state);
   }
+  async createCustomPostData() {
+    let SERVICE_CATEGORY_NUM = 3;
+    const state = await getCustomPostApi(
+      'services',
+      'service_category',
+      SERVICE_CATEGORY_NUM,
+    );
+    this.setState({ servicesData: state });
+  }
 
   componentDidMount() {
     this.createData();
-    let postNum = 19;
-    let serviceDataURL = `http://localhost/wp-json/wp/v2/services/?per_page=${postNum}`;
-    fetch(serviceDataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          servicesData: res,
-        });
-      });
+    this.createCustomPostData();
   }
 
   render() {
     let data = this.state.data.acf;
     let title = this.state.data.title;
     let servicesData = this.state.servicesData;
-    const categoryNum: number = 3;
 
     return (
       <PageBaseLayout
@@ -166,10 +156,7 @@ class ECE extends Component<OwnProps, OwnState> {
           <div dangerouslySetInnerHTML={{ __html: data.programFeatureText3 }} />
         </ImagePluTextBox>
         <MainServicesSection h2={Titles.mainService}>
-          <CreateServiceDom
-            servicesData={servicesData}
-            categoryNum={categoryNum}
-          />
+          <CreateServiceDom servicesData={servicesData} />
         </MainServicesSection>
       </PageBaseLayout>
     );

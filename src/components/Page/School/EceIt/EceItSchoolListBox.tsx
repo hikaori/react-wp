@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import EceItSchoolBox from './EceItSchoolBox';
 import { SpecialDataType } from './SpecialDataType';
-
+import { getCustomPostApi } from '../../../../utile/CustomPostApi';
 import { Heading2 } from '../../..';
 import color from '../../../colors';
 
@@ -44,18 +44,17 @@ class EceItSchoolListBox extends Component<OwnProps, OwnState> {
     };
   }
 
+  async createCustomPostData() {
+    const state = await getCustomPostApi(
+      'ece_it_school',
+      'special_school_category',
+      this.props.categoryNum,
+    );
+    this.setState({ specialSchoolData: state });
+  }
+
   componentDidMount() {
-    let typeName = 'ece_it_school';
-    let categoryName = 'special_school_category';
-    let categoryNum = this.props.categoryNum;
-    let serviceDataURL = `http://localhost/wp-json/wp/v2/${typeName}?${categoryName}=${categoryNum}`;
-    fetch(serviceDataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          specialSchoolData: res,
-        });
-      });
+    this.createCustomPostData();
   }
   render() {
     let orderedData = this.state.specialSchoolData.sort(function(a, b) {

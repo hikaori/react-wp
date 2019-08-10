@@ -10,7 +10,8 @@ import {
   MainServicesSection,
 } from '../..';
 import { getData, BreadTreeElement } from '../../../utile/PageApi';
-
+import { getCustomPostApi } from '../../../utile/CustomPostApi';
+import { ServiceType } from '../../../type/serviceType';
 import cosLogo from '../../../assets/images/COS_Educational_Consulting_Inc_Logo_Jap.svg';
 import NannyFromJapanLogoHorizontal from '../../../assets/logo/NannyFromJapanLogoHorizontal.svg';
 import { Titles } from '../../../constants/Titles';
@@ -46,19 +47,7 @@ interface OwnProps {}
 interface OwnState {
   data: PageDataType;
   breadTreeElements: BreadTreeElement[];
-  servicesData: [
-    {
-      service_category: [number];
-      acf: {
-        serviceTitle: string;
-        serviceText: string;
-        serviceImg: { url: string };
-        serviceButtonText: string;
-        serviceButtonUrl: string;
-        service_order: string;
-      };
-    }
-  ];
+  servicesData: [ServiceType];
 }
 
 class Nanny extends Component<OwnProps, OwnState> {
@@ -111,24 +100,25 @@ class Nanny extends Component<OwnProps, OwnState> {
     this.setState(state);
   }
 
+  async createCustomPostData() {
+    let SERVICE_CATEGORY_NUM = 6;
+    const state = await getCustomPostApi(
+      'services',
+      'service_category',
+      SERVICE_CATEGORY_NUM,
+    );
+    this.setState({ servicesData: state });
+  }
+
   componentDidMount() {
     this.createData();
-    let postNum = 19;
-    let serviceDataURL = `http://localhost/wp-json/wp/v2/services/?per_page=${postNum}`;
-    fetch(serviceDataURL)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          servicesData: res,
-        });
-      });
+    this.createCustomPostData();
   }
 
   render() {
     let data = this.state.data.acf;
     let title = this.state.data.title;
     let servicesData = this.state.servicesData;
-    let categoryNum: number = 6;
 
     return (
       <PageBaseLayout
@@ -170,10 +160,7 @@ class Nanny extends Component<OwnProps, OwnState> {
         </ImagePluTextBox>
 
         <MainServicesSection h2={Titles.mainService}>
-          <CreateServiceDom
-            servicesData={servicesData}
-            categoryNum={categoryNum}
-          />
+          <CreateServiceDom servicesData={servicesData} />
         </MainServicesSection>
       </PageBaseLayout>
     );
