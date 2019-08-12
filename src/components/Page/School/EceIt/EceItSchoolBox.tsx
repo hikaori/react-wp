@@ -1,100 +1,45 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import classNames from 'classnames';
 
 import { Heading3 } from '../../..';
 import { SpecialSchoolType } from '../../../../type/SpecialSchoolType';
-import color from '../../../colors';
 import LinkHandle from '../../../../utile/LinkHandle';
-
-const SchoolBox = styled.div`
-  display: flex;
-  margin-top: 24px;
-  margin-left: calc(((100vw - 100%) / 2) * -1);
-  margin-right: calc(((100vw - 100%) / 2) * -1);
-  background: linear-gradient(
-      180deg,
-      rgba(225, 225, 225, 0.5),
-      rgb(240, 240, 240, 1)
-    ),
-    url(${({ theme }) => theme.backgroundImage});
-  background-repeat: no-repeat;
-  background-size: cover;
-  .contents {
-    display: flex;
-    padding: 0 6%;
-    background: linear-gradient(90deg, #f0f0f0, rgba(225, 225, 225, 0));
-  }
-  &.school-box:nth-child(odd) .contents {
-    flex-direction: row-reverse;
-    background: linear-gradient(90deg, rgba(225, 225, 225, 0),#f0f0f0);
-  }
-  &.school-box:nth-child(odd) .logo {
-    justify-content: flex-start;
-`;
-
-const SchoolLogoDiv = styled.div`
-  display: flex;
-  width: 50%;
-  justify-content: flex-end;
-  padding-top: 17.5px;
-  img {
-    max-width: 200px;
-    max-height: 80px;
-  }
-`;
-
-const SchoolTextBoxDiv = styled.div`
-  width: 50%;
-`;
-
-const MainProgramDiv = styled.div``;
-
-const DivBox = styled.div`
-  margin: 17.5px 0;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 1.6rem;
-  & a {
-    display: inline;
-    color: ${color.blue};
-  }
-  .phone a {
-    color: rgba(0, 0, 0, 0.8);
-  }
-  .text-bold {
-    font-weight: bold;
-  }
-  .red-bullet,
-  .red-bullet li {
-    margin: 0;
-  }
-  .red-bullet ul::before,
-  .red-bullet li::before {
-    content: '• ';
-    color: ${color.red};
-  }
-  .red-line li {
-    margin: 0 0 0 1.6rem;
-  }
-  .red-line li::before {
-    content: '- ';
-    color: ${color.red};
-  }
-`;
+import Arrow from './Arrow';
+import {
+  SchoolBox,
+  SchoolLogoSchoolNameDiv,
+  SchoolTextBoxDiv,
+  MainProgramDiv,
+  DivBox,
+} from './EceltSchoolBoxStyle';
 
 interface OwnProps {
   specialData: SpecialSchoolType;
 }
-interface OwnState {}
+interface OwnState {
+  isClicked: boolean;
+}
 
 class EceItSchoolBox extends Component<OwnProps, OwnState> {
+  constructor(ownProps: any, ownState: any) {
+    super(ownProps, ownState);
+    this.state = {
+      isClicked: false,
+    };
+  }
+
+  handleClick(): void {
+    this.setState(precState => ({ isClicked: !precState.isClicked }));
+  }
+
   render() {
     const title = this.props.specialData.title.rendered;
     const data = this.props.specialData.acf;
     const tel = `"tel:${data.phoneNumber}"`;
     return (
       <SchoolBox theme={{ backgroundImage: data.img }} className="school-box">
-        <div className="contents">
-          <SchoolTextBoxDiv>
+        <div className={classNames('contents', { show: this.state.isClicked })}>
+          <SchoolTextBoxDiv className="school-texts">
             <DivBox>
               <Heading3>学校概要</Heading3>
               <div>{data.schoolOverview}</div>
@@ -120,7 +65,7 @@ class EceItSchoolBox extends Component<OwnProps, OwnState> {
               <DivBox>
                 <div className="text-bold">ウェブサイト</div>
                 <div>
-                  <LinkHandle to={data.webSite}>{data.webSite}</LinkHandle>
+                  <LinkHandle to={data.webSite}>こちらから</LinkHandle>
                 </div>
               </DivBox>
               <DivBox>
@@ -129,11 +74,20 @@ class EceItSchoolBox extends Component<OwnProps, OwnState> {
               </DivBox>
             </DivBox>
           </SchoolTextBoxDiv>
-          <SchoolLogoDiv className="logo">
-            <div>
+          <SchoolLogoSchoolNameDiv className="logo-schoolName">
+            <Arrow
+              parentFunc={() => {
+                this.handleClick();
+              }}
+              isCliked={this.state.isClicked}
+            />
+            <div className="logo">
               <img src={data.logo} alt={title} />
             </div>
-          </SchoolLogoDiv>
+            <div className="school-name">
+              <div className="name">{title}</div>
+            </div>
+          </SchoolLogoSchoolNameDiv>
         </div>
       </SchoolBox>
     );
