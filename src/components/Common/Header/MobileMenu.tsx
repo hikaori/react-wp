@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { LinkHandle } from '../../';
 import MobileSubMenu from './MobileSubMenu';
+import { IP } from '../../../utile/IPadress';
 
 interface OwnProps {}
 interface OwnState {
@@ -23,7 +24,7 @@ class MobileMenu extends Component<OwnProps, OwnState> {
   }
   componentDidMount() {
     let menuId = 11;
-    let dataURL = `http://localhost/wp-json/wp-api-menus/v2/menus/${menuId}`;
+    let dataURL = `${IP}/wp-json/wp-api-menus/v2/menus/${menuId}`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

@@ -5,6 +5,7 @@ import Heading2 from '../Heading2';
 import ProgramItemBox from './ProgramItemBox';
 import { media } from '../../../utile/Helper';
 import { Titles } from '../../../constants/Titles';
+import { IP } from '../../../utile/IPadress';
 
 interface OwnProps {}
 interface OwnState {
@@ -52,7 +53,7 @@ class ProgramContainer extends Component<OwnProps, OwnState> {
     };
   }
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp/v2/pages/1313';
+    let dataURL = `${IP}/wp-json/wp/v2/pages/1313`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

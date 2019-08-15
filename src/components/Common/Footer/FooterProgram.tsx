@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import fonts from '../../fonts';
 
 import { LinkHandle } from '../../';
 
@@ -39,7 +40,7 @@ class FooterProgram extends Component<OwnProps, OwnState> {
       <MenuBox theme={{ Boxwidth: this.props.width }}>
         <MenuBoxUl
           theme={{
-            fontFamily: 'a-otf-midashi-go-mb31-pr6n',
+            fontFamily: `${fonts.jpBold}`,
             fontSize: '1.4rem',
           }}
         >
@@ -49,7 +50,7 @@ class FooterProgram extends Component<OwnProps, OwnState> {
             </LinkHandle>
             <MenuBoxUl
               theme={{
-                fontFamily: 'a-otf-gothic-bbb-pr6n',
+                fontFamily: `${fonts.jpRegular}`,
                 fontSize: '1.2rem',
               }}
             >

@@ -40,7 +40,6 @@ class NewsListContent extends Component<OwnProps, OwnState> {
     const DATE = this.props.modifiedDate
       .substr(0, T_POSITION)
       .replace(/-/g, '/');
-    console.log(DATE);
     return (
       <BoxDiv>
         <LinkHandle to={linkUrl}>

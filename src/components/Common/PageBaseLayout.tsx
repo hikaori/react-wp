@@ -50,6 +50,7 @@ const BreadcrumbDiv = styled.div`
   }
   .bread-item {
     margin-right: 0.8rem;
+    ${media.tablet`font-size: 0.8rem;`}
   }
   .bread-item:last-child .bread-arrow {
     display: none;

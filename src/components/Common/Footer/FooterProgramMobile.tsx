@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AddCircleOutline, RemoveCircleOutline } from 'styled-icons/material';
 
 import { LinkHandle } from '../../';
-
+import fonts from '../../fonts';
 const MenuBox = styled.div``;
 const MenuBoxUl = styled.ul`
   font-family:${({ theme }) => theme.fontFamily}
@@ -50,7 +50,7 @@ class FooterProgramMobile extends Component<OwnProps, OwnState> {
     return (
       <MenuBoxUl
         theme={{
-          fontFamily: 'a-otf-gothic-bbb-pr6n',
+          fontFamily: `${fonts.jpRegular}`,
           fontSize: '1.2rem',
           display: display,
         }}
@@ -69,7 +69,7 @@ class FooterProgramMobile extends Component<OwnProps, OwnState> {
       <MenuBox>
         <MenuBoxUl
           theme={{
-            fontFamily: 'a-otf-midashi-go-mb31-pr6n',
+            fontFamily: `${fonts.jpBold}`,
             fontSize: '1.4rem',
           }}
         >

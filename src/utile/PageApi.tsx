@@ -1,3 +1,5 @@
+import { IP } from './IPadress';
+
 export interface BreadTreeElement {
   breadText: string;
   url: string;
@@ -9,7 +11,7 @@ interface GetElement<D> {
 }
 
 function createApiUrl(pageId: string | number): string {
-  let BASEURL = `http://localhost/wp-json/wp/v2/pages/`;
+  let BASEURL = `${IP}/wp-json/wp/v2/pages/`;
   return `${BASEURL}${pageId}`;
 }
 

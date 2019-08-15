@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import color from '../../colors';
 
 import { LinkHandle } from '../../';
+import { IP } from '../../../utile/IPadress';
 
 const MenuSection = styled.ul`
   display: flex;
@@ -70,8 +71,8 @@ class Menu extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let menuId = 11;
-    let dataURL = `http://localhost/wp-json/wp-api-menus/v2/menus/${menuId}`;
+    let menuId = 13;
+    let dataURL = `${IP}/wp-json/wp-api-menus/v2/menus/${menuId}`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

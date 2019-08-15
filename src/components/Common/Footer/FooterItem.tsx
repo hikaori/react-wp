@@ -7,6 +7,7 @@ import FooterProgramMobile from './FooterProgramMobile';
 import FooterCompanyInfo from './FooterCompanyInfo';
 import color from '../../colors';
 import { media } from '../../../utile/Helper';
+import { IP } from '../../../utile/IPadress';
 
 const FlexBox = styled.div`
   display: flex;
@@ -84,8 +85,9 @@ class FooterItem extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let menuId = 9;
-    let dataURL = `http://localhost/wp-json/wp-api-menus/v2/menus/${menuId}`;
+    // WordPress管理画面 menu名：FooterMainMenu
+    let menuId = 11;
+    let dataURL = `${IP}/wp-json/wp-api-menus/v2/menus/${menuId}`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

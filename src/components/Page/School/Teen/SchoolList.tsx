@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Heading2 } from '../../..';
 import ItemBox from './ItemBox';
 import colors from '../../../colors';
+import { IP } from '../../../../utile/IPadress';
 
 const BoxDiv = styled.div`
   padding: 8rem 7%;
@@ -62,7 +63,7 @@ class SchoolList extends Component<OwnProps, OwnState> {
   componentDidMount() {
     let typeName = 'teen_school';
     let postNum = 13;
-    let serviceDataURL = `http://localhost/wp-json/wp/v2/${typeName}?per_page=${postNum}`;
+    let serviceDataURL = `${IP}/wp-json/wp/v2/${typeName}?per_page=${postNum}`;
     fetch(serviceDataURL)
       .then(res => res.json())
       .then(res => {
@@ -77,6 +78,7 @@ class SchoolList extends Component<OwnProps, OwnState> {
     data.map((x: any, index: number) =>
       returnDom.push(
         <ItemBox
+          key={index}
           nameJap={x.acf.schoolDistrictJap}
           nameEng={x.acf.schoolDistrictEng}
           numberOfSchool={x.acf.numberOfSchool}

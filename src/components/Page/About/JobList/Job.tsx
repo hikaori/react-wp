@@ -6,6 +6,7 @@ import { buttonText } from '../../../../constants/buttonText';
 import { BottomSectionText } from '../../../../constants/BottomSectionText';
 import JobContent from './JobContent';
 import color from '../../../colors';
+import { IP } from '../../../../utile/IPadress';
 
 type PageDataType = {
   title: { rendered: string };
@@ -77,7 +78,7 @@ class Job extends Component<OwnProps, OwnState> {
   componentDidMount() {
     this.createData();
     let typeName = 'job';
-    let jobDataURL = `http://localhost/wp-json/wp/v2/${typeName}/${
+    let jobDataURL = `${IP}/wp-json/wp/v2/${typeName}/${
       this.props.match.params.id
     }`;
     fetch(jobDataURL)

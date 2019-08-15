@@ -5,6 +5,7 @@ import color from '../../colors';
 import FooterItem from './FooterItem';
 import { media } from '../../../utile/Helper';
 import { LinkHandle } from '../../';
+import { IP } from '../../../utile/IPadress';
 
 const FooterBox = styled.footer`
   background-color: ${color.footerBackGroudn};
@@ -60,8 +61,9 @@ class Footer extends Component<OwnProps, OwnState> {
   }
 
   componentDidMount() {
-    let menuId = 10;
-    let dataURL = `http://localhost/wp-json/wp-api-menus/v2/menus/${menuId}`;
+    // WordPress管理画面 menu名：FooterSubMenu
+    let menuId = 12;
+    let dataURL = `${IP}/wp-json/wp-api-menus/v2/menus/${menuId}`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

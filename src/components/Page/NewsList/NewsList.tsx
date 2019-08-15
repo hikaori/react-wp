@@ -6,6 +6,7 @@ import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import NewsListContent from './NewsListContent';
 import color from '../../colors';
+import { IP } from '../../../utile/IPadress';
 
 type PageDataType = {
   title: { rendered: string };
@@ -69,7 +70,7 @@ class NewsList extends Component<OwnProps, OwnState> {
   componentDidMount() {
     this.createData();
     let typeName = 'news';
-    let newsDataURL = `http://localhost/wp-json/wp/v2/${typeName}/?orderby=modified`;
+    let newsDataURL = `${IP}/wp-json/wp/v2/${typeName}/?orderby=modified`;
     fetch(newsDataURL)
       .then(res => res.json())
       .then(res => {

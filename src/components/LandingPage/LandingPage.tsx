@@ -16,6 +16,7 @@ import { BottomSectionText } from '../../constants/BottomSectionText';
 import { buttonText } from '../../constants/buttonText';
 import colors from '../colors';
 import { media } from '../../utile/Helper';
+import { IP } from '../../utile/IPadress';
 
 interface OwnProps {}
 interface OwnState {
@@ -72,7 +73,7 @@ class LandingPage extends Component<OwnProps, OwnState> {
   }
   componentDidMount() {
     let pageId = '1313';
-    let dataURL = `http://localhost/wp-json/wp/v2/pages/${pageId}`;
+    let dataURL = `${IP}/wp-json/wp/v2/pages/${pageId}`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

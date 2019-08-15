@@ -5,6 +5,7 @@ import color from '../../colors';
 import { Heading2 } from '../..';
 import { media } from '../../../utile/Helper';
 import { LinkHandle } from '../../';
+import { IP } from '../../../utile/IPadress';
 
 const NewsContainer = styled.div`
   padding: 8.4rem 0rem 8rem;
@@ -67,7 +68,7 @@ class ExcerptNews extends Component<OwnProps, OwnState> {
     };
   }
   componentDidMount() {
-    let dataURL = 'http://localhost/wp-json/wp/v2/news?_embed';
+    let dataURL = `${IP}/wp-json/wp/v2/news`;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {

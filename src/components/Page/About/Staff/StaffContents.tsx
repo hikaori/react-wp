@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Heading2 } from '../../..';
 import StaffBox from './StaffBox';
+import { IP } from '../../../../utile/IPadress';
 
 const FlexDiv = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ class StaffContents extends Component<ownProps, ownState> {
   componentDidMount() {
     let typeName = 'staff';
     let postsNum = 16;
-    let DataURL = `http://localhost/wp-json/wp/v2/${typeName}/?per_page=${postsNum}`;
+    let DataURL = `${IP}/wp-json/wp/v2/${typeName}/?per_page=${postsNum}`;
     fetch(DataURL)
       .then(res => res.json())
       .then(res => {

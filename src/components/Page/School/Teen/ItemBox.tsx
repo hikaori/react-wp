@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 import { Heading3, LinkHandle } from '../../..';
 import font from '../../../fonts';
+import { media } from '../../../../utile/Helper';
 
 const BoxDiv = styled.div`
   padding: 4rem;
   background-color: #fff;
   margin: 0 0.8rem 1.6rem;
   width: 32.5%;
+  ${media.tablet`width: 100%`}
   margin: 0 1.25% 1.6rem 0;
   & img {
     width: 100%;
@@ -16,11 +18,13 @@ const BoxDiv = styled.div`
 `;
 
 const TitleDiv = styled.div`
+  font-weight: bold;
   font-family: ${font.jpMedium};
   padding-top: 27px;
 `;
 const TextDiv = styled.div`
   padding-top: 18px;
+  ${media.tablet`padding-top: 8px;`}
   &.link {
     padding: 0px;
   }

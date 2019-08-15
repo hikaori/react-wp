@@ -6,6 +6,7 @@ import { buttonText } from '../../../constants/buttonText';
 import { BottomSectionText } from '../../../constants/BottomSectionText';
 import NewsContent from './NewsContent';
 import color from '../../colors';
+import { IP } from '../../../utile/IPadress';
 
 type PageDataType = {
   title: { rendered: string };
@@ -78,7 +79,7 @@ class News extends Component<OwnProps, OwnState> {
     this.createData();
 
     let typeName = 'news';
-    let newsDataURL = `http://localhost/wp-json/wp/v2/${typeName}/${
+    let newsDataURL = `${IP}/wp-json/wp/v2/${typeName}/${
       this.props.match.params.id
     }`;
     fetch(newsDataURL)
